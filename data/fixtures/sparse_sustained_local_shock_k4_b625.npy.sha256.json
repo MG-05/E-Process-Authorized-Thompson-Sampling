@@ -1,0 +1,9 @@
+{
+  "artifact": "sparse_sustained_local_shock_k4_b625.npy",
+  "file_sha256": "98c5bc314568c8f9c2c7f850888b03ee159cb7398fe0396da9297a8b3cde321a",
+  "mean_table_sha256": "5d7338556c598aedbdeca60bcb0e6d68b6f560e3b307ca977b394e683828b32e",
+  "shape": [
+    2500,
+    4
+  ]
+}

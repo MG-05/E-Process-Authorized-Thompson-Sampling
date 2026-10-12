@@ -1,0 +1,9 @@
+{
+  "artifact": "random_breakpoints_k4_b625.npy",
+  "file_sha256": "97a695c58a9cfd0442c2843d3441994309083ff5c1862f4ac5645b7bd60af8e4",
+  "mean_table_sha256": "e251d9be447248c83b7abdf1f12bc6d11441a8e6a3a7864b439ea344b1448657",
+  "shape": [
+    2500,
+    4
+  ]
+}

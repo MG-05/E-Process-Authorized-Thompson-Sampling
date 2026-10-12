@@ -1,0 +1,9 @@
+{
+  "artifact": "asynchronous_per_arm_switching_k4_b625.npy",
+  "file_sha256": "219c027c6ecc4b3090a5ecbb76ff1972371c8ce586190c2cdce610ff50e83c3b",
+  "mean_table_sha256": "4f0a61a34b4d6cc91f48acfc28c5450802373a603459bb04c6758b52c9a80f21",
+  "shape": [
+    2500,
+    4
+  ]
+}

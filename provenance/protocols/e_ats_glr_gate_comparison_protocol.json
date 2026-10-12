@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "protocol_id": "e_ats_glr_gate_matched_false_alarm_v1",
+  "freeze_date": "2026-08-27",
+  "status": "frozen_before_glr_calibration_scores_or_nonstationary_glr_outcomes",
+  "purpose": "exploratory detector-attribution comparison requested after the canonical e-ATS evaluation",
+  "post_start_numerical_amendment": {
+    "date": "2026-08-27",
+    "trigger_group_ids": [
+      "D:stationary:k32:b1250:random_environment:009:tape0001",
+      "D:stationary:k32:b625:random_environment:019:tape0003"
+    ],
+    "triggers": [
+      "fast xlogx GLR identity returned -1.1641532182693481e-10 for a near-zero exact statistic",
+      "independent blockwise likelihood subtraction returned -1.8189894035458565e-12 for a near-zero exact statistic"
+    ],
+    "last_committed_calibration_row_counts": [1600, 1400],
+    "calibration_thresholds_derived_before_amendment": false,
+    "calibration_scores_inspected": false,
+    "nonstationary_glr_outcomes_computed": false,
+    "change": "when the fast table identity is negative, recompute that component from independent blockwise Bernoulli maximized log likelihoods; accept zero only when the recomputed negative value lies within 64 times binary64 epsilon times the arm-local observation count",
+    "guard_behavior": "fail when the independently recomputed negative statistic exceeds the explicit observation-count-scaled forward-error allowance",
+    "scientific_design_changed": false
+  },
+  "selection": {
+    "K_values": [4, 32],
+    "B_values": [250, 625, 1250, 2500],
+    "mechanisms": [
+      "stationary",
+      "isolated_incumbent_down",
+      "isolated_challenger_up",
+      "sparse_sustained_local_shock",
+      "random_breakpoints",
+      "global_switching",
+      "rapid_dense_abrupt_switching",
+      "mixed_abrupt_plus_drift",
+      "asynchronous_per_arm_switching",
+      "gradual_drift"
+    ],
+    "source_kind": "random_environment",
+    "source_indices_inclusive": [5, 95],
+    "full_table_rows": "all four B values for K=4 and K=32",
+    "selection_timing": "chosen after canonical e-ATS outcomes were known",
+    "selection_rationale": "include the reported K=4 reversal and a larger-action-space row rather than selecting only a favorable e-ATS regime",
+    "confirmatory_claim_allowed": false
+  },
+  "calibration": {
+    "population": "registered stationary random environments for the selected geometries",
+    "tapes": [0, 1, 3],
+    "trajectory_count_per_geometry": 273,
+    "detector_trace": "strict OTS action and reward trajectory",
+    "glr_statistic": "maximum over time, arms, and the canonical geometric candidate grid of the two-segment Bernoulli log generalized likelihood ratio against one pooled Bernoulli mean",
+    "threshold_rule": "within each K_B geometry choose an interior cutoff giving exactly the canonical e-process stationary crossing count; when that count is zero use nextafter(maximum_calibration_score,+infinity)",
+    "e_crossing_source": "archived canonical restart-e-process F_E on the same trajectory; first-crossing identity follows from the shared OTS prefix",
+    "nonstationary_outcomes_used": false,
+    "performance_tuning_used": false,
+    "analytic_glr_false_alarm_guarantee_claimed": false,
+    "interpretation": "empirical matched crossing frequency on a repeated-tape stationary calibration population"
+  },
+  "evaluation": {
+    "tape": 2,
+    "group_count": 7280,
+    "stationary_group_count": 728,
+    "nonstationary_group_count": 6552,
+    "paired_unit": "registered environment-tape group",
+    "common_mean_table": true,
+    "common_potential_reward_table": true,
+    "common_initial_policy_rng_descriptor": true,
+    "thresholds_frozen_before_glr_evaluation": true
+  },
+  "policies": {
+    "strict_ots": "archived strict OTS outcome from the canonical evaluation",
+    "always_open_ramp": "archived canonical no-C^E full-budget normalized-ramp outcome",
+    "canonical_e_ats": "archived canonical prior-predictive restart-e-process-authorized outcome",
+    "glr_e_ats": "new run replacing only the historical authorization latch with the calibrated GLR latch"
+  },
+  "fairness_constraints": [
+    "canonical e-ATS is not retuned",
+    "GLR threshold calibration uses stationary outcomes only",
+    "GLR and e-process use the same geometric candidate splits",
+    "GLR changes only the authorization event; ramp, latch persistence, short discount, reliability, score, tie rule, and controller constants remain fixed",
+    "all comparisons are paired on identical means, potential rewards, and initial RNG descriptors",
+    "no policy receives access to the nonstationary evaluation outcomes during tuning"
+  ],
+  "inference": {
+    "estimand": "mean normalized dynamic pseudo-regret in the selected random nonstationary environment-tape groups",
+    "primary_detector_contrast": "glr_e_ats_minus_canonical_e_ats",
+    "additional_contrasts": [
+      "glr_e_ats_minus_always_open_ramp",
+      "glr_e_ats_minus_strict_ots",
+      "canonical_e_ats_minus_always_open_ramp"
+    ],
+    "bootstrap_replicates": 50000,
+    "bootstrap_unit": "paired group within mechanism_K_B stratum",
+    "interval": "two-sided percentile 95 percent",
+    "multiplicity_adjusted_confirmatory_claim": false
+  },
+  "source_results": {
+    "trajectory_csv": "E_Values_Workshop_2026/results/e_ats_full_budget_20_geometry_regret_v1/e_ats_20_geometry_regret_trajectories.csv",
+    "trajectory_csv_size_bytes": 22183095,
+    "trajectory_csv_sha256": "1315d2c993ac8025adb3e07db296f0ff965435658c6abb43be999890de8ea8b0"
+  },
+  "source_atlas_checkpoint": {
+    "path": "report/project_publication/e_value_vgdts_layer3_regret_atlas_v1/production/6aa49bfa39f07a4ce8322360d5a0bf8a91bd91d337b684c3f2c4276e1e177da6/checkpoints/atlas_9062b00224865c69ee986c2922471ce55e99f188d4c82eaeda5e309b4db2a73b.sqlite3",
+    "size_bytes": 19419852800,
+    "sha256": "9515de2b9926ab40c0a54566da5040f709c45dbad79607cdd94c2a8beba15dce"
+  },
+  "pinned_files": [
+    {
+      "path": "src/adts/glr_authorized_e_ats.py",
+      "sha256": "c4b0a5e6e9b0030223e3d5df318cf5f59d3454363d7717d03371400be27617ef"
+    },
+    {
+      "path": "project_publication/e_ats_glr_gate_comparison.py",
+      "sha256": "f4a2e1c19ab95beb936a0ee593f07ac444bad69e02841ca7f4be0161808934f6"
+    },
+    {
+      "path": "tests/adts/test_glr_authorized_e_ats.py",
+      "sha256": "45de4d30a698ee6f419ab68fda14bfb5cc70e71df552b0c891631020990b4b0a"
+    },
+    {
+      "path": "tests/publication/test_e_ats_glr_gate_comparison.py",
+      "sha256": "37735db1d2422e7a128ae6059c1788c434f9819548351da9857828a753093955"
+    }
+  ],
+  "claim_ceiling": {
+    "exploratory_selected_slice_only": true,
+    "detector_specific_causal_attribution_within_implementation": true,
+    "general_glr_superiority_claimed": false,
+    "general_e_process_superiority_claimed": false,
+    "analytic_glr_false_alarm_control_claimed": false,
+    "equal_tuning_effort_across_research_histories_claimed": false,
+    "uniform_regret_dominance_claimed": false,
+    "full_20_geometry_generalization_claimed": false
+  },
+  "identity_sha256": "aa551853d9a00d839735f82a1942e41dea3e5b6601556d21a73b575a3bcee946"
+}

@@ -1,0 +1,9 @@
+{
+  "artifact": "global_switching_k4_b625.npy",
+  "file_sha256": "94dce3d7cb9588dba37308fb393614fdf0feb9c9b2b4f82ef117134b3d3a08f5",
+  "mean_table_sha256": "81e9d2043fa5b7bf5815f9f62fb6a238adb3c2ccb96e5dcca91cd2b917337625",
+  "shape": [
+    2500,
+    4
+  ]
+}

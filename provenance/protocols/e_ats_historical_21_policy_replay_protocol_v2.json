@@ -1,0 +1,97 @@
+{
+  "analysis": {
+    "appended_sensitivity": "rank canonical e-ATS among all 21 archived rows, yielding 22 rows",
+    "cell_estimand": "mean terminal normalized dynamic pseudo-regret over all 250 paired tape groups in a family-by-geometry cell",
+    "cell_weighting": "18 family-by-geometry cells receive equal weight in the mean and median rank summaries",
+    "primary_leaderboard": "replace e_authorized_mean_gate with canonical e-ATS; retain the other 20 archived rows",
+    "rank_rule": "competition rank: one plus the number of policy cell means strictly below the target mean; exact ties share the best occupied rank"
+  },
+  "current_outcomes_seen_at_v1_freeze": false,
+  "environment_scope": {
+    "families": [
+      "abrupt",
+      "fast",
+      "global_switching",
+      "local_shocks",
+      "mixed",
+      "per_arm_switching",
+      "random_breakpoints",
+      "random_drift",
+      "slow"
+    ],
+    "geometries": [
+      {
+        "K": 4,
+        "T": 2500
+      },
+      {
+        "K": 32,
+        "T": 20000
+      }
+    ],
+    "group_count": 4500,
+    "groups_per_cell": 250,
+    "new_policy_trajectory_count": 4500
+  },
+  "historical_outcomes_seen_at_protocol_freeze": true,
+  "identity_sha256": "2b93b6d6e5f6f87a07c5de6758c953bf6707ac36b004f374fb1bee1c9eb75ba9",
+  "pinned_files": [
+    {
+      "path": "report/project_publication/e_value_vgdts_layer3_regret_atlas_v1/run_manifest_v5.json",
+      "sha256": "23f88b3a7baf47fd079e86cd7434903bb526b0c2a7ac9f92af98a54e622f5e6a"
+    },
+    {
+      "path": "report/project_publication/e_value_vgdts_layer3_regret_atlas_v1/production/6aa49bfa39f07a4ce8322360d5a0bf8a91bd91d337b684c3f2c4276e1e177da6/analysis/all.json",
+      "sha256": "db996cd4bad1f8e06ab3396744fead4b745ea14e614d18687a4c5a9909c74a77"
+    },
+    {
+      "path": "report/project_publication/e_value_vgdts_layer3_regret_atlas_v1/production/6aa49bfa39f07a4ce8322360d5a0bf8a91bd91d337b684c3f2c4276e1e177da6/completion/replay-synthetic.json",
+      "sha256": "58b93768e4b9cdb783613997255273cca6c70080f4574657e92435086e1b51cf"
+    },
+    {
+      "path": "project_publication/e_ats_full_budget_ramp_freeze_manifest.json",
+      "sha256": "faace898de809a8a872794b19cbda2668a29a962347dab06b9ef090efb458495"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_historical_mean_runtime_bridge_v1/manifest.json",
+      "sha256": "bc8b853be185a4e23e68fb0f0ee6d311c2da6fdbad582ced3766e54b93fe48a1"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_historical_mean_runtime_bridge_v1/e9de4411cfddd230803eac4c667fc94dac1a7f3f2f92f5ec7dd171f5c209b246.npy",
+      "sha256": "2dffacdbe4144bf0e0dd2bf1130d5af3a506edabfa2672c1f257fc79333fd9ec"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_historical_mean_runtime_bridge_v1/fb4c8aefcbb70c379f1206d2d2cc6b817301c1b8bf9b3567d1be8aef364bb622.npy",
+      "sha256": "287b1d7834241ae3649f5ab4cb5a0ea8dcb54297a72c84aad8dd07bd03b7fe9e"
+    }
+  ],
+  "policy_freeze_identity_sha256": "2fdfc43a17dbc409b3379466d75a52bf0c521606c9a9811f468d03d56815b9db",
+  "protocol_id": "e_ats_historical_21_policy_replay_v2",
+  "runtime_bridge": {
+    "affected_task_count": 2,
+    "change_from_v1": "operational source reconstruction only; environment hashes, policy, seeds, tapes, comparators, estimands, and ranking are unchanged",
+    "current_runtime_direct_reproduction_count": 898,
+    "current_runtime_numpy": "2.5.2",
+    "failed_v1_aggregate_result_produced": false,
+    "source_runtime_numpy": "2.4.4",
+    "v1_checkpoint_rows_reused_in_v2": false
+  },
+  "runtime_bridge_identity_sha256": "cb937ee1a099b2ddad1a0f484497081a4d0c96600d602db407a4140c58a9e763",
+  "schema_version": 2,
+  "scientific_role": "secondary post-freeze no-retuning transfer replay; not an untouched confirmatory superiority test",
+  "seed_and_tape_contract": "For every historical group, canonical e-ATS receives the exact archived mean table, potential-reward tape, and policy-seed descriptor. Archived comparators are not rerun.",
+  "source_checkpoint_sha256": "ed80ef83862b99e752129c551814a161766cfbb9375e7d0ad4082dcae6464a3a",
+  "tuning_fairness": {
+    "archived_baselines": "Historical coordinates and outcomes are retained exactly. Tunable historical algorithms were selected under their original independently registered grids and development streams; parameter-free rows had no tuning.",
+    "canonical_e_ats": "The frozen public entry point has no exposed policy coordinate. No parameter, environment, seed, subset, or aggregation choice may be tuned or selected using this replay.",
+    "interpretation": "Development histories and search-space sizes are heterogeneous, so equal tuning-budget parity is not established. The no-retuning current row is a conservative transfer comparison against already tuned specialists.",
+    "prohibited": [
+      "changing the canonical policy or freeze",
+      "selecting a current e-ATS variant from replay outcomes",
+      "dropping environments, seeds, tapes, or comparator rows",
+      "changing cell weights or the rank/tie rule",
+      "rescue tuning after inspection"
+    ],
+    "tuning_performed_for_this_replay": false
+  }
+}

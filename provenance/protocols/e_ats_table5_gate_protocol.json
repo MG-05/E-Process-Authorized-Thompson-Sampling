@@ -1,0 +1,254 @@
+{
+  "schema_version": 1,
+  "protocol_id": "e_ats_table5_exact_suite_gate_comparison_v1",
+  "freeze_date": "2026-08-27",
+  "status": "refrozen_after_result_blind_zero_outcome_namespace_fix",
+  "purpose": "locked no-retuning transfer of the five-policy gate comparison to the exact 4500 nonstationary groups used by the paper's Table 5 published-baseline suite",
+  "post_start_result_blind_amendment": {
+    "completed_group_count_when_stopped": 0,
+    "missing_policy_executions_completed": 0,
+    "missing_policy_result_values_inspected_or_summarized": false,
+    "superseded_protocol_identity_sha256": "d9b1cd0b01b6448dcc8e0db1c68eceaea1fba0d8d163b1535adec7dcf4ee7df9",
+    "superseded_checkpoint": "E_Values_Workshop_2026/results/e_ats_table5_exact_gate_comparison_v1/evaluation_checkpoint_d9b1cd0b01b6448d.sqlite3",
+    "superseded_checkpoint_evaluation_row_count": 0,
+    "superseded_checkpoint_used_in_final_analysis": false,
+    "change": "point the mean-table hash audit to the historical-replay module that exports the already pinned helper",
+    "policy_population_inference_or_numerics_changed": false
+  },
+  "research_history": {
+    "table5_environment_suite_known_before_freeze": true,
+    "canonical_e_ats_outcomes_known_before_freeze": true,
+    "ots_and_published_baseline_outcomes_known_before_freeze": true,
+    "broad_grid_gate_comparison_outcomes_known_before_freeze": true,
+    "exact_table5_always_open_outcomes_known_before_freeze": false,
+    "exact_table5_certified_glr_outcomes_known_before_freeze": false,
+    "exact_table5_practical_glr_outcomes_known_before_freeze": false,
+    "controller_developed_with_e_ats": true,
+    "suite_selected_for_manuscript_coherence_after_known_canonical_outcomes": true,
+    "interpretation": "locked transfer comparison of three frozen missing policies on a known historical suite; not a from-scratch outcome-blind or independently developed controller trial"
+  },
+  "selection": {
+    "suite": "exact historical synthetic suite used by Table 5",
+    "families": [
+      "abrupt",
+      "fast",
+      "global_switching",
+      "local_shocks",
+      "mixed",
+      "per_arm_switching",
+      "random_breakpoints",
+      "random_drift",
+      "slow"
+    ],
+    "geometries": [[4, 2500], [32, 20000]],
+    "rounds_per_arm": 625,
+    "mean_arrays_per_family_by_geometry_cell": 50,
+    "reward_tapes_per_mean_array": 5,
+    "cell_count": 18,
+    "task_count": 900,
+    "group_count": 4500,
+    "complete_rows_only": true,
+    "post_outcome_subsetting_allowed": false
+  },
+  "evaluation": {
+    "group_count": 4500,
+    "policies_reused": ["strict_ots", "canonical_e_ats"],
+    "policies_newly_executed": [
+      "always_open_ramp",
+      "certified_time_uniform_glr_e_ats",
+      "practical_untuned_glr_e_ats_sensitivity"
+    ],
+    "shared_inputs": [
+      "exact archived mean table",
+      "exact archived calendar-indexed potential-reward table",
+      "exact archived initial policy RNG descriptor"
+    ],
+    "independent_reference_audit": {
+      "selection": "lowest environment index and tape zero in every family-by-K cell",
+      "group_count_per_glr_boundary": 18,
+      "canonical_exact_replay_group_count": 18,
+      "implementation": "direct block-count Bernoulli GLR with separately transcribed boundary plus exact canonical action and reward hash replay"
+    }
+  },
+  "boundaries": {
+    "evaluated_kinds": ["besson_lemma2", "besson_practical"],
+    "familywise_alpha": 0.05,
+    "per_arm_delta": "0.05/K",
+    "arm_multiplicity_correction": "Bonferroni union bound",
+    "empirical_threshold_parameters_per_policy": 0,
+    "geometry_specific_fitted_thresholds": 0,
+    "horizon_used_by_boundary": false,
+    "primary": {
+      "kind": "besson_lemma2",
+      "formula": "beta(n,delta)=2*T(log(3*n^(3/2)/delta)/2)+6*log(1+log(n))",
+      "source": "Besson, Kaufmann, Maillard, and Seznec, JMLR 23(77), 2022, Lemma 2, Equation (4)",
+      "analytic_anytime_false_alarm_guarantee_claimed": true,
+      "null_scope": "every fixed stationary Bernoulli mean",
+      "geometric_scan_justification": "the shared candidate set is a subset of the all-split scan controlled by Lemma 2"
+    },
+    "mandatory_sensitivity": {
+      "kind": "besson_practical",
+      "formula": "beta_practical(n,delta)=log(n^(3/2)/delta)",
+      "source": "Besson, Kaufmann, Maillard, and Seznec, JMLR 23(77), 2022, Section 3.3 practical recommendation",
+      "analytic_anytime_false_alarm_guarantee_claimed": false,
+      "report_regardless_of_direction": true
+    }
+  },
+  "policy_isolation": {
+    "always_open_change": "replace C^E by one while retaining the canonical ramp and controller",
+    "glr_change": "replace only the historical authorization statistic and boundary",
+    "shared": [
+      "geometric candidate splits",
+      "permanent arm-local latch for gated policies",
+      "gate update timing",
+      "normalized residual ramp",
+      "long and discounted short Beta states",
+      "discount clock and reliability factor",
+      "score and tie rule",
+      "mean tables, reward tapes, and initial policy RNG descriptor"
+    ],
+    "post_divergence_rng_alignment_claimed": false,
+    "paired_policy_regret_estimand": true,
+    "pathwise_detector_effect_after_divergence_claimed": false
+  },
+  "fairness_constraints": [
+    "all 4500 exact Table 5 groups are retained",
+    "no new policy receives a fitted or geometry-specific threshold",
+    "no policy is retuned for this transfer population",
+    "all policies receive identical mean arrays and potential-reward tables within group",
+    "positive and negative contrasts receive identical reporting and inference",
+    "the practical GLR is never described as theorem-backed",
+    "the fixed-p certified GLR and prior-predictive e-ATS guarantees are distinguished",
+    "known canonical outcomes and inherited e-ATS controller development are disclosed",
+    "the result is reported regardless of whether e-ATS wins"
+  ],
+  "inference": {
+    "population": "all 4500 exact Table 5 nonstationary groups",
+    "primary_gate_estimand": "canonical_e_ats minus always_open_ramp normalized dynamic pseudo-regret",
+    "primary_gate_direction": "negative favors canonical e-ATS",
+    "mandatory_detector_estimands": [
+      "certified_glr_e_ats minus canonical_e_ats",
+      "practical_glr_e_ats minus canonical_e_ats"
+    ],
+    "detector_direction": "positive favors canonical e-ATS",
+    "bootstrap_replicates": 50000,
+    "bootstrap_unit": "paired mean array within each family-by-K cell, retaining all five reward tapes",
+    "fixed_cells": "all 18 family-by-K cells remain fixed and equally weighted",
+    "interval": "two-sided percentile 95 percent",
+    "mandatory_secondary_contrasts": [
+      "canonical_e_ats minus strict_ots",
+      "certified_glr_e_ats minus practical_glr_e_ats",
+      "each GLR variant minus always_open_ramp"
+    ],
+    "mandatory_summaries": ["pooled", "K", "family", "family-by-K cell"],
+    "individual_reward_tapes_treated_as_independent": false,
+    "post_outcome_winner_selection_allowed": false
+  },
+  "source_artifacts": [
+    {
+      "path": "report/project_publication/e_value_vgdts_layer3_regret_atlas_v1/run_manifest_v5.json",
+      "size_bytes": 143391004,
+      "sha256": "23f88b3a7baf47fd079e86cd7434903bb526b0c2a7ac9f92af98a54e622f5e6a"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_historical_21_policy_replay_v2/checkpoint.sqlite3",
+      "size_bytes": 18800640,
+      "sha256": "e5a034daeb8aa5025b5ec19c3d224600cede261d8fbd74e7ae3c8afa368aa4f1"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_historical_21_policy_replay_v2/result.json",
+      "size_bytes": 75275,
+      "sha256": "ab1a0c9dd49bc134bb4c46710ff6c1d87ba7cc001cab1d3c57741960fcecc9cb"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_historical_mean_runtime_bridge_v1/manifest.json",
+      "size_bytes": 1650,
+      "sha256": "bc8b853be185a4e23e68fb0f0ee6d311c2da6fdbad582ced3766e54b93fe48a1"
+    }
+  ],
+  "pinned_files": [
+    {
+      "path": "project_publication/e_ats_table5_gate_comparison.py",
+      "size_bytes": 37248,
+      "sha256": "b775854cd0fbfd2d4c9d4f02770f37b00de6b654733f288e00cdc1683912402c"
+    },
+    {
+      "path": "tests/publication/test_e_ats_table5_gate_comparison.py",
+      "size_bytes": 2899,
+      "sha256": "b78f6778b02d920b5ef3513fe994faa9b330a2b304ced34c05fcd14297197fde"
+    },
+    {
+      "path": "notes/table5_exact_gate_comparison_design_2026-08-27.md",
+      "size_bytes": 3711,
+      "sha256": "3b4a045579fce3c47b91118a6dc05e02e31f2d3c2d6859b66e8310561cb07709"
+    },
+    {
+      "path": "src/adts/e_value_vgdts.py",
+      "size_bytes": 30617,
+      "sha256": "e9135ed14d4be009d8df541ed978e2fc0e869d15073dd66c382da62d48293d76"
+    },
+    {
+      "path": "src/adts/time_uniform_glr_authorized_e_ats.py",
+      "size_bytes": 16504,
+      "sha256": "36ae5c53f5dfdf926fba84a4a0df4334b623b81a912c4d3327198711dd3f97a9"
+    },
+    {
+      "path": "src/adts/glr_authorized_e_ats.py",
+      "size_bytes": 16222,
+      "sha256": "c4b0a5e6e9b0030223e3d5df318cf5f59d3454363d7717d03371400be27617ef"
+    },
+    {
+      "path": "project_publication/e_ats_historical_21_policy_replay.py",
+      "size_bytes": 35444,
+      "sha256": "86b3c2d88c1e7388324c5bc4f8ae2c08418fd3c3a30647dd06c618a4c765ed2b"
+    },
+    {
+      "path": "project_publication/e_ats_20_geometry_regret_evaluation.py",
+      "size_bytes": 58575,
+      "sha256": "b75297449b92abb355dd68a27ba77f17503a8cb7118a306775df717253c2a8f6"
+    },
+    {
+      "path": "project_publication/e_ats_time_uniform_glr_gate_comparison.py",
+      "size_bytes": 49436,
+      "sha256": "b5f7a18473b452728800d3a181fd842019b68e26c2cad18e59d01070f7992061"
+    },
+    {
+      "path": "layer3_regret_atlas_v1/production.py",
+      "size_bytes": 61845,
+      "sha256": "5141730acc87ee6cc83cc6af904e98baa71abf22d7e6323273d883259b489e4a"
+    },
+    {
+      "path": "layer3_regret_atlas_v1/artifacts.py",
+      "size_bytes": 6414,
+      "sha256": "e7fb54b052dec1e66deb97cfe0c6773ea16d069a96e8f23608a747d98e377d1f"
+    },
+    {
+      "path": "layer3_regret_atlas_v1/production_artifacts.py",
+      "size_bytes": 4689,
+      "sha256": "3f39df07bfb36f48ecc7fecc7b328a3e56b4dfc3a2b460fd46a2667200708216"
+    },
+    {
+      "path": "src/adts/vgdts_v22_paper.py",
+      "size_bytes": 8913,
+      "sha256": "6ad08c742ddf7f4a271f954ac39f9e47a1920e7ea8af91af8faeb1c77c55262a"
+    },
+    {
+      "path": "src/adts/vgdts_v3.py",
+      "size_bytes": 13839,
+      "sha256": "911bc619433320c3bde89c695dc263d69b02840b1b6b13f074c88a44beb06540"
+    }
+  ],
+  "claim_ceiling": {
+    "exact_table5_pooled_policy_contrasts_allowed": true,
+    "table5_family_by_K_cell_descriptions_allowed": true,
+    "universal_detector_superiority_claimed": false,
+    "equal_independent_controller_development_claimed": false,
+    "from_scratch_outcome_blind_trial_claimed": false,
+    "certified_glr_fixed_p_anytime_validity_allowed": true,
+    "practical_glr_anytime_validity_allowed": false,
+    "canonical_e_ats_fixed_p_validity_allowed": false,
+    "canonical_e_ats_prior_predictive_validity_allowed": true,
+    "results_outside_exact_table5_synthetic_population_claimed": false
+  },
+  "identity_sha256": "c465dedec9073632072509436622baab81b1de5fea560648722c3defc7d9170b"
+}

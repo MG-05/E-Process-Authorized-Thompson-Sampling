@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "protocol_id": "e_ats_time_uniform_glr_gate_full_grid_v1",
+  "freeze_date": "2026-08-27",
+  "status": "refrozen_after_result_blind_runtime_and_review_amendment",
+  "purpose": "prospective full-grid comparison of canonical e-ATS with calibration-free Bernoulli-GLR authorization boundaries after the empirical count-matched GLR study",
+  "post_start_runtime_and_review_amendment": {
+    "date": "2026-08-27",
+    "trigger": "infeasible runtime from full duplicate GLR replay plus independent PhD review of the frozen analysis",
+    "completed_group_count_when_stopped": 1225,
+    "policy_result_values_inspected_or_summarized": false,
+    "superseded_protocol_identity_sha256": "c141d69b238dd79da02a1da65b697fd3219136894bb958e7a3b7fd1c7cb50898",
+    "superseded_checkpoint": "E_Values_Workshop_2026/results/e_ats_time_uniform_glr_gate_full_grid_v1/evaluation_checkpoint_c141d69b238dd79d.sqlite3",
+    "superseded_checkpoint_used_in_final_analysis": false,
+    "policy_semantics_changed": false,
+    "changes": [
+      "replace 80-step production h-inverse bisection by a bracketed Newton calculation verified against the original boundary values",
+      "replace all-group duplicate detector replay by an independently coded brute-force GLR and bisection-boundary replay on source index 5, B=250, every K, and every mechanism",
+      "filter arm-count, budget, geometry, and mechanism summaries to nonstationary rows",
+      "preserve the registered directional-pair dependence in the primary bootstrap and require independent-mechanism and whole-source-index sensitivities",
+      "pin transitive behavior-critical dependencies and explicit familywise alpha",
+      "clarify split-index convention and authorization-timing availability"
+    ]
+  },
+  "research_history": {
+    "canonical_e_ats_outcomes_known_before_freeze": true,
+    "always_open_and_ots_outcomes_known_before_freeze": true,
+    "empirically_calibrated_glr_outcomes_known_before_freeze": true,
+    "new_certified_glr_policy_outcomes_known_before_freeze": false,
+    "new_practical_glr_policy_outcomes_known_before_freeze": false,
+    "controller_developed_with_e_ats": true,
+    "interpretation": "prospective for the two new GLR policies but not a from-scratch confirmatory comparison of independently developed controllers"
+  },
+  "selection": {
+    "K_values": [4, 8, 16, 32, 64],
+    "B_values": [250, 625, 1250, 2500],
+    "mechanisms": [
+      "stationary",
+      "isolated_incumbent_down",
+      "isolated_challenger_up",
+      "sparse_sustained_local_shock",
+      "random_breakpoints",
+      "global_switching",
+      "rapid_dense_abrupt_switching",
+      "mixed_abrupt_plus_drift",
+      "asynchronous_per_arm_switching",
+      "gradual_drift"
+    ],
+    "source_kind": "random_environment",
+    "source_indices_inclusive": [5, 95],
+    "tape": 2,
+    "complete_rows_only": true,
+    "post_outcome_subsetting_allowed": false
+  },
+  "boundaries": {
+    "evaluated_kinds": ["besson_lemma2", "besson_practical"],
+    "familywise_alpha": 0.05,
+    "per_arm_delta": "0.05/K",
+    "arm_multiplicity_correction": "Bonferroni union bound",
+    "empirical_threshold_parameters_per_policy": 0,
+    "geometry_specific_fitted_thresholds": 0,
+    "horizon_used_by_boundary": false,
+    "primary": {
+      "kind": "besson_lemma2",
+      "formula": "beta(n,delta)=2*T(log(3*n^(3/2)/delta)/2)+6*log(1+log(n))",
+      "source": "Besson, Kaufmann, Maillard, and Seznec, JMLR 23(77), 2022, Lemma 2, Equation (4)",
+      "source_url": "https://www.jmlr.org/papers/volume23/20-1384/20-1384.pdf",
+      "analytic_anytime_false_alarm_guarantee_claimed": true,
+      "null_scope": "every fixed stationary Bernoulli mean",
+      "all_horizons_and_stopping_times": true,
+      "geometric_scan_justification": "the registered candidate set is a subset of the all-split scan controlled by Lemma 2"
+    },
+    "mandatory_sensitivity": {
+      "kind": "besson_practical",
+      "formula": "beta_practical(n,delta)=log(n^(3/2)/delta)",
+      "source": "Besson, Kaufmann, Maillard, and Seznec, JMLR 23(77), 2022, Section 3.3 practical recommendation",
+      "source_url": "https://www.jmlr.org/papers/volume23/20-1384/20-1384.pdf",
+      "analytic_anytime_false_alarm_guarantee_claimed": false,
+      "reason_included": "guard against favoring e-ATS through the conservatism of the theorem-backed GLR boundary",
+      "report_regardless_of_direction": true
+    }
+  },
+  "evaluation": {
+    "tape": 2,
+    "evaluation_group_count": 18200,
+    "stationary_group_count": 1820,
+    "nonstationary_group_count": 16380,
+    "nonstationary_stratum_count": 180,
+    "groups_per_stratum": 91,
+    "independent_reference_audit": {
+      "source_index": 5,
+      "B": 250,
+      "K_values": [4, 8, 16, 32, 64],
+      "mechanisms": "all ten including stationary",
+      "group_count_per_glr_boundary": 50,
+      "implementation": "direct block-count Bernoulli GLR and separately transcribed bisection boundary"
+    },
+    "policies_evaluated_or_reused": [
+      "strict_ots",
+      "always_open_ramp",
+      "canonical_e_ats",
+      "certified_time_uniform_glr_e_ats",
+      "practical_untuned_glr_e_ats_sensitivity"
+    ],
+    "registered_outcome_access_during_boundary_specification": false
+  },
+  "policy_isolation": {
+    "only_changed_mechanism": "historical authorization statistic and its boundary",
+    "shared": [
+      "geometric candidate splits",
+      "permanent arm-local latch",
+      "gate update timing",
+      "normalized residual ramp",
+      "long and discounted short Beta states",
+      "discount clock and reliability factor",
+      "score and tie rule",
+      "mean tables and potential-reward tables",
+      "initial policy RNG descriptor"
+    ],
+    "post_divergence_rng_alignment_claimed": false,
+    "paired_policy_regret_estimand": true,
+    "detector_pathwise_causal_effect_after_divergence_claimed": false
+  },
+  "fairness_constraints": [
+    "neither new GLR policy uses stationary Monte Carlo threshold calibration",
+    "neither new GLR policy uses nonstationary outcomes for specification or tuning",
+    "both new GLR policies are frozen and must be reported before registered outcomes are computed",
+    "canonical e-ATS is not retuned",
+    "the declared familywise budget is 0.05 for e-ATS and certified GLR",
+    "the practical GLR sensitivity is never described as theorem-backed",
+    "every arm count, budget, mechanism, and registered random source is retained",
+    "negative and positive contrasts are reported with the same inference",
+    "the fixed-p GLR guarantee and prior-predictive e-ATS guarantee are distinguished",
+    "the inherited controller and geometric grid are disclosed as possible e-ATS development advantages"
+  ],
+  "inference": {
+    "primary_population": "all 16380 registered random nonstationary tape-2 groups",
+    "primary_estimand": "mean certified_glr_e_ats minus canonical_e_ats normalized dynamic pseudo-regret",
+    "direction": "negative favors certified GLR; positive favors canonical e-ATS",
+    "bootstrap_replicates": 50000,
+    "bootstrap_unit": "paired source index within K-by-B blocks, sharing indices across the registered matched directional pair",
+    "primary_dependence": "matched_directions",
+    "dependence_sensitivities": [
+      "independent_mechanisms",
+      "whole_source_index"
+    ],
+    "interval": "two-sided percentile 95 percent",
+    "mandatory_secondary_contrasts": [
+      "practical_glr_e_ats minus canonical_e_ats",
+      "certified_glr_e_ats minus practical_glr_e_ats",
+      "each GLR variant minus always_open_ramp",
+      "each GLR variant minus strict_ots",
+      "canonical_e_ats minus always_open_ramp"
+    ],
+    "mandatory_strata": ["K", "B", "mechanism", "K-by-B"],
+    "mandatory_telemetry": [
+      "stationary groups with any authorization",
+      "authorized arm counts and fractions",
+      "first authorization time for both new GLR policies; canonical timing is unavailable in the immutable source artifact and is not replaced by action-departure time",
+      "nonstationary authorization prevalence"
+    ],
+    "post_outcome_winner_selection_between_glr_boundaries_allowed": false
+  },
+  "source_results": {
+    "trajectory_csv": "E_Values_Workshop_2026/results/e_ats_full_budget_20_geometry_regret_v1/e_ats_20_geometry_regret_trajectories.csv",
+    "trajectory_csv_size_bytes": 22183095,
+    "trajectory_csv_sha256": "1315d2c993ac8025adb3e07db296f0ff965435658c6abb43be999890de8ea8b0"
+  },
+  "source_atlas_checkpoint": {
+    "path": "report/project_publication/e_value_vgdts_layer3_regret_atlas_v1/production/6aa49bfa39f07a4ce8322360d5a0bf8a91bd91d337b684c3f2c4276e1e177da6/checkpoints/atlas_9062b00224865c69ee986c2922471ce55e99f188d4c82eaeda5e309b4db2a73b.sqlite3",
+    "size_bytes": 19419852800,
+    "sha256": "9515de2b9926ab40c0a54566da5040f709c45dbad79607cdd94c2a8beba15dce"
+  },
+  "pinned_files": [
+    {
+      "path": "src/adts/time_uniform_glr_authorized_e_ats.py",
+      "sha256": "36ae5c53f5dfdf926fba84a4a0df4334b623b81a912c4d3327198711dd3f97a9"
+    },
+    {
+      "path": "src/adts/glr_authorized_e_ats.py",
+      "sha256": "c4b0a5e6e9b0030223e3d5df318cf5f59d3454363d7717d03371400be27617ef"
+    },
+    {
+      "path": "project_publication/e_ats_time_uniform_glr_gate_comparison.py",
+      "sha256": "b5f7a18473b452728800d3a181fd842019b68e26c2cad18e59d01070f7992061"
+    },
+    {
+      "path": "tests/adts/test_time_uniform_glr_authorized_e_ats.py",
+      "sha256": "1f55cbb0836f910792e86f45839430e2442b40fbf005bd8bda926af1c48deb99"
+    },
+    {
+      "path": "tests/publication/test_e_ats_time_uniform_glr_gate_comparison.py",
+      "sha256": "b4936a5075c2001d4eecdde16918e5ff967a01c8ed6c4459eafdf8d5aa9accad"
+    },
+    {
+      "path": "notes/time_uniform_glr_comparator_design_2026-08-27.md",
+      "sha256": "09ffbb8a00d2d9ee5372eaa1241e8f8248aaf2e3501034e417b48c159d131fd9"
+    },
+    {
+      "path": "src/adts/e_value_vgdts.py",
+      "sha256": "e9135ed14d4be009d8df541ed978e2fc0e869d15073dd66c382da62d48293d76"
+    },
+    {
+      "path": "src/adts/vgdts_v22_paper.py",
+      "sha256": "6ad08c742ddf7f4a271f954ac39f9e47a1920e7ea8af91af8faeb1c77c55262a"
+    },
+    {
+      "path": "src/adts/vgdts_v3.py",
+      "sha256": "911bc619433320c3bde89c695dc263d69b02840b1b6b13f074c88a44beb06540"
+    },
+    {
+      "path": "project_publication/e_ats_20_geometry_regret_evaluation.py",
+      "sha256": "b75297449b92abb355dd68a27ba77f17503a8cb7118a306775df717253c2a8f6"
+    },
+    {
+      "path": "project_publication/e_value_ce_alpha_regret_sensitivity.py",
+      "sha256": "f6315b93b562cfcfbd8cbff19023e5cc5c333e1f2d10d8baa32c8ae5ad771059"
+    },
+    {
+      "path": "layer3_regret_atlas_v1/production.py",
+      "sha256": "5141730acc87ee6cc83cc6af904e98baa71abf22d7e6323273d883259b489e4a"
+    }
+  ],
+  "claim_ceiling": {
+    "universal_detector_superiority_claimed": false,
+    "equal_independent_controller_development_claimed": false,
+    "full_grid_average_policy_contrast_allowed": true,
+    "certified_glr_fixed_p_anytime_validity_allowed": true,
+    "practical_glr_anytime_validity_allowed": false,
+    "canonical_e_ats_fixed_p_validity_allowed": false,
+    "canonical_e_ats_prior_predictive_validity_allowed": true,
+    "results_outside_registered_synthetic_population_claimed": false
+  },
+  "identity_sha256": "2bb35ab4775e2925cf58f3d652fecd29a45f89d1219ebc290e0a5b10ebdad2c4"
+}

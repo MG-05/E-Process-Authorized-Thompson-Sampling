@@ -1,0 +1,379 @@
+\documentclass{article}
+
+\PassOptionsToPackage{numbers,sort&compress}{natbib}
+\usepackage[sglblindworkshop]{neurips_2026}
+\workshoptitle{E-Values: From Statistics to ML}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools}
+\usepackage{booktabs,array}
+\usepackage{graphicx}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{hyperref}
+
+\hypersetup{colorlinks=true,citecolor=blue!55!black,linkcolor=blue!55!black,urlcolor=blue!55!black}
+
+\newcommand{\method}{e-ATS}
+\newcommand{\anchor}{OTS}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Pp}{\mathbb P}
+\newcommand{\F}{\mathcal F}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\kl}{\operatorname{kl}}
+\newcommand{\tauth}{\tau_{\mathrm{auth}}}
+\newcommand{\tdep}{\tau_{\mathrm{dep}}}
+\newcommand{\alphaE}{\alpha_E}
+\newcommand{\kappaM}{\kappa_M}
+\newcommand{\epsM}{\varepsilon_M}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\title{When May a Bandit Leave Its Anchor?\\
+E-Process-Authorized Thompson Sampling under Non-stationarity}
+
+\author{%
+  Mayand Gulati\textsuperscript{1} \quad
+  Kerong Wang\textsuperscript{1} \quad
+  WeiChen Au\textsuperscript{2} \\
+  \textsuperscript{1}UC Santa Barbara \qquad
+  \textsuperscript{2}Purdue University \\
+}
+
+\begin{document}
+\frenchspacing
+\maketitle
+\begin{abstract}
+Stationarity rewards memory, but after change the same history can mislead.
+We ask when forgetting should be permitted.
+E-process-authorized Thompson
+sampling (\method{}) gives each arm full-history and discounted Beta
+states.
+An anytime-valid e-process first authorizes the discounted
+state, then a reversible relevance score controls its influence.
+Before authorization, \method{} exactly follows optimistic Thompson sampling
+(\anchor{}). Under a Beta--Bernoulli prior-predictive stationary model, \method{}'s
+probability of ever departing from \anchor{} is at most the chosen $\alphaE$,
+without fitted thresholds.
+Relative to \method{}, removing authorization increased mean normalized
+dynamic pseudo-regret by $38.4\%$ on the registered suite but reduced it
+by $7.5\%$ on the literature-derived replay suite.
+Therefore, evidence controls when
+adaptation begins, not whether it always helps.
+\end{abstract}
+
+\section{When should a bandit stop trusting its history?}
+
+In a non-stationary bandit, history can become misleading. Existing methods
+discount or window past observations, adapt their forgetting rate, or restart
+learning on a schedule
+\citep{garivier2008ucb,raj2017taming,lu2017adaptive,besbes2014rexp3,
+russac2019weighted,fiandri2024swts}. Detector-based methods instead wait for
+evidence of change \citep{cao2018mucb,liu2017cusum,besson2022glr}. We ask
+whether such evidence can also control the probability that a policy leaves a
+trusted stationary anchor.
+
+E-processes provide the statistical tool. Under a declared null model,
+an e-process crosses $1/\delta$ with probability at most $\delta$, without
+fixing a stopping time or horizon
+\citep{ville1939,vovk2021evalues,grunwald2024safe,ramdas2023savi}. E-detectors
+combine e-processes started at different times to monitor changes at unknown times
+\citep{shin2023edetectors}. Mixtures over geometrically spaced candidate
+change locations are also established \citep[Section~4.4]{ramdas2022exchangeability}.
+We use the resulting e-process threshold crossing to authorize departure.
+Our anchor is the Bernoulli form of Optimistic Bayesian
+Sampling \citep{thompson1933,may2012optimistic}, which we call optimistic
+Thompson sampling (\anchor{}). It uses each arm's full-history Beta posterior.
+In \method{}, the discounted posterior
+cannot affect an action before authorization, so the crossing bound also bounds
+departure from the anchor.
+Our contribution is a controller that translates statistical authorization into
+prior-predictive control of departure from \anchor{}, sufficient evidence
+conditions under adaptive sampling, and an empirical evaluation of
+\method, including authorization's environment-dependent cost. When the anchor
+is trusted under the declared model, limiting unnecessary departures is valuable.
+Conservative bandits constrain reward relative to a baseline \citep{wu2016conservative}.
+We constrain departure from the anchor’s trajectory.
+
+\paragraph{Setup.}
+There are $K$ arms and $T$ rounds. At round $t$, the policy selects $A_t$. If
+this is arm $k$'s $n$th pull, its reward is
+$Y_t=X_{k,n}\in\{0,1\}$, and $N_k(t)$ counts its pulls through round $t$. Our
+stationary model is
+\begin{equation}
+ P_k\stackrel{\mathrm{iid}}{\sim}\mathrm{Beta}(1,1),\qquad
+ X_{k,n}\mid P_k\stackrel{\mathrm{ind}}{\sim}\mathrm{Bernoulli}(P_k).
+ \label{eq:null}
+\end{equation}
+Each arm draws one probability and keeps it forever. The guarantee averages
+over these draws and does not hold separately for every fixed set of arm
+probabilities.
+
+\section{From evidence to action}
+\label{sec:method}
+
+We use this stationary model to decide when the policy may supplement its
+full-history anchor with short-memory estimates.
+Each arm maintains two Beta states initialized at $\mathrm{Beta}(1,1)$:
+a full-history posterior that retains every reward from that arm, and a
+discounted short-memory pseudo-posterior.
+Each round, the short-memory counts above the prior are multiplied by
+$\gamma_S=0.995$ before the played arm incorporates its reward,
+giving an effective memory of about 200 rounds.
+Evidence grants arm-specific authorization for the short-memory state
+to affect action selection, relevance measures continuing disagreement,
+and a decision weight determines its influence.
+
+\paragraph{Has the arm produced evidence against stationarity?}
+To decide whether arm $k$ can use its short-memory posterior, we construct an
+arm-specific e-process that compares the declared stationary model with
+models allowing for exactly one change at an unknown time.
+
+The change time is unknown, so we consider several candidate change-points. Candidate $j$ places a possible change-point at arm-local pull $s_j$. The candidate models the rewards through $s_j - 1$ using one constant Bernoulli probability and models the rewards from pull $s_j$ onward using a second constant probability. The two probabilities may differ.
+For a contiguous block of arm-local rewards
+$X_{k,a:b}=(X_{k,a},\ldots,X_{k,b})$, let
+$S_{a:b}=\sum_{\ell=a}^b X_{k,\ell}$ and
+$F_{a:b}=b-a+1-S_{a:b}$ be the block's number of successes and failures.
+Under a $\mathrm{Beta}(1,1)$ prior, the Beta--Bernoulli marginal likelihood of the block is
+$m(X_{k,a:b})=\mathrm B(1+S_{a:b},1+F_{a:b})$.
+The evidence for a split at change-point $s_j$, relative to a
+stationary model over all $n$ pulls, is
+
+\begin{equation}
+ L_{k,n}^{(j)}=
+ \frac{m(X_{k,1:s_j-1})\,m(X_{k,s_j:n})}{m(X_{k,1:n})}.
+ \label{eq:ecomponent}
+\end{equation}
+
+Every pull of an arm could be a change-point, although this would require tracking $n-1$ candidates after $n$ pulls.
+Instead, we use the geometric grid $s_1=2$ and $s_{j+1}=\lceil1.25\,s_j\rceil$.
+If a change occurs at pull $s$, the most recent grid point $s_j\le s$ lies less than 20 percent
+earlier.
+So, every possible change-point has a nearby candidate while
+only $O(\log n)$ candidates must be tracked rather than $O(n)$.
+
+Since we do not know which candidate is closest to the actual change-point,
+we assign candidate $j$ the fixed weight
+$\pi_j=1/[j(j+1)]$ so
+$\sum_j\pi_j=1$, and let $J(n)=\#\{j:s_j\le n\}$.
+Unreached candidates have $L_{k,n}^{(j)}=1$, and their weights sum to
+$1/(J(n)+1)$.
+Therefore,
+
+\begin{equation}
+ E_{k,n}=\sum_{j=1}^{J(n)}\pi_j\,L_{k,n}^{(j)}
+ \;+\;\frac{1}{J(n)+1}.
+ \label{eq:monitor}
+\end{equation}
+
+The arm-specific evidence process $E_{k,n}$ starts at one and is a nonnegative martingale under \eqref{eq:null}. Arm $k$ becomes authorized when $E_{k,n}$ reaches $K/\alpha_E$, setting the authorization latch to $C^E_{k,t}=\1\{\max_{n\le N_k(t)}E_{k,n}\ge K/\alpha_E\}$.
+The maximum keeps $C^E_{k,t}$ at one after its first crossing.
+
+\paragraph{Do recent rewards still disagree with the long-history model?}
+
+The authorization latch records whether the arm's evidence process has ever
+crossed its threshold. Since the latch is permanent, it does not indicate
+whether recent rewards still disagree with the long-history posterior's predictions. Therefore, we maintain a relevance score for the newly arriving rewards.
+
+Before observing arm $k$'s $n$th reward, we record the long-history
+posterior's prediction.
+After observing the reward, we compute its residual
+from the long-history posterior's prediction and update an exponentially weighted average with a memory of approximately $\sqrt T$ arm-local pulls.
+We normalize the magnitude of this average by a corresponding scale, giving the relevance score $r_{k,n}\in[0,1]$.
+Values of relevance near zero mean little sustained disagreement, while larger values indicate persistent recent disagreement
+with the long-history model. Appendix~\ref{app:algorithm} gives the exact update and normalization.
+
+\paragraph{How strongly should the short-memory posterior influence the choice?}
+
+At round $t$, authorization and current relevance form the gate
+\begin{equation}
+g_{k,t}=C^E_{k,t-1} \cdot r_{k,N_k(t-1)},\qquad
+R_{k,t}=\frac{n^S_{k,t}}{n^S_{k,t}+\rho},\qquad
+w_{k,t}=g_{k,t}^{\nu}
++\zeta(1-g_{k,t}^{\nu})g_{k,t}R_{k,t},
+\label{eq:weight}
+\end{equation}
+Here, $n^S_{k,t}$ is the amount of data retained by the short-memory
+posterior, $\rho$ sets the retained-data scale, $\nu$ controls how strongly
+the weight responds to the gate, and $\zeta$ controls how retained data further
+increase the short-memory posterior's influence. Appendix~\ref{app:algorithm} gives their
+fixed values.
+For each arm, the decision weight $w_{k,t}$ is used to combine the two posterior draws and the two posterior means.
+The arm's selection score is the larger of these two weighted combinations, and the policy selects the arm with the largest score.
+
+Thus, authorization determines whether adaptation is permitted, relevance
+gauges whether recent disagreement persists, and the decision weight
+determines how strongly the policy adapts. Before any arm is authorized,
+$g_{k,t}=w_{k,t}=0$ for every arm, so no short-memory draw is used and
+\method{} exactly reproduces \anchor{} under the same long-posterior draws and
+tie-breaking. Appendix~\ref{app:algorithm} gives the complete algorithm and
+update order.
+
+
+\section{When the policy can depart from its anchor}
+
+We first show that under the declared stationary model, \method{} is unlikely
+to receive permission to depart from \anchor{}.
+We then give sufficient conditions for an arm's evidence to cross the
+authorization threshold when its rewards change.
+
+Let $\tauth$ be the first round where
+$C^E_{k,t-1}=1$ for at least one arm, and let $\tdep$ be the first round where \method{} and \anchor{} select different arms.
+We couple the policies by starting them from identical states and giving
+them the same arm-specific reward sequences, policy-randomness stream,
+and tie-breaking rule.
+
+\begin{theorem}[Controlled departure]
+\label{thm:main}
+Pathwise, $\tdep\ge\tauth$, and before $\tauth$ the two policies have identical
+actions, observed rewards, and long-posterior states. Under \eqref{eq:null},
+\begin{equation}
+ \Pp(\tdep\le T)\le\Pp(\tauth\le T)\le\alphaE.
+ \label{eq:departure}
+\end{equation}
+\end{theorem}
+
+\paragraph{Why does the guarantee hold?}
+For each candidate change-point, $L_{k,n}^{(j)}$ is a likelihood-ratio
+martingale under the prior-predictive stationary model.
+Their fixed weighted average, $E_{k,n}$, is therefore also a nonnegative martingale starting at one.
+Adaptive arm selection does not invalidate this property because an arm is
+selected before its next reward is revealed.
+Ville's inequality bounds each arm's crossing probability by $\alphaE/K$, and a union bound over the $K$ arms bounds the probability of any authorization by $\alphaE$.
+
+Before authorization, every gate and decision weight is zero, so the coupled
+policies have the same trajectory. A departure therefore requires an earlier
+e-process crossing, turning the preceding statistic bound into
+\eqref{eq:departure}. The resulting threshold $K/\alphaE$ requires no
+horizon-specific fitting. \qed
+
+The departure bound averages over the $\mathrm{Beta}(1,1)$ probabilities drawn
+in \eqref{eq:null}. It does not hold separately for every fixed set of reward
+probabilities, and it certifies permission to depart rather than the regret or
+behavior afterward. Appendix~\ref{app:proof} gives the formal filtration and
+coupling argument.
+
+\paragraph{When is the evidence sufficient for authorization?}
+
+Here, we ask when an actual change can produce enough evidence to authorize adaptation.
+After $n$ pulls, candidate change-point $s_j$ divides the arm's rewards into segments of lengths $n_0=s_j-1$ and $n_1=n-s_j+1$.
+Let $\widehat p_0$ and $\widehat p_1$ be their empirical means and $\widehat p$ the pooled mean.
+Define
+\[
+I_{j,n}
+=
+n_0\kl(\widehat p_0\Vert\widehat p)
++
+n_1\kl(\widehat p_1\Vert\widehat p),
+\]
+where $\kl$ is the Kullback--Leibler divergence between Bernoulli
+distributions. $I_{j,n}$ is the gain in maximized log likelihood from
+fitting separate reward probabilities before and after $s_j$, instead of one
+probability to all $n$ rewards.
+
+Appendix~\ref{app:evidence} proves
+\[
+\log E_{k,n}
+\ge
+I_{j,n}
+-\log((n_0+1)(n_1+1))
+-\log(j(j+1)).
+\]
+The two penalties come from averaging the segment probabilities and weighting
+candidate $j$ by $1/[j(j+1)]$.
+Theorem~\ref{thm:adaptive-power} in Appendix~\ref{app:evidence} gives a sufficient
+condition for authorization across all candidates and completed observation
+counts of one arm, even when earlier rewards determine when that arm is pulled.
+Theorem~\ref{thm:finite-power} gives a sharper sufficient condition when the change occurs
+at a fixed candidate and both segment lengths are chosen before seeing the rewards.
+Because \method{} does not force exploration, neither theorem guarantees that
+a changed arm will be sampled enough to satisfy the stated condition
+or authorized within a fixed number of rounds.
+
+\section{Experiments}
+\label{sec:experiments}
+
+We report mean normalized dynamic pseudo-regret
+$\bar R_T=T^{-1}\sum_{t=1}^T(\max_k\mu_{k,t}-\mu_{A_t,t})$, where
+$\mu_{k,t}$ is arm $k$'s mean reward. Lower is better. The registered suite
+contains 16,380 non-stationary environments across nine mechanisms and 20
+choices of $K$ and $T$, plus 1,820 stationary environments. The primary
+comparator, the open ramp, removes the authorization latch and lets relevance
+act immediately.
+Before evaluation, we chose \method{}'s regret minus the open ramp's regret
+as the primary contrast and required it to be below $-0.0002$.
+The replay suite compares \method{} with 16 baselines across 4,500
+matched runs on 606 mean trajectories from nine literature-derived
+environment families.
+We compare policies only within a suite.
+Appendix~\ref{app:experiments} gives the full design and results.
+
+\paragraph{In these stationary experiments, \method{} almost never leaves its anchor.}
+Across 1,820 stationary environments, only one arm was authorized in total.
+Mean regret was $0.01157$ for \method{} and \anchor{}, versus $0.02937$ for the
+open ramp.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Mean normalized dynamic pseudo-regret. Lower is better, and the
+columns use different evaluation suites.}
+\label{tab:primary-regret}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Policy & Registered (16,380) & Replay (4,500) \\
+\midrule
+\anchor{}       & 0.0494 & 0.2157 \\
+Open ramp     & 0.0540 & 0.1414 \\
+\method{}     & 0.0390 & 0.1530 \\
+Certified GLR & 0.0418 & 0.1750 \\
+Practical GLR & 0.0392 & 0.1529 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Authorization reduced regret on the registered suite and increased it on replay.}
+Using the open ramp as the denominator, \method{}'s regret is $27.7\%$ lower on
+the registered suite and $8.2\%$ higher on the replay suite. On the raw scale,
+subtracting the open ramp's regret from \method{}'s gives $-0.01497$ with a 95\% interval of
+$[-0.01533,-0.01461]$ on the registered suite and $+0.01154$ with an
+interval of $[0.01089,0.01218]$ on the replay suite.
+Appendix~\ref{app:experiments} examines the reversal.
+
+\paragraph{The practical GLR is close, but its guarantee is different.}
+We evaluate two alternatives that replace only e-process authorization
+with generalized likelihood-ratio (GLR) rules \citep{besson2022glr}.
+The certified GLR is valid for every fixed stationary Bernoulli mean,
+beyond our prior-predictive null.
+The practical GLR has no finite-sample guarantee.
+On the registered and replay suites, regret differences relative
+to \method{} are $+0.0028,+0.0221$ for the certified GLR
+and $+0.0002,-0.00006$ for the practical GLR.
+Tuning the GLR separately for 20 geometries
+gives $0.0387$ regret versus \method{}’s $0.0390$ on the
+registered suite, without an analytic guarantee.
+Appendix~\ref{app:glr-comparator} gives details.
+
+\section{What this establishes}
+
+Under the declared model, the probability of departure is at most $\alpha_E$,
+and expected normalized pseudo-regret differs from the anchor’s by at
+most $\alpha_E$.
+The policy forces no exploration and has mean rank 9.72 among 17 replay methods.
+Future work should develop authorization that is restartable and valid for
+fixed means, together with non-stationary regret guarantees.
+
+\newpage
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\newpage
+\appendix
+\raggedbottom
+\input{appendix}
+
+\end{document}

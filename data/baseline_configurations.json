@@ -1,0 +1,728 @@
+{
+  "4": [
+    {
+      "candidate_signature": {
+        "best_params": {
+          "gamma": 0.97,
+          "lambda": 0.97
+        },
+        "params": {
+          "alpha0": 1.0,
+          "beta0": 1.0,
+          "gamma": 0.97
+        },
+        "params_type": "src.adts.policy_types.dTSParams",
+        "runner": "src.adts.policies.run_dTS"
+      },
+      "execution_identity_sha256": "941808c2b929679d3ea369e0bc825e17b4b0e2ab41bc201d198ba88d68557191",
+      "grid_index": 11,
+      "label": "dTS",
+      "policy_family": "dTS",
+      "row_id": "historical_04"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "gamma": 0.97,
+          "lambda": 0.97
+        },
+        "params": {
+          "alpha0": 1.0,
+          "beta0": 1.0,
+          "gamma": 0.97
+        },
+        "params_type": "src.adts.policy_types.dOTSParams",
+        "runner": "src.adts.policies.run_dOTS"
+      },
+      "execution_identity_sha256": "67ac0f2a59fe071649f60e5ca5834188eeb798f36d2eed2579684a69cbb1b0e1",
+      "grid_index": 11,
+      "label": "dOTS",
+      "policy_family": "dOTS",
+      "row_id": "historical_05"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "alpha0": 2.0,
+          "beta0": 2.0,
+          "eta": 0.001,
+          "implementation_id": "lu_adams_kantas_aff_ts_alg4_v2",
+          "lambda_init": 1.0
+        },
+        "params": {
+          "alpha0": 2.0,
+          "beta0": 2.0,
+          "eps": 1e-12,
+          "eta": 0.001,
+          "lambda_init": 1.0
+        },
+        "params_type": "src.adts.policy_types.AFFTSParams",
+        "runner": "src.adts.policies.run_aff_ts"
+      },
+      "execution_identity_sha256": "560c702cf0603df61f1c3ab7339d63164d84f8a1e2db44322f0d2bd140d629ee",
+      "grid_index": 2,
+      "label": "AFF-TS (1712.03134)",
+      "policy_family": "AFF-TS (1712.03134)",
+      "row_id": "historical_06"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "Delta": 250,
+          "gamma": 0.3,
+          "implementation_id": "besbes_gur_zeevi_rexp3_logweights_v1",
+          "parameterization": "development_tuned"
+        },
+        "params": {
+          "Delta": 250,
+          "gamma": 0.3
+        },
+        "params_type": "src.adts.policy_types.REXP3Params",
+        "runner": "src.adts.policies.run_REXP3"
+      },
+      "execution_identity_sha256": "4e197e301a63f32b7ec04ea4c23fc3b06a3392ed3c6db921b5befd581d3190a8",
+      "grid_index": 33,
+      "label": "REXP3",
+      "policy_family": "REXP3",
+      "row_id": "historical_07"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "C": 10.0,
+          "alpha0": 2.0,
+          "beta0": 2.0,
+          "implementation_id": "gupta_dynamic_ts_threshold_update_v1"
+        },
+        "params": {
+          "C": 10.0,
+          "alpha0": 2.0,
+          "beta0": 2.0
+        },
+        "params_type": "src.adts.policy_types.DTSParams",
+        "runner": "src.adts.policies.run_DTS"
+      },
+      "execution_identity_sha256": "954c8a8cff7796cd3e9dfa09bdc8e1f391e963d6b678400635ad3085ae3a13d6",
+      "grid_index": 0,
+      "label": "Dynamic TS",
+      "policy_family": "Dynamic TS",
+      "row_id": "historical_08"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "tau": 2500,
+          "xi": 2.0
+        },
+        "params": {
+          "tau": 2500,
+          "xi": 2.0
+        },
+        "params_type": "src.adts.policy_types.SWUCBParams",
+        "runner": "src.adts.policies.run_sw_ucb"
+      },
+      "execution_identity_sha256": "a45321cce77e540979cd5d8b6884a40a5dc7189662518c52dfb6212e9375a3ba",
+      "grid_index": 35,
+      "label": "SW-UCB (0805.3415)",
+      "policy_family": "SW-UCB (0805.3415)",
+      "row_id": "historical_09"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "bonus_scale": 2.0,
+          "gamma": 0.9996,
+          "implementation_id": "garivier_moulines_discounted_ucb_alg2_v1",
+          "xi": 0.5
+        },
+        "params": {
+          "bonus_scale": 2.0,
+          "gamma": 0.9996,
+          "xi": 0.5
+        },
+        "params_type": "src.adts.policy_types.DUCBParams",
+        "runner": "src.adts.policies.run_d_ucb"
+      },
+      "execution_identity_sha256": "5438841c035482e90444e28183fe49870e26e47039082c2a4c197118d2d1e05d",
+      "grid_index": 51,
+      "label": "D-UCB (0805.3415)",
+      "policy_family": "D-UCB (0805.3415)",
+      "row_id": "historical_10"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "gamma": 0.005,
+          "implementation_id": "cao_wen_kveton_xie_m_ucb_alg2_v1",
+          "theoretical_threshold": 42.10407766878693,
+          "threshold": 42.10407766878693,
+          "window": 200,
+          "xi": 1.0
+        },
+        "params": {
+          "gamma": 0.005,
+          "threshold": 42.10407766878693,
+          "window": 200,
+          "xi": 1.0
+        },
+        "params_type": "src.adts.policy_types.MUCBParams",
+        "runner": "src.adts.policies.run_m_ucb"
+      },
+      "execution_identity_sha256": "7362dc5bfe9c075dad008148e048f154cd34b74b82d46246af61f112fa075aa2",
+      "grid_index": 115,
+      "label": "M-UCB (1802.03692)",
+      "policy_family": "M-UCB (1802.03692)",
+      "row_id": "historical_11"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "epsilon": 0.1,
+          "implementation_id": "liu_lee_shroff_cusum_ucb_alg3_v1",
+          "random_explore": 0.001,
+          "threshold": 12.0,
+          "warmup": 10,
+          "xi": 1.0
+        },
+        "params": {
+          "epsilon": 0.1,
+          "random_explore": 0.001,
+          "threshold": 12.0,
+          "warmup": 10,
+          "xi": 1.0
+        },
+        "params_type": "src.adts.policy_types.CUSUMUCBParams",
+        "runner": "src.adts.policies.run_cusum_ucb"
+      },
+      "execution_identity_sha256": "55bf571c6498c9f2f516a985ef708303d7f071d604ceccf45ff94173eedf53fc",
+      "grid_index": 420,
+      "label": "CUSUM-UCB (1711.03539)",
+      "policy_family": "CUSUM-UCB (1711.03539)",
+      "row_id": "historical_12"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "delta_rule": "T^-0.5",
+          "detection_interval": 10,
+          "exploration_alpha0": 0.1,
+          "fidelity_reference_implementation_id": "besson_kaufmann_maillard_seznec_glr_klucb_alg1_v3",
+          "implementation_id": "besson_kaufmann_maillard_seznec_glr_klucb_alg1_prefix_vectorized_index_v1",
+          "klucb_index": "authors_experiment_f(age)=log(age)",
+          "klucb_loglog_coefficient": 0.0,
+          "optimization_reference_implementation_id": "besson_kaufmann_maillard_seznec_glr_klucb_alg1_prefix_v1",
+          "restart_mode": "global",
+          "split_step": 5
+        },
+        "params": {
+          "delta": null,
+          "delta_exponent": 0.5,
+          "detection_interval": 10,
+          "exploration_alpha0": 0.1,
+          "klucb_loglog_coefficient": 0.0,
+          "restart_mode": "global",
+          "split_step": 5
+        },
+        "params_type": "src.adts.policy_types.GLRklUCBParams",
+        "runner": "src.adts.policies.run_glr_klucb_vectorized_index"
+      },
+      "execution_identity_sha256": "65730e137ff88d5a6de32c57436d449ab50df10bf1984678a272b8c95069945a",
+      "grid_index": 1,
+      "label": "GLR-klUCB (1902.01575)",
+      "policy_family": "GLR-klUCB (1902.01575)",
+      "row_id": "historical_13"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "tau": 25
+        },
+        "params": {
+          "alpha0": 1.0,
+          "beta0": 1.0,
+          "tau": 25
+        },
+        "params_type": "src.adts.policy_types.BetaSWTSParams",
+        "runner": "src.adts.policies.run_beta_swts"
+      },
+      "execution_identity_sha256": "b87cd70402e2f0186a113d03b5224e4a8aa3735bc3ecb6474a54536363df1210",
+      "grid_index": 2,
+      "label": "Beta-SWTS (2409.05181)",
+      "policy_family": "Beta-SWTS (2409.05181)",
+      "row_id": "historical_14"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "gamma": 1.0,
+          "implementation_id": "fiandri_gamma_swgts_alg2_v1",
+          "tau": 100
+        },
+        "params": {
+          "gamma": 1.0,
+          "tau": 100
+        },
+        "params_type": "src.adts.policy_types.GammaSWGTSParams",
+        "runner": "src.adts.policies.run_gamma_swgts"
+      },
+      "execution_identity_sha256": "18f26d10a25ab8a8c87fcbf82a8cc32d7c2741955122d3f342fe6197749b7f66",
+      "grid_index": 23,
+      "label": "gamma-SWGTS (2409.05181)",
+      "policy_family": "gamma-SWGTS (2409.05181)",
+      "row_id": "historical_15"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "hazard": 0.005,
+          "implementation_id": "mellor_shapiro_alg1_resample_at_cap_v2",
+          "max_runlengths": 250,
+          "resample_target_fraction": 0.75
+        },
+        "params": {
+          "alpha0": 1.0,
+          "beta0": 1.0,
+          "hazard": 0.005,
+          "max_runlengths": 250,
+          "resample_target_fraction": 0.75
+        },
+        "params_type": "src.adts.policy_types.GlobalCTSParams",
+        "runner": "src.adts.policies.run_global_cts"
+      },
+      "execution_identity_sha256": "69535f23e70a73d41bf52c7858477b1e6948943f31c97c26db6eb7f11e74eaf8",
+      "grid_index": 77,
+      "label": "Global-CTS (1302.3721)",
+      "policy_family": "Global-CTS (1302.3721)",
+      "row_id": "historical_16"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "action_norm_bound": 1.0,
+          "delta": 0.01,
+          "gamma": 0.9996,
+          "implementation_id": "russac_dlinucb_alg1_onehot_radius_v1",
+          "lambda_reg": 1.0,
+          "sigma": 0.5,
+          "theta_norm_bound": 2.0
+        },
+        "params": {
+          "action_norm_bound": 1.0,
+          "delta": 0.01,
+          "gamma": 0.9996,
+          "jitter": 1e-09,
+          "lambda_reg": 1.0,
+          "sigma": 0.5,
+          "theta_norm_bound": 2.0
+        },
+        "params_type": "src.adts.policy_types.DLinUCBParams",
+        "runner": "src.adts.policies.run_dlinucb_onehot"
+      },
+      "execution_identity_sha256": "f7a54cff4a41b3c35e23c899b9792e1329e34d9e3c495221919f230952020dcc",
+      "grid_index": 51,
+      "label": "D-LinUCB one-hot (1909.09146)",
+      "policy_family": "D-LinUCB one-hot (1909.09146)",
+      "row_id": "historical_17"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "alpha0": 1.0,
+          "beta0": 1.0,
+          "gamma": 1.0
+        },
+        "params": {
+          "alpha0": 1.0,
+          "beta0": 1.0,
+          "gamma": 1.0
+        },
+        "params_type": "src.adts.policy_types.dOTSParams",
+        "runner": "src.adts.policies.run_dOTS"
+      },
+      "execution_identity_sha256": "eb04808f13255e35252dca0c034f6defe1cf9e32224ebd61b089314862ff444c",
+      "grid_index": 0,
+      "label": "OTS (gamma=1)",
+      "policy_family": "OTS (gamma=1)",
+      "row_id": "historical_18"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {},
+        "params": {
+          "alpha0": 1.0,
+          "beta0": 1.0
+        },
+        "params_type": "src.adts.policy_types.TSParams",
+        "runner": "src.adts.policies.run_TS"
+      },
+      "execution_identity_sha256": "7829face6782593e141acf5de867842f747c3a9fcff94f9b1de8f4d08b6fd72f",
+      "grid_index": 0,
+      "label": "TS",
+      "policy_family": "TS",
+      "row_id": "historical_19"
+    }
+  ],
+  "32": [
+    {
+      "candidate_signature": {
+        "best_params": {
+          "gamma": 0.9985007496251874,
+          "lambda": 0.9985007496251874
+        },
+        "params": {
+          "alpha0": 1.0,
+          "beta0": 1.0,
+          "gamma": 0.9985007496251874
+        },
+        "params_type": "src.adts.policy_types.dTSParams",
+        "runner": "src.adts.policies.run_dTS"
+      },
+      "execution_identity_sha256": "ef26db795fae7ed84a0939239076ed368675eb50f094bd2510a1a6a41731b359",
+      "grid_index": 13,
+      "label": "dTS",
+      "policy_family": "dTS",
+      "row_id": "historical_04"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "gamma": 0.9985007496251874,
+          "lambda": 0.9985007496251874
+        },
+        "params": {
+          "alpha0": 1.0,
+          "beta0": 1.0,
+          "gamma": 0.9985007496251874
+        },
+        "params_type": "src.adts.policy_types.dOTSParams",
+        "runner": "src.adts.policies.run_dOTS"
+      },
+      "execution_identity_sha256": "a65c0d67710d5f7c6aafe484df55770fb446c1882ae8224bcef86feb28910db9",
+      "grid_index": 13,
+      "label": "dOTS",
+      "policy_family": "dOTS",
+      "row_id": "historical_05"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "alpha0": 2.0,
+          "beta0": 2.0,
+          "eta": 0.001,
+          "implementation_id": "lu_adams_kantas_aff_ts_alg4_v2",
+          "lambda_init": 1.0
+        },
+        "params": {
+          "alpha0": 2.0,
+          "beta0": 2.0,
+          "eps": 1e-12,
+          "eta": 0.001,
+          "lambda_init": 1.0
+        },
+        "params_type": "src.adts.policy_types.AFFTSParams",
+        "runner": "src.adts.policies.run_aff_ts"
+      },
+      "execution_identity_sha256": "560c702cf0603df61f1c3ab7339d63164d84f8a1e2db44322f0d2bd140d629ee",
+      "grid_index": 2,
+      "label": "AFF-TS (1712.03134)",
+      "policy_family": "AFF-TS (1712.03134)",
+      "row_id": "historical_06"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "Delta": 2000,
+          "gamma": 0.3,
+          "implementation_id": "besbes_gur_zeevi_rexp3_logweights_v1",
+          "parameterization": "development_tuned"
+        },
+        "params": {
+          "Delta": 2000,
+          "gamma": 0.3
+        },
+        "params_type": "src.adts.policy_types.REXP3Params",
+        "runner": "src.adts.policies.run_REXP3"
+      },
+      "execution_identity_sha256": "d65b0c7132780e882246dddd3ece3829615be25327883fad88290665743778c2",
+      "grid_index": 54,
+      "label": "REXP3",
+      "policy_family": "REXP3",
+      "row_id": "historical_07"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "C": 10.0,
+          "alpha0": 2.0,
+          "beta0": 2.0,
+          "implementation_id": "gupta_dynamic_ts_threshold_update_v1"
+        },
+        "params": {
+          "C": 10.0,
+          "alpha0": 2.0,
+          "beta0": 2.0
+        },
+        "params_type": "src.adts.policy_types.DTSParams",
+        "runner": "src.adts.policies.run_DTS"
+      },
+      "execution_identity_sha256": "954c8a8cff7796cd3e9dfa09bdc8e1f391e963d6b678400635ad3085ae3a13d6",
+      "grid_index": 0,
+      "label": "Dynamic TS",
+      "policy_family": "Dynamic TS",
+      "row_id": "historical_08"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "tau": 20000,
+          "xi": 1.0
+        },
+        "params": {
+          "tau": 20000,
+          "xi": 1.0
+        },
+        "params_type": "src.adts.policy_types.SWUCBParams",
+        "runner": "src.adts.policies.run_sw_ucb"
+      },
+      "execution_identity_sha256": "f9ad2c42cbc0646cec5152cb5f4ce85d5c331e4a192f4ff0268905fdfc271529",
+      "grid_index": 37,
+      "label": "SW-UCB (0805.3415)",
+      "policy_family": "SW-UCB (0805.3415)",
+      "row_id": "historical_09"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "bonus_scale": 2.0,
+          "gamma": 0.99995,
+          "implementation_id": "garivier_moulines_discounted_ucb_alg2_v1",
+          "xi": 0.5
+        },
+        "params": {
+          "bonus_scale": 2.0,
+          "gamma": 0.99995,
+          "xi": 0.5
+        },
+        "params_type": "src.adts.policy_types.DUCBParams",
+        "runner": "src.adts.policies.run_d_ucb"
+      },
+      "execution_identity_sha256": "07a1589d1ab8c6a8b28058546672e829ff1d2a74c089cb72a2c95d04f8e4da00",
+      "grid_index": 48,
+      "label": "D-UCB (0805.3415)",
+      "policy_family": "D-UCB (0805.3415)",
+      "row_id": "historical_10"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "gamma": 0.005,
+          "implementation_id": "cao_wen_kveton_xie_m_ucb_alg2_v1",
+          "theoretical_threshold": 8.479243749609736,
+          "threshold": 3.0,
+          "window": 6,
+          "xi": 1.0
+        },
+        "params": {
+          "gamma": 0.005,
+          "threshold": 3.0,
+          "window": 6,
+          "xi": 1.0
+        },
+        "params_type": "src.adts.policy_types.MUCBParams",
+        "runner": "src.adts.policies.run_m_ucb"
+      },
+      "execution_identity_sha256": "06f0ae35cdf96cf623473820557e044b8e6fd742e5b0f423a28f12748f38bf58",
+      "grid_index": 5,
+      "label": "M-UCB (1802.03692)",
+      "policy_family": "M-UCB (1802.03692)",
+      "row_id": "historical_11"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "epsilon": 0.1,
+          "implementation_id": "liu_lee_shroff_cusum_ucb_alg3_v1",
+          "random_explore": 0.001,
+          "threshold": 12.0,
+          "warmup": 10,
+          "xi": 1.0
+        },
+        "params": {
+          "epsilon": 0.1,
+          "random_explore": 0.001,
+          "threshold": 12.0,
+          "warmup": 10,
+          "xi": 1.0
+        },
+        "params_type": "src.adts.policy_types.CUSUMUCBParams",
+        "runner": "src.adts.policies.run_cusum_ucb"
+      },
+      "execution_identity_sha256": "55bf571c6498c9f2f516a985ef708303d7f071d604ceccf45ff94173eedf53fc",
+      "grid_index": 420,
+      "label": "CUSUM-UCB (1711.03539)",
+      "policy_family": "CUSUM-UCB (1711.03539)",
+      "row_id": "historical_12"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "delta_rule": "T^-0.5",
+          "detection_interval": 10,
+          "exploration_alpha0": 0.1,
+          "fidelity_reference_implementation_id": "besson_kaufmann_maillard_seznec_glr_klucb_alg1_v3",
+          "implementation_id": "besson_kaufmann_maillard_seznec_glr_klucb_alg1_prefix_vectorized_index_v1",
+          "klucb_index": "authors_experiment_f(age)=log(age)",
+          "klucb_loglog_coefficient": 0.0,
+          "optimization_reference_implementation_id": "besson_kaufmann_maillard_seznec_glr_klucb_alg1_prefix_v1",
+          "restart_mode": "global",
+          "split_step": 5
+        },
+        "params": {
+          "delta": null,
+          "delta_exponent": 0.5,
+          "detection_interval": 10,
+          "exploration_alpha0": 0.1,
+          "klucb_loglog_coefficient": 0.0,
+          "restart_mode": "global",
+          "split_step": 5
+        },
+        "params_type": "src.adts.policy_types.GLRklUCBParams",
+        "runner": "src.adts.policies.run_glr_klucb_vectorized_index"
+      },
+      "execution_identity_sha256": "65730e137ff88d5a6de32c57436d449ab50df10bf1984678a272b8c95069945a",
+      "grid_index": 1,
+      "label": "GLR-klUCB (1902.01575)",
+      "policy_family": "GLR-klUCB (1902.01575)",
+      "row_id": "historical_13"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "tau": 1000
+        },
+        "params": {
+          "alpha0": 1.0,
+          "beta0": 1.0,
+          "tau": 1000
+        },
+        "params_type": "src.adts.policy_types.BetaSWTSParams",
+        "runner": "src.adts.policies.run_beta_swts"
+      },
+      "execution_identity_sha256": "e795bf5d66537027807bb44f3f90dad5f4383ab101b168bc9e84605fb19b9db9",
+      "grid_index": 7,
+      "label": "Beta-SWTS (2409.05181)",
+      "policy_family": "Beta-SWTS (2409.05181)",
+      "row_id": "historical_14"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "gamma": 1.0,
+          "implementation_id": "fiandri_gamma_swgts_alg2_v1",
+          "tau": 2500
+        },
+        "params": {
+          "gamma": 1.0,
+          "tau": 2500
+        },
+        "params_type": "src.adts.policy_types.GammaSWGTSParams",
+        "runner": "src.adts.policies.run_gamma_swgts"
+      },
+      "execution_identity_sha256": "fae6f8a89f074eb41771002664a93f54145924dad62c15dcdf5dca7129679f80",
+      "grid_index": 39,
+      "label": "gamma-SWGTS (2409.05181)",
+      "policy_family": "gamma-SWGTS (2409.05181)",
+      "row_id": "historical_15"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "hazard": 1e-05,
+          "implementation_id": "mellor_shapiro_alg1_resample_at_cap_v2",
+          "max_runlengths": 8000,
+          "resample_target_fraction": 0.25
+        },
+        "params": {
+          "alpha0": 1.0,
+          "beta0": 1.0,
+          "hazard": 1e-05,
+          "max_runlengths": 8000,
+          "resample_target_fraction": 0.25
+        },
+        "params_type": "src.adts.policy_types.GlobalCTSParams",
+        "runner": "src.adts.policies.run_global_cts"
+      },
+      "execution_identity_sha256": "9eeff1906a4a6adf2847a0abd371b4f41a22894e9e855d365cb2ae93e7ad1e0f",
+      "grid_index": 24,
+      "label": "Global-CTS (1302.3721)",
+      "policy_family": "Global-CTS (1302.3721)",
+      "row_id": "historical_16"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "action_norm_bound": 1.0,
+          "delta": 0.1,
+          "gamma": 0.999850007499625,
+          "implementation_id": "russac_dlinucb_alg1_onehot_radius_v1",
+          "lambda_reg": 1.0,
+          "sigma": 0.5,
+          "theta_norm_bound": 5.656854249492381
+        },
+        "params": {
+          "action_norm_bound": 1.0,
+          "delta": 0.1,
+          "gamma": 0.999850007499625,
+          "jitter": 1e-09,
+          "lambda_reg": 1.0,
+          "sigma": 0.5,
+          "theta_norm_bound": 5.656854249492381
+        },
+        "params_type": "src.adts.policy_types.DLinUCBParams",
+        "runner": "src.adts.policies.run_dlinucb_onehot"
+      },
+      "execution_identity_sha256": "63aa7c5e94e89521dd828a6a904636a2b589098e3a97bd8931e46e9b03d3c48f",
+      "grid_index": 47,
+      "label": "D-LinUCB one-hot (1909.09146)",
+      "policy_family": "D-LinUCB one-hot (1909.09146)",
+      "row_id": "historical_17"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {
+          "alpha0": 1.0,
+          "beta0": 1.0,
+          "gamma": 1.0
+        },
+        "params": {
+          "alpha0": 1.0,
+          "beta0": 1.0,
+          "gamma": 1.0
+        },
+        "params_type": "src.adts.policy_types.dOTSParams",
+        "runner": "src.adts.policies.run_dOTS"
+      },
+      "execution_identity_sha256": "eb04808f13255e35252dca0c034f6defe1cf9e32224ebd61b089314862ff444c",
+      "grid_index": 0,
+      "label": "OTS (gamma=1)",
+      "policy_family": "OTS (gamma=1)",
+      "row_id": "historical_18"
+    },
+    {
+      "candidate_signature": {
+        "best_params": {},
+        "params": {
+          "alpha0": 1.0,
+          "beta0": 1.0
+        },
+        "params_type": "src.adts.policy_types.TSParams",
+        "runner": "src.adts.policies.run_TS"
+      },
+      "execution_identity_sha256": "7829face6782593e141acf5de867842f747c3a9fcff94f9b1de8f4d08b6fd72f",
+      "grid_index": 0,
+      "label": "TS",
+      "policy_family": "TS",
+      "row_id": "historical_19"
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+{
+  "source_commit": "64356ebde9add2469b0fcf343cd6a135089c3144",
+  "note": "Exported from the working tree; file hashes identify inputs. Original protocols are historical evidence, not release hash contracts.",
+  "files": [
+    {
+      "path": "report/project_publication/e_value_vgdts_layer3_regret_atlas_v1/run_manifest_v5.json",
+      "size_bytes": 143391004,
+      "sha256": "23f88b3a7baf47fd079e86cd7434903bb526b0c2a7ac9f92af98a54e622f5e6a"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_full_budget_20_geometry_regret_v1/e_ats_20_geometry_regret_trajectories.csv.sha256.json",
+      "size_bytes": 168,
+      "sha256": "3271b7accf193de332f7480a39c1827471174a94991c3084d1e4332a273aee9d"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_full_budget_20_geometry_regret_v1/e_ats_20_geometry_regret_trajectories.csv",
+      "size_bytes": 22183095,
+      "sha256": "1315d2c993ac8025adb3e07db296f0ff965435658c6abb43be999890de8ea8b0"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_time_uniform_glr_gate_full_grid_v1/e_ats_time_uniform_glr_gate_comparison_trajectories.csv.sha256.json",
+      "size_bytes": 182,
+      "sha256": "62509c39e8dd554b44d4c995f5795d66ba4fbed20cf24bd04b00446848698837"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_time_uniform_glr_gate_full_grid_v1/e_ats_time_uniform_glr_gate_comparison_trajectories.csv",
+      "size_bytes": 20330574,
+      "sha256": "64450478afa25fcaacb93493fff736f2db6fac6ab5677c5fc529fe93bed6ac83"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_glr_gate_matched_false_alarm_v1/e_ats_glr_gate_comparison_trajectories.csv.sha256.json",
+      "size_bytes": 168,
+      "sha256": "f38f740d35b6aa7df5620e4232fa30f0a13e55a99c3fadca01092be2c3933183"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_glr_gate_matched_false_alarm_v1/e_ats_glr_gate_comparison_trajectories.csv",
+      "size_bytes": 5237040,
+      "sha256": "8fcde3faa675df6d61927ac786b79b493466ad45403b92bb4baf2c1fe3ac47a4"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_glr_gate_matched_false_alarm_v1/glr_calibration.json",
+      "size_bytes": 1016989,
+      "sha256": "6c0315e1bd677ffe6b3e50655b8ac79bbdec104406719a495e8677e95ec509dc"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_glr_gate_untouched_rows_v1/e_ats_glr_gate_comparison_trajectories.csv.sha256.json",
+      "size_bytes": 168,
+      "sha256": "ed6e98bc5f22e53059bebf0d69ae0b4bd1b3d070c489020ddf324e89c24ee9fe"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_glr_gate_untouched_rows_v1/e_ats_glr_gate_comparison_trajectories.csv",
+      "size_bytes": 7873665,
+      "sha256": "f35a0747779db14364bacd701d78bd5a8e70baee280cf91cf0a25f9ef2de7048"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_glr_gate_untouched_rows_v1/glr_calibration.json",
+      "size_bytes": 1526654,
+      "sha256": "42eb48b6fbdce4b15c44abd2dad7ad341bcb80f05e2a8252ad916ef8297075f5"
+    },
+    {
+      "path": "report/project_publication/e_value_vgdts_layer3_regret_atlas_v1/production/6aa49bfa39f07a4ce8322360d5a0bf8a91bd91d337b684c3f2c4276e1e177da6/checkpoints/atlas_9062b00224865c69ee986c2922471ce55e99f188d4c82eaeda5e309b4db2a73b.sqlite3",
+      "size_bytes": 19419852800,
+      "verification": "exported record digests verified"
+    },
+    {
+      "path": "report/project_publication/e_value_vgdts_layer3_regret_atlas_v1/production/6aa49bfa39f07a4ce8322360d5a0bf8a91bd91d337b684c3f2c4276e1e177da6/checkpoints/replay-synthetic_125ae1fcdfd01f1cbc03ac277eaed46f09a1080851d10e984279404809dd4e85.sqlite3",
+      "size_bytes": 4451209216,
+      "verification": "exported record digests verified"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_historical_21_policy_replay_v2/checkpoint.sqlite3",
+      "size_bytes": 18800640,
+      "verification": "exported record digests verified"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_table5_exact_gate_comparison_v1/e_ats_table5_exact_gate_comparison_trajectories.csv.sha256.json",
+      "size_bytes": 177,
+      "sha256": "77407ae0e1d2119a7bc1909055d17f55807e4936d6a4cb2135b3adcce82359ba"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_table5_exact_gate_comparison_v1/e_ats_table5_exact_gate_comparison_trajectories.csv",
+      "size_bytes": 5435879,
+      "sha256": "09e1530c80a75e12726fc915a9bcc8d3ad92b0935f69bb908ab7fafefa564962"
+    },
+    {
+      "path": "report/project_publication/e_value_workshop_phase0_v2/results/calibration_records.json",
+      "size_bytes": 73104543,
+      "sha256": "f4df03bdc07bb6f8249a2991242a5db6076ba206328979e7fa02df68858f5b92"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_historical_mean_runtime_bridge_v1/manifest.json",
+      "size_bytes": 1650,
+      "sha256": "bc8b853be185a4e23e68fb0f0ee6d311c2da6fdbad582ced3766e54b93fe48a1"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_historical_mean_runtime_bridge_v1/e9de4411cfddd230803eac4c667fc94dac1a7f3f2f92f5ec7dd171f5c209b246.npy",
+      "size_bytes": 5120128,
+      "sha256": "2dffacdbe4144bf0e0dd2bf1130d5af3a506edabfa2672c1f257fc79333fd9ec"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_historical_mean_runtime_bridge_v1/fb4c8aefcbb70c379f1206d2d2cc6b817301c1b8bf9b3567d1be8aef364bb622.npy",
+      "size_bytes": 5120128,
+      "sha256": "287b1d7834241ae3649f5ab4cb5a0ea8dcb54297a72c84aad8dd07bd03b7fe9e"
+    },
+    {
+      "path": "E_Values_Workshop_2026/main.tex",
+      "size_bytes": 17568,
+      "sha256": "c2d86282127f1ebce0ddc24bc326ca505e689b2aa6a2e2ac6a0b9d5765f3378d"
+    },
+    {
+      "path": "E_Values_Workshop_2026/appendix.tex",
+      "size_bytes": 69833,
+      "sha256": "a7b94b5da43bc7670484a60e443b57efad685a0cf9b4d0a2195fe7454b44ca7f"
+    },
+    {
+      "path": "E_Values_Workshop_2026/references.bib",
+      "size_bytes": 6463,
+      "sha256": "79d83fbc58c8d47ed214cf646384762e69d8deb9c9ac0e2aedaa51af63e0b80c"
+    },
+    {
+      "path": "E_Values_Workshop_2026/neurips_2026.sty",
+      "size_bytes": 13746,
+      "sha256": "55283cb6ebcb6c7234f46e65ba53920ad41475a7c3401ed4515c4739b256ed1c"
+    },
+    {
+      "path": "E_Values_Workshop_2026/environ.sty",
+      "size_bytes": 4378,
+      "sha256": "2efd7043a5a2ec8d495bd7575408b118ba737b9303259cffa74572d28b0da608"
+    },
+    {
+      "path": "E_Values_Workshop_2026/trimspaces.sty",
+      "size_bytes": 1207,
+      "sha256": "4a8bfae6ec21e971189aa614aa3692f4c5e99771dae0a6efc63e01fec81052cc"
+    },
+    {
+      "path": "project_publication/e_ats_full_budget_ramp_freeze_manifest.json",
+      "size_bytes": 6532,
+      "sha256": "faace898de809a8a872794b19cbda2668a29a962347dab06b9ef090efb458495"
+    },
+    {
+      "path": "project_publication/e_ats_full_budget_20_geometry_regret_protocol.json",
+      "size_bytes": 12510,
+      "sha256": "a8178314089ffe8c67c3ea2582a159df699198fc2b927a32fde45b6b9ab5d21b"
+    },
+    {
+      "path": "project_publication/e_ats_historical_21_policy_replay_protocol_v2.json",
+      "size_bytes": 5141,
+      "sha256": "8037355c07a0151560b3ad9a97f4cfd733331bc6d47672e53f00cb946f14d472"
+    },
+    {
+      "path": "project_publication/e_ats_time_uniform_glr_gate_protocol.json",
+      "size_bytes": 11384,
+      "sha256": "e3c8bf49493a6642ad43b832c3e1b22971870a414bd9622b3070febce8fd5b1f"
+    },
+    {
+      "path": "project_publication/e_ats_table5_gate_protocol.json",
+      "size_bytes": 11281,
+      "sha256": "190c6253b4e5312af2ed21ee128e3e04d9f7983191ea6db4f08f8cb4fc29feb9"
+    },
+    {
+      "path": "project_publication/e_ats_glr_gate_comparison_protocol.json",
+      "size_bytes": 7126,
+      "sha256": "75fbe646a14831086d5fd8eaebe6bd5c56e0b5e7d2011d5609951db0cd304b48"
+    },
+    {
+      "path": "project_publication/e_ats_glr_gate_untouched_rows_protocol.json",
+      "size_bytes": 6779,
+      "sha256": "18d20618f119fee8ead14010bb352b0381949dbdc1788e3293007eb8bb310e44"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_table5_exact_gate_comparison_v1/e_ats_table5_exact_gate_comparison.json",
+      "size_bytes": 17183464,
+      "sha256": "b35d72f059909fb9cfe5df4e72a6525947d25a3c0b5da88630e90595585f9c04"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_glr_full_grid_synthesis_v1/e_ats_glr_full_grid_synthesis.json",
+      "size_bytes": 11055,
+      "sha256": "941af3b3850ccb158b8a758c4f34cabe5a975d2fbdab4ea4506394859f82dbd5"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_table5_gate_loophole_audit_v1/policy_rng_sensitivity.json",
+      "size_bytes": 5667737,
+      "sha256": "518c28a47393b7b5446d4b92c564ae65b160314278d9d0d2b5a2ac6003569763"
+    },
+    {
+      "path": "E_Values_Workshop_2026/make_figures.py",
+      "size_bytes": 31337,
+      "sha256": "c618a709667bc3e3729ceedecb1d67ba7d1692e28384886920d6e4a7add7a479"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_full_budget_20_geometry_regret_v1/e_ats_20_geometry_regret.json",
+      "size_bytes": 60218638,
+      "sha256": "40370654c2166d2a7f098a1c2212a01421f07c6e085471784791fdf13fd0931d"
+    },
+    {
+      "path": "E_Values_Workshop_2026/results/e_ats_time_uniform_glr_gate_full_grid_v1/e_ats_time_uniform_glr_gate_comparison.json",
+      "size_bytes": 67449218,
+      "sha256": "2b2f7c1d27429a86d96e53e53a7110d69164493e6ea84edddbaed3dda7609e47"
+    }
+  ]
+}

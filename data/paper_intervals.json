@@ -1,0 +1,35 @@
+{
+  "registered_e_minus_open": [
+    -0.015333253944765693,
+    -0.014606576757485664
+  ],
+  "registered_primary_upper_one_sided": -0.014666088291118538,
+  "registered_practical_minus_e": [
+    8.975309809470405e-05,
+    0.00025597746546613515
+  ],
+  "registered_certified_minus_e": [
+    0.0027180806713991996,
+    0.0029336236935723465
+  ],
+  "replay_practical_minus_e": [
+    -0.0005189544836457313,
+    0.0003990205635472535
+  ],
+  "replay_certified_minus_e": [
+    0.02134205658702927,
+    0.022846213970605232
+  ],
+  "replay_e_minus_open_corrected": [
+    0.01088643343497616,
+    0.012184263000881556
+  ],
+  "registered_calibrated_minus_e": [
+    -0.00034460729642023577,
+    -0.00016826579880417996
+  ],
+  "replay_e_minus_open_original": [
+    0.010899307918619549,
+    0.012181175845551983
+  ]
+}

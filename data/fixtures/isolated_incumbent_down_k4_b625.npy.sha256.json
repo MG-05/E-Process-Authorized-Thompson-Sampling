@@ -1,0 +1,9 @@
+{
+  "artifact": "isolated_incumbent_down_k4_b625.npy",
+  "file_sha256": "930f343e250fda7adfc8fe1b9c76eb9ff826c97bfa1ca3c6ce3744fdac6316b4",
+  "mean_table_sha256": "67cf426cab2607e171e5a769c29561b26764eebe26481ba18975360d4384ab0d",
+  "shape": [
+    2500,
+    4
+  ]
+}

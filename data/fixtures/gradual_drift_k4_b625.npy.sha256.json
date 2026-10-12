@@ -1,0 +1,9 @@
+{
+  "artifact": "gradual_drift_k4_b625.npy",
+  "file_sha256": "946733613db0edabf4262a2f64807a8b733d72c55169c40640ce07d1ebb4f8ce",
+  "mean_table_sha256": "0af8cf9929ce77913a8856cd114a636ed6afc662dfb20e79dd51e1c6fd5620bc",
+  "shape": [
+    2500,
+    4
+  ]
+}

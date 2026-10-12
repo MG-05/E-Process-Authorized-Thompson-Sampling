@@ -1,0 +1,36 @@
+{
+  "artifact_id": "e_ats_historical_mean_runtime_bridge_v1",
+  "identity_sha256": "cb937ee1a099b2ddad1a0f484497081a4d0c96600d602db407a4140c58a9e763",
+  "policy_runtime_numpy": "2.5.2",
+  "reason": "NumPy 2.5.2 regeneration differs for exactly two of 900 historical synthetic tasks; NumPy 2.4.4 reproduces their sealed hashes",
+  "records": [
+    {
+      "file": "fb4c8aefcbb70c379f1206d2d2cc6b817301c1b8bf9b3567d1be8aef364bb622.npy",
+      "file_sha256": "287b1d7834241ae3649f5ab4cb5a0ea8dcb54297a72c84aad8dd07bd03b7fe9e",
+      "mean_table_sha256_float64_le": "5096f574b1d34d3afb9957465ad51dedd4c6667deddbb1759b54acb1b2670552",
+      "shape_TK": [
+        20000,
+        32
+      ],
+      "task_id": "A:synthetic:k32:random_breakpoints:env1840237",
+      "task_sha256": "9f186bfb9fe4c10f27ddb4939ce3629098f91fa816a00b6038ee43bd15627c56"
+    },
+    {
+      "file": "e9de4411cfddd230803eac4c667fc94dac1a7f3f2f92f5ec7dd171f5c209b246.npy",
+      "file_sha256": "2dffacdbe4144bf0e0dd2bf1130d5af3a506edabfa2672c1f257fc79333fd9ec",
+      "mean_table_sha256_float64_le": "7b72dff82fb07b8e9707ee9c0f59defa033064d15688033c233d008b71c14537",
+      "shape_TK": [
+        20000,
+        32
+      ],
+      "task_id": "A:synthetic:k32:random_breakpoints:env1840243",
+      "task_sha256": "4ce3c63cdea25eae7658d74155b299050e786d1c931be71a447e340d93418d3c"
+    }
+  ],
+  "schema_version": 1,
+  "source_checkpoint_sha256": "ed80ef83862b99e752129c551814a161766cfbb9375e7d0ad4082dcae6464a3a",
+  "source_manifest_identity_sha256": "6aa49bfa39f07a4ce8322360d5a0bf8a91bd91d337b684c3f2c4276e1e177da6",
+  "source_numpy": "2.4.4",
+  "status": "complete",
+  "task_count": 2
+}

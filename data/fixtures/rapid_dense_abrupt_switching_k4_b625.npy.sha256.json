@@ -1,0 +1,9 @@
+{
+  "artifact": "rapid_dense_abrupt_switching_k4_b625.npy",
+  "file_sha256": "12e557818251f859f2fb08972229947e07baf7cd1519f0fb8f621183821b7218",
+  "mean_table_sha256": "ff1b966c54822fff6b2f3738fe58befb6469cf43df928eca642eb051855c505d",
+  "shape": [
+    2500,
+    4
+  ]
+}

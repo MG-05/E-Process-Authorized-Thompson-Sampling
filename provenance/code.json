@@ -1,0 +1,1367 @@
+[
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 32,
+    "symbol": "GENERATOR_ID",
+    "sha256": "c6dbde412845751ebd71296ed11a2bcc58b61bdc97c8b00710789f800ea0c24f",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 33,
+    "symbol": "ATLAS_NAMESPACE",
+    "sha256": "f89f5985824a4eb017f54246eb165364988c65016b90df41a0de2db3ad83f204",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 35,
+    "symbol": "K_VALUES",
+    "sha256": "58fffd8b0bfd13675a5708f83ed0611f59278b4c0b478ea93c5f4b32cc327b6f",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 37,
+    "symbol": "MECHANISMS",
+    "sha256": "58c6fc89efa3099dd47ad491e1dc19d8acbebedeef48612fc5dab7bd67fc6751",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 49,
+    "symbol": "SOURCE_KINDS",
+    "sha256": "128cc1764fbf50606ffe30fcb943c9ce3cdf4c8623d557f345252af180e2957e",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 50,
+    "symbol": "PROBABILITY_FLOOR",
+    "sha256": "d0f563de087236532fbd27874d849b54d5729f1640fdcb7c08bf5bf8c479d14f",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 51,
+    "symbol": "PROBABILITY_CEILING",
+    "sha256": "d9b361ecabe581edf9093ff6f6109ca46366adf9ae091814546d06e7d30f50ed",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 52,
+    "symbol": "MAX_GENERATION_ATTEMPTS",
+    "sha256": "08be512e7f1175db1da20725abf84de70ec3d01df9933cedbbbf82f2951f0f57",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 53,
+    "symbol": "DENSE_MINIMUM_PER_ARM_CHANGE",
+    "sha256": "eb4d7d2024adc9af1632aeb3776076bc0e93ea1d7e793d201e98a2eb775a33bf",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 58,
+    "symbol": "LATENT_APPLICABILITY: dict[str, tuple[str, ...]]",
+    "sha256": "fe37bbe7910b89579a0ea6256e6d8b6b250d5207d72b0728fa24b68456fe51c7",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 94,
+    "symbol": "GENERATOR_SPEC: dict[str, Any]",
+    "sha256": "48213eb1a1ea42db05a1c3b90e903826fe6003363e051aa633a8719fee9a590d",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 169,
+    "symbol": "EnvironmentBuildError",
+    "sha256": "a6ffe9bd2edcf3e4a3b5deb1f60139af6a80c7e27cf810707b95b809c02ce748",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 174,
+    "symbol": "EnvironmentTask",
+    "sha256": "d7ddad243f1c25edcca892f673c01ddb0c748296118776b7131697939e7779b8",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 195,
+    "symbol": "_seed",
+    "sha256": "bb2acfc6337aef8bbbcfe8b1f9ced28697de62eb5287ebd92c0382682d1c4be9",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 220,
+    "symbol": "_sigmoid",
+    "sha256": "489f5e2e2d3ddf534c4d4db24cf2b46b8652f3e2df831bb1f8540119d07f9357",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 225,
+    "symbol": "_clip",
+    "sha256": "532f4ed1e885e30c5f1a55c70f64e4fc8b4e2eab594fa63f79ef319af47b3f87",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 231,
+    "symbol": "_unit_latents",
+    "sha256": "b3993fafda081806f127daacfdc17154ecdcfe4ec4a434491fc75896791abcba",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 285,
+    "symbol": "_base_means",
+    "sha256": "9d0ba462262a8d32918d9ea682bc4270a367024f80fd458b4680e599585870a8",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 311,
+    "symbol": "_tau",
+    "sha256": "7eeab359a36405b3c2211e82c1856d101a0191e028eabccb3f1efcc6101ee669",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 318,
+    "symbol": "_constant_table",
+    "sha256": "db39b5cc8b06ce6f2905d1560ec4b7683f817ea013332765ee5bd0cc22e80532",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 322,
+    "symbol": "_enforce_minimum_coordinate_change",
+    "sha256": "9c90ed356812a75a715700b00acb08d54dfa456cbfd3807b46286cdb357453e4",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 340,
+    "symbol": "_matched_table",
+    "sha256": "b2ee670f321f90bcfa85e41d0c3868180ffc28ac408757835706022aa019d6f2",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 421,
+    "symbol": "_generate_once",
+    "sha256": "be0945165178c21a9bc78942001b39e45251f999761cc353d5eb8094a69b4562",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 630,
+    "symbol": "validate_generated_environment",
+    "sha256": "3cc61aa940789d742a42f4b224a336c4ab6392498f40b187139fbf1060652db4",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "layer3_regret_atlas_v1/environments.py",
+    "line": 736,
+    "symbol": "bounded_generate",
+    "sha256": "f2c4ddd77ba6a6a01631e27efcdad52907b1016c8dbcdb5ec69c139da19072cc",
+    "destination": "eats/environments/registered.py"
+  },
+  {
+    "source": "project_publication/adaptation_benchmarks.py",
+    "line": 329,
+    "symbol": "_segment_lengths_with_minimum",
+    "sha256": "58f5cf87ec9f014b0752ac10ffaf33ae389d4c0c757675c4253278ffb53d7110",
+    "destination": "eats/environments/local_shocks.py"
+  },
+  {
+    "source": "project_publication/adaptation_benchmarks.py",
+    "line": 346,
+    "symbol": "build_piecewise_stationary_k32_environment",
+    "sha256": "77e955cd8bfebc7b294604b2aba1ff277576b5a07d95143c69e88aa0afda0e01",
+    "destination": "eats/environments/local_shocks.py"
+  },
+  {
+    "source": "project_publication/e_ats_glr_gate_comparison.py",
+    "line": 118,
+    "symbol": "GLRComparisonError",
+    "sha256": "8727a353273cd3dcb737cc863598f6900e5f3494bb40233f62aca9e3838e8944",
+    "destination": "eats/experiments/calibration_math.py"
+  },
+  {
+    "source": "project_publication/e_ats_glr_gate_comparison.py",
+    "line": 219,
+    "symbol": "_xlogx_table",
+    "sha256": "73e6fd5440db2859656b7aa9b050e2747cbd7577343b23eef2d956bbd74896dd",
+    "destination": "eats/experiments/calibration_math.py"
+  },
+  {
+    "source": "project_publication/e_ats_glr_gate_comparison.py",
+    "line": 226,
+    "symbol": "maximum_glr_on_trace",
+    "sha256": "9833c1074dff12503634324a51b48a7b8639037aecec5b4c5f8d6e58c8ef40ba",
+    "destination": "eats/experiments/calibration_math.py"
+  },
+  {
+    "source": "project_publication/e_ats_glr_gate_comparison.py",
+    "line": 332,
+    "symbol": "_matched_threshold",
+    "sha256": "5734cd6988ded69b37222b98fa6a4beb1184d65d1d9026843ef7db3d4ad205b8",
+    "destination": "eats/experiments/calibration_math.py"
+  },
+  {
+    "source": "project_publication/e_value_workshop_phase0_v2.py",
+    "line": 40,
+    "symbol": "CALIBRATION_NAMESPACE_ID",
+    "sha256": "74cc4769a9eca50e74c2091e1928d1199f00af4e96b89b34faa419faa7757574",
+    "destination": "eats/experiments/null_seeds.py"
+  },
+  {
+    "source": "project_publication/e_value_workshop_phase0_v2.py",
+    "line": 41,
+    "symbol": "CONFIRMATION_NAMESPACE_ID",
+    "sha256": "d7ba99f24e93a03180dd9d88669b47cc4b007d63f8de39d1f34de4018ad463c7",
+    "destination": "eats/experiments/null_seeds.py"
+  },
+  {
+    "source": "project_publication/e_value_workshop_phase0_v2.py",
+    "line": 42,
+    "symbol": "MATCHED_KL_NAMESPACE_ID",
+    "sha256": "b2e17342ad31be0e49f8b3edcc7ecc7a627b83370ef078187ac8880c92e93324",
+    "destination": "eats/experiments/null_seeds.py"
+  },
+  {
+    "source": "project_publication/e_value_workshop_phase0_v2.py",
+    "line": 43,
+    "symbol": "PREFLIGHT_NAMESPACE_ID",
+    "sha256": "5672526e65b7c45897750eaa9792b7c2ff0ad13002674ec7b846c120be75ef75",
+    "destination": "eats/experiments/null_seeds.py"
+  },
+  {
+    "source": "project_publication/e_value_workshop_phase0_v2.py",
+    "line": 44,
+    "symbol": "UNIT_TEST_NAMESPACE_ID",
+    "sha256": "cc498e8dd69397a896e317b5617ee1e90adb9c1651bd0484ef4f7cece322b7d6",
+    "destination": "eats/experiments/null_seeds.py"
+  },
+  {
+    "source": "project_publication/e_value_workshop_phase0_v2.py",
+    "line": 49,
+    "symbol": "SEED_SCHEME_ID",
+    "sha256": "89c378d275c0237a05f4245bea406b346ad715e3bd01a5c97267bd7b9cbba2d1",
+    "destination": "eats/experiments/null_seeds.py"
+  },
+  {
+    "source": "project_publication/e_value_workshop_phase0_v2.py",
+    "line": 51,
+    "symbol": "CALIBRATION_GEOMETRIES",
+    "sha256": "5fc17784382f5c41e444c7cc21f45e4230b43dc01c7899dba5b80f13b9e2c997",
+    "destination": "eats/experiments/null_seeds.py"
+  },
+  {
+    "source": "project_publication/e_value_workshop_phase0_v2.py",
+    "line": 158,
+    "symbol": "seed_descriptor",
+    "sha256": "6eb161afe789002f22cd91e785793efd8d3a369c0c51ab89ec1078bd95fa1f81",
+    "destination": "eats/experiments/null_seeds.py"
+  },
+  {
+    "source": "project_publication/e_value_workshop_phase0_v2_runner.py",
+    "line": 292,
+    "symbol": "_rng",
+    "sha256": "9b67eb4f843fc5bac86163f87e42be5a79c512b314acd4a725c64c3ab426576b",
+    "destination": "eats/experiments/null_stream.py"
+  },
+  {
+    "source": "project_publication/e_value_workshop_phase0_v2_runner.py",
+    "line": 304,
+    "symbol": "_prior_predictive_table",
+    "sha256": "a224f03408be454cc2628fe32fd98650d04ea914f3019c63a5f9ab499ac05f67",
+    "destination": "eats/experiments/null_stream.py"
+  },
+  {
+    "source": "project_publication/e_value_workshop_phase0_v2_runner.py",
+    "line": 320,
+    "symbol": "_optimistic_ts",
+    "sha256": "e5a584f4459eef04eaef16350fc2bbab43558992f719ce79ea5fa8ab9e72a5af",
+    "destination": "eats/experiments/null_stream.py"
+  },
+  {
+    "source": "project_publication/pipeline.py",
+    "line": 142,
+    "symbol": "EnvironmentSpec",
+    "sha256": "f043df117295d0e5ab5cc36ed10e8e484ffc999799a2b00e16ae2f06eae17ff2",
+    "destination": "eats/environments/types.py"
+  },
+  {
+    "source": "project_publication/vgdts_v3_scale_environments.py",
+    "line": 30,
+    "symbol": "SCALE_K_VALUES: tuple[int, ...]",
+    "sha256": "37c76fbbecc9deef743c2b2359ada74b68e88b8e852a70db5055476ad2fae8ab",
+    "destination": "eats/environments/replay.py"
+  },
+  {
+    "source": "project_publication/vgdts_v3_scale_environments.py",
+    "line": 31,
+    "symbol": "SCALE_FAMILY_ORDER: tuple[str, ...]",
+    "sha256": "4ce5b5570bdb78e8a62ecec82955d0364dbb2cb4b49d99d26b2d438832501aaf",
+    "destination": "eats/environments/replay.py"
+  },
+  {
+    "source": "project_publication/vgdts_v3_scale_environments.py",
+    "line": 42,
+    "symbol": "SCALE_FAMILY_NAMES: dict[str, str]",
+    "sha256": "86fae9741df741f2db8c1a63280ba4e39a2ed3827ebd0b25ef234e4161a59a06",
+    "destination": "eats/environments/replay.py"
+  },
+  {
+    "source": "project_publication/vgdts_v3_scale_environments.py",
+    "line": 53,
+    "symbol": "PULLS_PER_ARM",
+    "sha256": "e7eb79ca8464bfacad1251941d62542365aa89689c7642106e19aa025f738b71",
+    "destination": "eats/environments/replay.py"
+  },
+  {
+    "source": "project_publication/vgdts_v3_scale_environments.py",
+    "line": 54,
+    "symbol": "REFERENCE_K",
+    "sha256": "08a522953584b687bebb0a028f3238401957fd96b6df948152a2179f45e5dbb1",
+    "destination": "eats/environments/replay.py"
+  },
+  {
+    "source": "project_publication/vgdts_v3_scale_environments.py",
+    "line": 55,
+    "symbol": "SCALE_ENVIRONMENT_DESIGN_ID",
+    "sha256": "d85b2084ae83d5e190522f76e0d7fc6d024b7c1221da66447ac28e367ffd940a",
+    "destination": "eats/environments/replay.py"
+  },
+  {
+    "source": "project_publication/vgdts_v3_scale_environments.py",
+    "line": 58,
+    "symbol": "scale_horizon",
+    "sha256": "b4fd6b637bc9e0c5b4d065e96753a3551d7e16cef02841a9d1650746777095e3",
+    "destination": "eats/environments/replay.py"
+  },
+  {
+    "source": "project_publication/vgdts_v3_scale_environments.py",
+    "line": 64,
+    "symbol": "local_shock_affected_arms",
+    "sha256": "ec5528060a5a557b0faf94e5ee4abf0349909cea3b57f6f6ce4a3cb3ad69efdb",
+    "destination": "eats/environments/replay.py"
+  },
+  {
+    "source": "project_publication/vgdts_v3_scale_environments.py",
+    "line": 72,
+    "symbol": "_scale_int",
+    "sha256": "311b03395d33dd185060c95f3f6feea2c8f1ba8904ae36a165d025bccba5128e",
+    "destination": "eats/environments/replay.py"
+  },
+  {
+    "source": "project_publication/vgdts_v3_scale_environments.py",
+    "line": 76,
+    "symbol": "_scaled_diffusion",
+    "sha256": "1b2c900e942591a237fe77c677c11ac7b57b40a5c5dfb71e1d17e35f45fe95b6",
+    "destination": "eats/environments/replay.py"
+  },
+  {
+    "source": "project_publication/vgdts_v3_scale_environments.py",
+    "line": 80,
+    "symbol": "_oracle_change_events",
+    "sha256": "b4dbec265575fb3c57408472e571853ef11d0ff37bd84246c3c9d95403faecd2",
+    "destination": "eats/environments/replay.py"
+  },
+  {
+    "source": "project_publication/vgdts_v3_scale_environments.py",
+    "line": 95,
+    "symbol": "_row_change_events",
+    "sha256": "4eabb395823b6d42bd437cdf9434c99b32f7e3a6a56d4fe9d8cc1e9536e3f8a5",
+    "destination": "eats/environments/replay.py"
+  },
+  {
+    "source": "project_publication/vgdts_v3_scale_environments.py",
+    "line": 104,
+    "symbol": "_scale_consistent_mixed_means",
+    "sha256": "111f687d264ef6240026df3e4399c2494c959895d5eb39d01e1086899c368452",
+    "destination": "eats/environments/replay.py"
+  },
+  {
+    "source": "project_publication/vgdts_v3_scale_environments.py",
+    "line": 162,
+    "symbol": "_base_metadata",
+    "sha256": "b1268bc5a96afe69622d07e70d69af85e21a3af337d89df1f269d2e1ae81a6d3",
+    "destination": "eats/environments/replay.py"
+  },
+  {
+    "source": "project_publication/vgdts_v3_scale_environments.py",
+    "line": 199,
+    "symbol": "build_scale_environment",
+    "sha256": "61849599098eeebc2d5cbeed8b73f6bae3de4fde5d993223b64fbeb4ec83031d",
+    "destination": "eats/environments/replay.py"
+  },
+  {
+    "source": "src/adts/_types.py",
+    "line": 8,
+    "symbol": "FloatArray: TypeAlias",
+    "sha256": "d5e6549721c2ff824caaec96f54f8e30d36ad259da729f99d08aa11687ad355c",
+    "destination": "eats/algorithms/types.py"
+  },
+  {
+    "source": "src/adts/_types.py",
+    "line": 9,
+    "symbol": "IntArray: TypeAlias",
+    "sha256": "83e2c605ffacb1e228dd3916e884699af196d7824be2dc6a951a32069f5f17ab",
+    "destination": "eats/algorithms/types.py"
+  },
+  {
+    "source": "src/adts/_types.py",
+    "line": 10,
+    "symbol": "BoolArray: TypeAlias",
+    "sha256": "deb7ccb9a1acb862d9753d10376a861ca2e61894028584c0188cf9da643d1fbd",
+    "destination": "eats/algorithms/types.py"
+  },
+  {
+    "source": "src/adts/_types.py",
+    "line": 47,
+    "symbol": "GlobalCTSRunDiagnostics",
+    "sha256": "1c33eeddf03530f7122d54c54c75be864e4e32276da8944b75964f7b100bb703",
+    "destination": "eats/algorithms/types.py"
+  },
+  {
+    "source": "src/adts/_types.py",
+    "line": 62,
+    "symbol": "MUCBRunDiagnostics",
+    "sha256": "fda6f6b563310f1b85eeb9cfc02823fe0fd9f1620eb38bc60ce52fce41cb7159",
+    "destination": "eats/algorithms/types.py"
+  },
+  {
+    "source": "src/adts/_types.py",
+    "line": 71,
+    "symbol": "AFFTSRunDiagnostics",
+    "sha256": "22ee77a3d00448d24a0308bb9cdd155adb600e81321d5445b80dee76283a9301",
+    "destination": "eats/algorithms/types.py"
+  },
+  {
+    "source": "src/adts/_types.py",
+    "line": 85,
+    "symbol": "GLRklUCBRunDiagnostics",
+    "sha256": "3dabaf06036ab33be1cad70f52a522d024a2b178fcf2123ad96371ed60f7bedf",
+    "destination": "eats/algorithms/types.py"
+  },
+  {
+    "source": "src/adts/_types.py",
+    "line": 120,
+    "symbol": "CUSUMUCBRunDiagnostics",
+    "sha256": "c8f4a5ef5da67f82fbcee3695f553e67a325d68e0f108cfb5b3ec825a896fffc",
+    "destination": "eats/algorithms/types.py"
+  },
+  {
+    "source": "src/adts/_types.py",
+    "line": 133,
+    "symbol": "GammaSWGTSRunDiagnostics",
+    "sha256": "d81079e3d3db644eda176d745a8f8dabd92821da9b4f222ac09758d79e63d93a",
+    "destination": "eats/algorithms/types.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 33,
+    "symbol": "E_ATS_FULL_BUDGET_RAMP_IMPLEMENTATION_ID",
+    "sha256": "05e5ce1f7a91b792e50424300e5558f22172fd837e863efd2f758b75bf7a41b8",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 36,
+    "symbol": "E_ATS_FULL_BUDGET_RAMP_NO_CE_ABLATION_ID",
+    "sha256": "6cd69af45ab51647f9072db4301aa1089775093c5984ec4788cea07f7a48b0e5",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 39,
+    "symbol": "DEPLOYED_RESTART_ETA",
+    "sha256": "b5245c040d4298f7450a0221583c06bbafadd72e0d300db451ede72f66590f1e",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 40,
+    "symbol": "RESTART_FIRST_CANDIDATE_PULL",
+    "sha256": "de436da66d6a795b7eee502345b8d3f9f634e31abf7a977783e64b7e0b83903c",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 41,
+    "symbol": "PRIOR_PREDICTIVE_NULL",
+    "sha256": "42d555495160b4150ae9b752ff2789ab58aa3c7da4dcc751333b0a5eb8685772",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 42,
+    "symbol": "MEAN_CERTIFICATE_FALSE_ALARM_BUDGET",
+    "sha256": "d37d5ee60c2a350c72777193d4c526f22c863d6a7b22e26a88337c6153aa0500",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 43,
+    "symbol": "MEAN_NUMERICAL_EPSILON",
+    "sha256": "535ee0de6214250a4fa3772373ab1598cecfd347efac80de30f6314bd90ce7da",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 47,
+    "symbol": "E_ATS_AUTHORIZATION_ALPHA",
+    "sha256": "cf89e11d021f44fc09d62624e925d38466d2c34b4fabc620e6eb85feab9bb23f",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 48,
+    "symbol": "E_ATS_MEAN_NORMALIZATION_BUDGET",
+    "sha256": "3a25c52b8b8cef3c68f51286cb9fe75a37cf8a3e227e9a40bb585b79dde8f7e8",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 49,
+    "symbol": "E_ATS_PRIOR_ALPHA",
+    "sha256": "9dca97d6c01db7d159fad3fb84e45a5532fad14396a35ad09f66169e0719d586",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 50,
+    "symbol": "E_ATS_PRIOR_BETA",
+    "sha256": "d12eb49316b61bb569a7190841eeceb9272e4f73c2d47b983e0b16c0f46bd016",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 51,
+    "symbol": "E_ATS_DETECTOR_DECAY_CAP",
+    "sha256": "99a99235c67e8e089b9e26dff4d53bf3fa9b2fddab175de0c9ee416f7b108242",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 52,
+    "symbol": "E_ATS_SHORT_DISCOUNT",
+    "sha256": "04eb4c66cb09acc7c623c006af6306e84299a575055bc8432718abf37f2d7f73",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 53,
+    "symbol": "E_ATS_DUAL_MEMORY_MIX_POWER",
+    "sha256": "615a6b93f1d1c143541c08d09e16a889f8dbd38f9ad960614de8bec927a86763",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 54,
+    "symbol": "E_ATS_LOCAL_TAKEOVER_SCALE",
+    "sha256": "909e4a460debad24a832d19a79950591f0f37bbe80562767d6de2ac712d0b841",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 55,
+    "symbol": "E_ATS_GLOBAL_TAKEOVER_SCALE",
+    "sha256": "21591f77fe86153b8beff7b2bc145b7f238e1f0028e59ac5f83eaff678b52357",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 58,
+    "symbol": "_logsumexp",
+    "sha256": "504c57ee1d5f964cc86d05e2d87d74883cdec6fc1d021536c4e70cfcfb95e398",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 63,
+    "symbol": "_start_weight",
+    "sha256": "0b16378065a6e6b865079b01df6851caacb8acb086fbf1762c2b54ebddf019be",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 69,
+    "symbol": "_future_capital",
+    "sha256": "da99d0b91bd6dd0e80dfae3d98e1a10f57ee7e64a738d94b286e9bfc31865c37",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 76,
+    "symbol": "RestartEProcessState",
+    "sha256": "cba0abd13309d3eb7f6567ee9412e7f8a1af7b2f1263d569a1d8bbe6f0d9c482",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 149,
+    "symbol": "EValueAuthorizationConfig",
+    "sha256": "914398ddf9372d44ae1411116d78eb053c4658675a6e02d94b23e37771926c37",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 167,
+    "symbol": "detector_decay",
+    "sha256": "ab7d4cfae4cba90b4b71888fd0c16a5d302bc0ad92e04b3bf4640b05a2fac4bf",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 218,
+    "symbol": "frozen_e_ats_contract",
+    "sha256": "685cc56bd7e2422b4f6792f18551896b50aa9d691415117761c1062555210e8a",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 264,
+    "symbol": "update_full_budget_normalized_ramp",
+    "sha256": "05e51da3046a8fa2f69bfb9f3f5e4726bfa0ad22efa432112bd8d2de373d6f16",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 452,
+    "symbol": "_frozen_e_ats_controller_params",
+    "sha256": "acdf0c1a4024aab1f2780d71ce462c07f8f095fdbf35896fdc436267582e3635",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 462,
+    "symbol": "_run_e_ats_full_budget_ramp",
+    "sha256": "b289353c7e82f1d457d8a778f2b72e296979d4dcebc49b709919735230ed1408",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 644,
+    "symbol": "run_e_ats_full_budget_ramp",
+    "sha256": "f3f9c25b8dfeda20bcc15c2ab14e6392a3707656d13f14c14a608d87eb0b76ad",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/e_value_vgdts.py",
+    "line": 661,
+    "symbol": "run_e_ats_full_budget_ramp_no_ce",
+    "sha256": "40cd31b8a21e05f5f76189107dfc64300ff993bc4f153ab80a8915db2cc469fe",
+    "destination": "eats/algorithms/e_ats.py"
+  },
+  {
+    "source": "src/adts/envs.py",
+    "line": 42,
+    "symbol": "_validate_horizon_n_arms",
+    "sha256": "d06b475b5df83f707df0bee2014420ca8d0005fc1fcb3c03ae6b8c1c37741e9a",
+    "destination": "eats/environments/families.py"
+  },
+  {
+    "source": "src/adts/envs.py",
+    "line": 54,
+    "symbol": "_validate_prob",
+    "sha256": "22724e5fb120fee0179a6188061d72364a460fcb8cb30bfaa0e25862a04db16a",
+    "destination": "eats/environments/families.py"
+  },
+  {
+    "source": "src/adts/envs.py",
+    "line": 59,
+    "symbol": "slow_varying_sinusoid_means",
+    "sha256": "74d941e4b97269ac6abbe9dc6e23c467fa506c957036d3b7c610d087095b550d",
+    "destination": "eats/environments/families.py"
+  },
+  {
+    "source": "src/adts/envs.py",
+    "line": 182,
+    "symbol": "_segment_lengths_with_minimum",
+    "sha256": "bfcc85978c29c54e52b9c5c247ce26fd9c7041d97f22598613e278f861581141",
+    "destination": "eats/environments/families.py"
+  },
+  {
+    "source": "src/adts/envs.py",
+    "line": 198,
+    "symbol": "random_breakpoint_means",
+    "sha256": "6a883a650efb4da39dcf5ff964f03381fc6b3d8e186f6a05190b4909107e2b21",
+    "destination": "eats/environments/families.py"
+  },
+  {
+    "source": "src/adts/envs.py",
+    "line": 270,
+    "symbol": "random_drift_amplitude_means",
+    "sha256": "fb4279101e34237e6208eb6b46279604d8aa1f83d60c5d534402dcc5b1c246e2",
+    "destination": "eats/environments/families.py"
+  },
+  {
+    "source": "src/adts/envs.py",
+    "line": 439,
+    "symbol": "global_switching_means",
+    "sha256": "545cde613a13d664246b0b07cbb1d4a39b14bd0459983b219b617879299c446b",
+    "destination": "eats/environments/families.py"
+  },
+  {
+    "source": "src/adts/envs.py",
+    "line": 469,
+    "symbol": "abrupt_means",
+    "sha256": "d68463025276bd7ceb8505f6d2e9951333910299c8922f047a5970f5346b40d7",
+    "destination": "eats/environments/families.py"
+  },
+  {
+    "source": "src/adts/envs.py",
+    "line": 497,
+    "symbol": "per_arm_switching_means",
+    "sha256": "bb06f610d98f923f3ff47c5795b4d0e44c0a50ae779695e51dca8d21a9c45510",
+    "destination": "eats/environments/families.py"
+  },
+  {
+    "source": "src/adts/glr_authorized_e_ats.py",
+    "line": 37,
+    "symbol": "E_ATS_GLR_FULL_BUDGET_RAMP_IMPLEMENTATION_ID",
+    "sha256": "ca053448dc64cc78177136fae7f6773c43dad736a8444cc63ff2d093d1dd9974",
+    "destination": "eats/algorithms/calibrated_glr.py"
+  },
+  {
+    "source": "src/adts/glr_authorized_e_ats.py",
+    "line": 42,
+    "symbol": "_bernoulli_maximized_log_likelihood",
+    "sha256": "44d572c565782ceb2bd42ed0de66eefa1ad78e4b0de625dbb83cb0467be3ee61",
+    "destination": "eats/algorithms/calibrated_glr.py"
+  },
+  {
+    "source": "src/adts/glr_authorized_e_ats.py",
+    "line": 56,
+    "symbol": "bernoulli_two_segment_glr",
+    "sha256": "cfec31cd42cb896752949901ad1c7ca2662e6a89900b14959f257cb8e4f9fd2b",
+    "destination": "eats/algorithms/calibrated_glr.py"
+  },
+  {
+    "source": "src/adts/glr_authorized_e_ats.py",
+    "line": 91,
+    "symbol": "GeometricBernoulliGLRState",
+    "sha256": "dee5850e91c359145951023002f22cdc3eca339f47ac8e40235046088fa6a777",
+    "destination": "eats/algorithms/calibrated_glr.py"
+  },
+  {
+    "source": "src/adts/glr_authorized_e_ats.py",
+    "line": 182,
+    "symbol": "GLRAuthorizationConfig",
+    "sha256": "eddb1badfe1ba91148d6113587a78881f88d70cf0c2db4e0ddf2c97e418791e4",
+    "destination": "eats/algorithms/calibrated_glr.py"
+  },
+  {
+    "source": "src/adts/glr_authorized_e_ats.py",
+    "line": 200,
+    "symbol": "glr_comparator_contract",
+    "sha256": "7b87e56e5855e564d1e61af7c15c11b72a54313b09633cc8e9277196939f3d84",
+    "destination": "eats/algorithms/calibrated_glr.py"
+  },
+  {
+    "source": "src/adts/glr_authorized_e_ats.py",
+    "line": 228,
+    "symbol": "run_e_ats_glr_full_budget_ramp",
+    "sha256": "43f451cd931df404a144b2f17256feb99f99c3f9b7539d5aa4f58312aaba3d91",
+    "destination": "eats/algorithms/calibrated_glr.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 64,
+    "symbol": "DYNAMIC_TS_BETA_SHAPE_FLOOR",
+    "sha256": "15779d37374d8df26babf2c512820d4a73fdb2a51c774f3536e156edf37d6eb4",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 76,
+    "symbol": "_action_trace_buffer",
+    "sha256": "ee23c09afc0981826f3539158c9e8640d95772daeb3dba38c514557d0f8b61ed",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 88,
+    "symbol": "_store_action_trace",
+    "sha256": "2f093bb62990b45daa16f9eacf2b4bf1ce12723a98fbdd4e42ed0a22ec82b801",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 96,
+    "symbol": "run_TS",
+    "sha256": "716082b440df157649778d0b772a51791c2adcb0072fdce52de59ec0585ebf55",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 125,
+    "symbol": "run_DTS",
+    "sha256": "7cf10f8c23e7b82f525f633b2a310aa39b6dff75bacc56d488873897558be0b5",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 172,
+    "symbol": "run_dTS",
+    "sha256": "10764bf5380b07d22a29ff9f5f782f32255b1c1da4a495db24fe1650e6fca2ec",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 209,
+    "symbol": "run_dOTS",
+    "sha256": "8a425242c8339067454ab5d1f36a308fd244b634ca7be74bab818275750fc787",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 633,
+    "symbol": "_kl_bernoulli",
+    "sha256": "0f88e4595cda228857ce1d42b0be2b82882b4457687b7736d019a1313aa3fea8",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 2750,
+    "symbol": "run_REXP3",
+    "sha256": "69be51d05bf17aafd3f5b2bb1ea80002df0bbb3fcadbacd2a70c859d20d4856e",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 2820,
+    "symbol": "_validate_mu",
+    "sha256": "d69c7203735d5d31a664b047dbed799d32fefbb23881eb0d59ff49e0b5e8f96a",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 2833,
+    "symbol": "_pull_from_mu",
+    "sha256": "e9089bcfc180dd13c993e91d4be34ab93e5ffd3756ed3b8cb5d64db43c716f75",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 2837,
+    "symbol": "_pull_from_returns_or_mu",
+    "sha256": "3670b4f2775b13217fd190fd4181dda8e176aac34967ea9fe2a8698b06e04acf",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 2858,
+    "symbol": "_kl_ucb_bernoulli",
+    "sha256": "1dae58d9217d50815152d8a19cbfd9dffa974d62ef394a9bacd602adddec6675",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 2876,
+    "symbol": "_kl_bernoulli_vectorized",
+    "sha256": "607b5571b43163bb8588004d428d37069f4dfe87d022a2967254a965602049de",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 2894,
+    "symbol": "_kl_ucb_bernoulli_vectorized",
+    "sha256": "7ff2a7692b95c18eb1cdc60c191637b46ab1c54c562d404257860c5734705e76",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 2986,
+    "symbol": "_bernoulli_glr_max_statistic_from_prefix",
+    "sha256": "779fbfa2bc3e158ea36af5f43348c41999c1601473212ddb1ce0aa1cba0d005e",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 3032,
+    "symbol": "_glr_practical_threshold",
+    "sha256": "59cb87b8eeb69911746c3d1c52076c91736cddfcfa0a168faee5af586010e97e",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 3041,
+    "symbol": "_klucb_exploration_function",
+    "sha256": "5bb8af7e459fab8adfb5e936b8b564245245587f0e09b1170301c99df8c6d556",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 3053,
+    "symbol": "_stratified_optimal_resample",
+    "sha256": "3538958db162e21e3d20fbad650a687b9cc230bb8dee040143ee9d2bc5f228a8",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 3128,
+    "symbol": "run_global_cts",
+    "sha256": "4b9b02b91caf5fc9e03f6a4e06deb55d0212ca7f175f31f4fa0fc10e037f3993",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 3263,
+    "symbol": "run_aff_ts",
+    "sha256": "78795854a361edef6ead5adea276d5917338a77ecfd5437cf0c1804d61457c15",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 3390,
+    "symbol": "run_dlinucb_onehot",
+    "sha256": "768aef367d025b2b9e93c5ecfac7471b0e48e3faf4d7f7894d928616241ce4d3",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 3459,
+    "symbol": "run_beta_swts",
+    "sha256": "151ec610492eb67e0e48909f18168e3b4755946f463f581b40329ffb7fbd45a5",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 3546,
+    "symbol": "run_gamma_swgts",
+    "sha256": "ae152c54a60beb9510a6762c009d8d80307d48ede1a23d159692ee8656707662",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 3611,
+    "symbol": "run_sw_ucb",
+    "sha256": "c4e634469ae28fa65e007bb1b7e5c39c182ae937c530db6ef70876ba0faced4f",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 3661,
+    "symbol": "run_d_ucb",
+    "sha256": "cf3bb26776981ddba55b5ce2a5a277ff9fcaaa9d7ebef12ef441c27413f5ea05",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 3712,
+    "symbol": "_cusum_ucb_scores",
+    "sha256": "0c48206c19e282ccd47cddf39af9d3f35fe6bbc665e4aafe166115605d706e26",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 3730,
+    "symbol": "run_cusum_ucb",
+    "sha256": "48df54a4b2cc1241d14d3c2cbf26c49df0c3b37ab69c4c3ad20419a2e4ea481d",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 3838,
+    "symbol": "run_m_ucb",
+    "sha256": "308d4bf2e85a2090c8d411fb1d8fae1ec2cf882932ee3b3327138c841e7f6d22",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 4094,
+    "symbol": "_run_glr_klucb_prefix_core",
+    "sha256": "e1ffcbe8384a4a0e8ae6ec2e77797eefdd58782cb90055f4ffee59f844e8e87d",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policies.py",
+    "line": 4467,
+    "symbol": "run_glr_klucb_vectorized_index",
+    "sha256": "78096997cb675044a9f561e883358b9489bda974fcbb56615118304b10a6ffa0",
+    "destination": "eats/algorithms/baselines.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 9,
+    "symbol": "GLRRestartMode: TypeAlias",
+    "sha256": "0175e3556e99556911b988cad9901eead150b5c345d0af29888d4c17e96a4450",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 13,
+    "symbol": "TSParams",
+    "sha256": "a75806204bdc4b947c7f729ba7e87cdb8596fc8845ed94b8d7ac5b96fb8dfe75",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 19,
+    "symbol": "DTSParams",
+    "sha256": "029a373fcbab6ee2f3b58a749a8c10010c03767398ea02dd1406537c9d786c0c",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 28,
+    "symbol": "dTSParams",
+    "sha256": "94daad788edebf6a430280ee6f7e532ef5c4bb2d30ca362e2df4fbb9415d69ce",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 37,
+    "symbol": "dOTSParams",
+    "sha256": "4f6cf6a1477bca318038aa2ff68f62b3b3c1d6ea1abf955a2e3e8a0e0e50ab01",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 64,
+    "symbol": "REXP3Params",
+    "sha256": "9c31990f7f73eeeac548a9815a3f27e9abfe6bb623fa97d28e2e854a2f1bdef2",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 75,
+    "symbol": "GlobalCTSParams",
+    "sha256": "2bfd74ac859f5550df36dfdddf889b8f7a0f2d1b6b4f230121fc9e060180ae28",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 83,
+    "symbol": "GLOBAL_CTS_IMPLEMENTATION_ID",
+    "sha256": "a0a4fba0c6eabd9e70c1fc074d479bac2e5673461f1cc3311283446fb194d242",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 87,
+    "symbol": "AFFTSParams",
+    "sha256": "eab164ee490d485ee9c8c39765dcec8c74b98eda96bd8ecf20d366bba708c07e",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 99,
+    "symbol": "AFF_TS_IMPLEMENTATION_ID",
+    "sha256": "3e06cd3452261f50341ca66265bae9eefc9e813fd769d2c3ce6613b514821961",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 103,
+    "symbol": "DLinUCBParams",
+    "sha256": "06017af5cd0d4f1dee63ddcf3a3a3faf26605db26a70b0b2a69adb12e0a40df1",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 117,
+    "symbol": "BetaSWTSParams",
+    "sha256": "b9cb45bf0a151131d1d8fa643238260abd03db2f8d96b56eeebf339b430039aa",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 124,
+    "symbol": "SWUCBParams",
+    "sha256": "18a296ada0d406e570c2984ca0a595b2d186a16c48ba61d8718a3059060defda",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 130,
+    "symbol": "DUCBParams",
+    "sha256": "1cbbf67b165d6fbaa8ddbef2c1edc9084aca580464be083060d27fa191cfad94",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 140,
+    "symbol": "CUSUMUCBParams",
+    "sha256": "70ee4a8883f1a183d4a140d1174b35fecbb91b2fec6fcc751536117914d574a0",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 155,
+    "symbol": "CUSUM_UCB_IMPLEMENTATION_ID",
+    "sha256": "93283713e3f6eed3a0ff39f1e74c95da8ba8507a251aff1e9c0c4ed345ebf72b",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 159,
+    "symbol": "MUCBParams",
+    "sha256": "9efc092f4ce2aae2cb7591c20c75c007237af92009be7ae25877fa19edf32850",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 172,
+    "symbol": "M_UCB_IMPLEMENTATION_ID",
+    "sha256": "3b8c8a35a536a626553b184f76a1be8fff7bb9d1213591806c6dba3565db7ff4",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 176,
+    "symbol": "GLRklUCBParams",
+    "sha256": "fdfef1ef25e0291e026df7f0723b49c4d457675a9f4dcc896c8a8a27dff8127f",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 198,
+    "symbol": "GLR_KLUCB_IMPLEMENTATION_ID",
+    "sha256": "b5e78e3b7486f91903f76672d80e5806cbfea63544cb09de5f3dff63de2a5883",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 199,
+    "symbol": "GLR_KLUCB_PREFIX_OPTIMIZED_IMPLEMENTATION_ID",
+    "sha256": "e59ce21256580c1d61d95cb00fa5ad1362ec783bcab50fe971031e5da7a096c8",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 202,
+    "symbol": "GLR_KLUCB_VECTORIZED_INDEX_IMPLEMENTATION_ID",
+    "sha256": "0909d67a2bde27a7a453242be734262bd006a22aab7c4257d25ba40f14b9bae5",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 224,
+    "symbol": "GammaSWGTSParams",
+    "sha256": "0a78c1e38b3a9c5dc0e8da7adb76a6dea9841abd999ca188d973fcbbb4b016fb",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/policy_types.py",
+    "line": 236,
+    "symbol": "GAMMA_SWGTS_IMPLEMENTATION_ID",
+    "sha256": "8df8cdd9763c8ed42a9652db8c71316034c216386ded97d64f18b294b0939fde",
+    "destination": "eats/algorithms/parameters.py"
+  },
+  {
+    "source": "src/adts/time_uniform_glr_authorized_e_ats.py",
+    "line": 44,
+    "symbol": "BoundaryKind",
+    "sha256": "573e2ce4262ca1aefcbae893cafdcc0241ec93855b806ee43143c3976c19c05c",
+    "destination": "eats/algorithms/glr.py"
+  },
+  {
+    "source": "src/adts/time_uniform_glr_authorized_e_ats.py",
+    "line": 46,
+    "symbol": "TIME_UNIFORM_GLR_IMPLEMENTATION_ID",
+    "sha256": "0c3fb1afec2098f4d5cd37098e37b8cc91f4aec918680d5acb4fd04f26141c30",
+    "destination": "eats/algorithms/glr.py"
+  },
+  {
+    "source": "src/adts/time_uniform_glr_authorized_e_ats.py",
+    "line": 49,
+    "symbol": "PRACTICAL_GLR_IMPLEMENTATION_ID",
+    "sha256": "03d5d6999add38b53768dd5076c973b93d40b05d57cf4ed44ec792e3a05977aa",
+    "destination": "eats/algorithms/glr.py"
+  },
+  {
+    "source": "src/adts/time_uniform_glr_authorized_e_ats.py",
+    "line": 55,
+    "symbol": "h_inverse",
+    "sha256": "df0cc05e6946cbfe78eb18ae387451c5bb1142e460ffefdfb27b66dfa31a2bb0",
+    "destination": "eats/algorithms/glr.py"
+  },
+  {
+    "source": "src/adts/time_uniform_glr_authorized_e_ats.py",
+    "line": 98,
+    "symbol": "_tilde_h",
+    "sha256": "989ef5f10e4d7dc61cf7fcdd7fa8f24a7b61ec2f3452a745b832ed2e5290f2b7",
+    "destination": "eats/algorithms/glr.py"
+  },
+  {
+    "source": "src/adts/time_uniform_glr_authorized_e_ats.py",
+    "line": 112,
+    "symbol": "kaufmann_koolen_T",
+    "sha256": "f3f9284db494856d3b45ee0fb3f7a636ad5fcbfd37914e28ea007086860b945b",
+    "destination": "eats/algorithms/glr.py"
+  },
+  {
+    "source": "src/adts/time_uniform_glr_authorized_e_ats.py",
+    "line": 124,
+    "symbol": "besson_time_uniform_glr_boundary",
+    "sha256": "f193c387760476ff812a1bffa5c0e0aee3dd846f0a8ff26bea4cfba9239ca567",
+    "destination": "eats/algorithms/glr.py"
+  },
+  {
+    "source": "src/adts/time_uniform_glr_authorized_e_ats.py",
+    "line": 139,
+    "symbol": "besson_practical_glr_boundary",
+    "sha256": "45a50f0f4802e9541706298f34cf3a8fbe7ce95217bc13c80951d29752f6d15f",
+    "destination": "eats/algorithms/glr.py"
+  },
+  {
+    "source": "src/adts/time_uniform_glr_authorized_e_ats.py",
+    "line": 149,
+    "symbol": "glr_boundary",
+    "sha256": "fe0581b8e5213dddb51ee38ae257d5f5413e8b5a502672c18cdfeb8276dcdb4d",
+    "destination": "eats/algorithms/glr.py"
+  },
+  {
+    "source": "src/adts/time_uniform_glr_authorized_e_ats.py",
+    "line": 160,
+    "symbol": "TimeUniformGLRAuthorizationConfig",
+    "sha256": "1c61be6d5d0eb9dd45d40024c6ad60ddb4878c4de485c002594d7d21d2875523",
+    "destination": "eats/algorithms/glr.py"
+  },
+  {
+    "source": "src/adts/time_uniform_glr_authorized_e_ats.py",
+    "line": 180,
+    "symbol": "time_uniform_glr_contract",
+    "sha256": "d22d55cece1df89bf8081ff3b536c074409ca41f4b7581264353d3efaecc4ae1",
+    "destination": "eats/algorithms/glr.py"
+  },
+  {
+    "source": "src/adts/time_uniform_glr_authorized_e_ats.py",
+    "line": 232,
+    "symbol": "run_e_ats_time_uniform_glr_full_budget_ramp",
+    "sha256": "31ff254dcf6db852a9defc5acb15884235a80610120b66238b6b5c97eec6c54d",
+    "destination": "eats/algorithms/glr.py"
+  },
+  {
+    "source": "src/adts/vgdts_v22_paper.py",
+    "line": 10,
+    "symbol": "DEFAULT_VGDTS_V22_HORIZON",
+    "sha256": "82df5fbedc627a7287202f6ac81cb9059397cf9229c674289c208ac846bbbd3d",
+    "destination": "eats/algorithms/scaling.py"
+  },
+  {
+    "source": "src/adts/vgdts_v22_paper.py",
+    "line": 11,
+    "symbol": "DEFAULT_VGDTS_V22_N_ARMS",
+    "sha256": "f2a12fb1574e84960837106c7887350637155bf2cf70266a6fae9488fb643b92",
+    "destination": "eats/algorithms/scaling.py"
+  },
+  {
+    "source": "src/adts/vgdts_v22_paper.py",
+    "line": 20,
+    "symbol": "_v22_prior_mass",
+    "sha256": "7af8f71d216f7f80255d4c2d08520bc5b76131da4e5facab9b9252e2cb0d8273",
+    "destination": "eats/algorithms/scaling.py"
+  },
+  {
+    "source": "src/adts/vgdts_v22_paper.py",
+    "line": 24,
+    "symbol": "_v22_reference_budget_scale",
+    "sha256": "5412f8f0e7ebf7f9f12ba949d0bcd72f12ae52a63e8c325375e3148bc458ddde",
+    "destination": "eats/algorithms/scaling.py"
+  },
+  {
+    "source": "src/adts/vgdts_v22_paper.py",
+    "line": 36,
+    "symbol": "_effective_v22_window",
+    "sha256": "1d63c0075a3e0490a5eeec3fbe16ef1616f3262aa3350783a6838dcd8138a90b",
+    "destination": "eats/algorithms/scaling.py"
+  },
+  {
+    "source": "src/adts/vgdts_v22_paper.py",
+    "line": 46,
+    "symbol": "derive_vgdts_v22_lambda_vol",
+    "sha256": "437f51fa20bae6a8f13ec4b459999c7c6df632e820ff8d4b1bbfe91861ef0e3b",
+    "destination": "eats/algorithms/scaling.py"
+  },
+  {
+    "source": "src/adts/vgdts_v22_paper.py",
+    "line": 51,
+    "symbol": "derive_vgdts_v22_shock_half_life",
+    "sha256": "bd443c0716908cab0593531c647d220b318314b25b93ca425104d094bb65f8b1",
+    "destination": "eats/algorithms/scaling.py"
+  },
+  {
+    "source": "src/adts/vgdts_v22_paper.py",
+    "line": 55,
+    "symbol": "derive_vgdts_v22_shock_score_decay",
+    "sha256": "b545a2d5adb0efa722e38848da93b96a1537e408406d1f64565a6872bbdba8ce",
+    "destination": "eats/algorithms/scaling.py"
+  },
+  {
+    "source": "src/adts/vgdts_v22_paper.py",
+    "line": 60,
+    "symbol": "derive_vgdts_v22_shock_takeover_reliability_mass",
+    "sha256": "9297d131cc35ad6d1790cc58eaa1823630ec061843fc46aa980318cb8d86bfaf",
+    "destination": "eats/algorithms/scaling.py"
+  },
+  {
+    "source": "src/adts/vgdts_v22_paper.py",
+    "line": 78,
+    "symbol": "derive_vgdts_v22_secondary_params",
+    "sha256": "8c55db981ff7d734cb077d706b3ee7691457a327be4b41b813cd0e9adb6cfa0a",
+    "destination": "eats/algorithms/scaling.py"
+  },
+  {
+    "source": "src/adts/vgdts_v3.py",
+    "line": 20,
+    "symbol": "FloatArray",
+    "sha256": "1ea68100339b5c3c331a84fed81f525dcf8617c7fa422d30c68a22669f7661ae",
+    "destination": "eats/algorithms/common.py"
+  },
+  {
+    "source": "src/adts/vgdts_v3.py",
+    "line": 22,
+    "symbol": "SamplingMode",
+    "sha256": "17c646f65b15a62f676a4820969282fa48cb1e7ff756321cbc56d1133fdb1cb3",
+    "destination": "eats/algorithms/common.py"
+  },
+  {
+    "source": "src/adts/vgdts_v3.py",
+    "line": 26,
+    "symbol": "VGDTSV3Params",
+    "sha256": "2cd21f5d10051cb54313db044d8bbd96afd208d5e31e3971d454941413b0f100",
+    "destination": "eats/algorithms/common.py"
+  },
+  {
+    "source": "src/adts/vgdts_v3.py",
+    "line": 54,
+    "symbol": "_validate_params",
+    "sha256": "9992ab524eacab25600a33d634e1e2084117c211fb52a812628dff98bb39d671",
+    "destination": "eats/algorithms/common.py"
+  },
+  {
+    "source": "src/adts/vgdts_v3.py",
+    "line": 65,
+    "symbol": "_validate_inputs",
+    "sha256": "cffc96be670de165b73d685dcf97658d77901c314a2b551e7d88b91c58189890",
+    "destination": "eats/algorithms/common.py"
+  },
+  {
+    "source": "src/adts/vgdts_v3.py",
+    "line": 84,
+    "symbol": "_pull",
+    "sha256": "00c9217a69b7218e6b4d29f1f5cc26c78112bb2a5ff7115cac3ef559aaa0e433",
+    "destination": "eats/algorithms/common.py"
+  },
+  {
+    "source": "src/adts/vgdts_v3.py",
+    "line": 169,
+    "symbol": "_draw_scores",
+    "sha256": "93e160f7b06cea755fd9f4c28b9bc39298c9f6203d5a576fa2381a7c36090803",
+    "destination": "eats/algorithms/common.py"
+  }
+]

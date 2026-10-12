@@ -1,0 +1,290 @@
+{
+  "schema_version": 1,
+  "protocol_id": "e_ats_full_budget_20_geometry_regret_v1",
+  "freeze_date": "2026-08-24",
+  "status": "frozen_before_canonical_policy_outcomes",
+  "scientific_evaluation_run_at_freeze": false,
+  "pre_execution_amendment": {
+    "canonical_policy_outcomes_read": false,
+    "reason": "red_team_removed_small_four_environment_subsample_and_exhausted_registered_unused_suffix",
+    "previous_random_source_range": [5, 8],
+    "final_random_source_range": [5, 95],
+    "previous_sentinel_source_range": [5, 8],
+    "final_sentinel_source_range": [5, 31]
+  },
+  "post_start_infrastructure_amendment": {
+    "date": "2026-08-24",
+    "trigger": "archived_np_mean_versus_cumsum_endpoint_divided_by_T_roundoff_guard",
+    "trigger_group_id": "D:asynchronous_per_arm_switching:k16:b1250:random_environment:064:tape0002",
+    "committed_canonical_group_rows_before_amendment": 0,
+    "canonical_regret_outcomes_inspected": false,
+    "archived_source_values_inspected_for_diagnosis": true,
+    "selected_archived_policy_value_count_audited": 70800,
+    "old_fixed_tolerance_false_failure_count": 1866,
+    "maximum_observed_absolute_normalization_discrepancy": 1.868921684078373e-13,
+    "ieee754_forward_bound_failure_count": 0,
+    "change": "replace_fixed_2e_minus_14_and_1e_minus_9_checks_with_horizon_derived_binary64_forward_error_bound",
+    "checkpoint_change": "protocol_identity_prefixed_checkpoint_filename_preserves_failed_zero_row_checkpoint",
+    "scientific_design_elements_changed": false
+  },
+  "documentation_path": "notes/e_ats_full_budget_20_geometry_regret_protocol_2026-08-24.md",
+  "policy_freeze_identity_sha256": "2fdfc43a17dbc409b3379466d75a52bf0c521606c9a9811f468d03d56815b9db",
+  "source_atlas": {
+    "manifest_path": "report/project_publication/e_value_vgdts_layer3_regret_atlas_v1/run_manifest_v5.json",
+    "manifest_identity_sha256": "6aa49bfa39f07a4ce8322360d5a0bf8a91bd91d337b684c3f2c4276e1e177da6",
+    "manifest_file_sha256": "23f88b3a7baf47fd079e86cd7434903bb526b0c2a7ac9f92af98a54e622f5e6a",
+    "environment_registry_identity_sha256": "d717c7588a76aa537fe91da9cceadd38c4289dc3296175512e9e72e8dda03de1",
+    "environment_registry_file_sha256": "c59b159048b6d6b3517ac9eaa1018eff82784c625f3f47bafa38f4fc53782cb0",
+    "checkpoint": {
+      "filename": "atlas_9062b00224865c69ee986c2922471ce55e99f188d4c82eaeda5e309b4db2a73b.sqlite3",
+      "size_bytes": 19419852800,
+      "sha256": "9515de2b9926ab40c0a54566da5040f709c45dbad79607cdd94c2a8beba15dce"
+    },
+    "provenance": "pre_existing_registered_layer3_atlas",
+    "canonical_policy_pair_previously_evaluated_on_selected_slice": false,
+    "environment_bank_claimed_wholly_unseen": false,
+    "archived_comparator_outcomes_preexisting": true,
+    "researcher_exposure_to_aggregate_atlas_results_possible": true,
+    "fully_independent_algorithm_holdout_claimed": false,
+    "random_environment_role": "joint_environment_and_registered_tape_generator_inference",
+    "sentinel_role": "fixed_finite_descriptive_stress_test_census"
+  },
+  "selection": {
+    "identity_sha256": "5075d10a2bee8715eb05a3891519dce3f1ae33c72e21df542ce4f5cb2351d98c",
+    "rule": {
+      "bank_id": "fresh_atlas",
+      "source_index_ranges_inclusive": {
+        "random_environment": [5, 95],
+        "sentinel": [5, 31]
+      },
+      "uses_complete_registered_suffix": true,
+      "tape_index": 2,
+      "uses_registered_metadata_only": true,
+      "development_slice": {
+        "source_indices": [0],
+        "tape_index": 0
+      },
+      "earlier_validation_slice": {
+        "source_indices": [1, 2, 3, 4],
+        "tape_index": 1
+      }
+    },
+    "K_values": [4, 8, 16, 32, 64],
+    "B_values": [250, 625, 1250, 2500],
+    "horizon_rule": "T_equals_K_times_B",
+    "mechanisms": [
+      "stationary",
+      "isolated_incumbent_down",
+      "isolated_challenger_up",
+      "sparse_sustained_local_shock",
+      "random_breakpoints",
+      "global_switching",
+      "rapid_dense_abrupt_switching",
+      "mixed_abrupt_plus_drift",
+      "asynchronous_per_arm_switching",
+      "gradual_drift"
+    ],
+    "source_kinds": ["random_environment", "sentinel"],
+    "scope": {
+      "group_count": 23600,
+      "stationary_group_count": 2360,
+      "nonstationary_group_count": 21240,
+      "primary_random_nonstationary_group_count": 16380,
+      "descriptive_sentinel_nonstationary_group_count": 4860,
+      "mechanism_count": 10,
+      "geometry_count": 20,
+      "mechanism_geometry_cell_count": 200,
+      "groups_per_mechanism_geometry_cell": 118,
+      "source_cell_count": 400,
+      "random_groups_per_source_cell": 91,
+      "sentinel_groups_per_source_cell": 27
+    }
+  },
+  "policies": {
+    "primary_pair": [
+      {
+        "row_id": "canonical_e_ats",
+        "implementation_id": "e_ats_full_budget_normalized_ramp_v1",
+        "entry_point": "src.adts.e_value_vgdts.run_e_ats_full_budget_ramp"
+      },
+      {
+        "row_id": "canonical_no_ce",
+        "implementation_id": "e_ats_full_budget_normalized_ramp_no_ce_v1",
+        "entry_point": "src.adts.e_value_vgdts.run_e_ats_full_budget_ramp_no_ce",
+        "only_removed_mechanism": "e_process_authorization"
+      }
+    ],
+    "secondary_archived_comparators": [
+      "strict_ots",
+      "historical_e_authorized_mean_gate",
+      "historical_raw_mean_gate_no_ce"
+    ],
+    "coupling": {
+      "mean_table": "identical_within_group",
+      "potential_reward_table": "identical_within_group",
+      "policy_rng_seed_descriptor": "identical_initial_descriptor_within_group",
+      "paired_sampling_unit": "environment_tape_group"
+    },
+    "archived_exact_replay": {
+      "source_index": 5,
+      "group_count": 400,
+      "rows": [
+        "strict_ots",
+        "e_authorized_mean_gate",
+        "raw_mean_gate"
+      ]
+    }
+  },
+  "outcome": {
+    "name": "normalized_dynamic_pseudo_regret",
+    "cumulative_formula": "sum_t(max_k_mu_k_t_minus_mu_A_t_t)",
+    "normalization": "divide_by_group_horizon_T",
+    "reason": "T_varies_across_registered_geometries"
+  },
+  "primary_estimand": {
+    "population": "all_16380_remaining_nonstationary_random_environment_groups",
+    "population_target": "joint_registered_random_environment_and_tape_generator",
+    "cell_mixture": "equal_weight_over_9_nonstationary_mechanisms_and_20_K_B_geometries",
+    "real_world_mechanism_frequency_claimed": false,
+    "tapes_per_selected_environment": 1,
+    "tape_averaged_environment_conditional_regret_claimed": false,
+    "sentinels_in_primary_inference": false,
+    "contrast": "canonical_e_ats_minus_canonical_no_ce",
+    "weighting": "equal_environment_tape_group",
+    "direction": "negative_favors_canonical_e_ats",
+    "minimum_effect_margin": 0.0002,
+    "margin_provenance": "inherited_from_earlier_prospective_ramp_validation",
+    "margin_interpretation": "predeclared_decision_threshold_not_a_universal_operational_importance_threshold",
+    "primary_comparison_count": 1
+  },
+  "bootstrap": {
+    "replicates": 50000,
+    "resampling_unit": "random_environment_with_one_registered_tape",
+    "cells": ["mechanism", "K", "B"],
+    "groups_resampled_per_cell": 91,
+    "matched_direction_pair": [
+      "isolated_incumbent_down",
+      "isolated_challenger_up"
+    ],
+    "matched_direction_rule": "share_resampled_source_indices_within_K_B",
+    "other_mechanisms_rule": "resample_independently",
+    "sentinels_resampled": false,
+    "interval": "percentile_bootstrap",
+    "lower_quantile_method": "lower",
+    "upper_quantile_method": "higher",
+    "seeds": {
+      "nonstationary_bootstrap": 4000171191152447037,
+      "stationary_bootstrap": 7867814435907237702
+    },
+    "seed_derivation": "first_8_bytes_sha256_protocol_id_slash_label_mod_2_to_63"
+  },
+  "decision_rules": {
+    "primary_minimum_effect_superiority": "one_sided_95_percentile_upper_endpoint_below_minus_0.0002",
+    "breadth_minimum_fraction": 0.75,
+    "breadth_count_rule": "ceil_breadth_minimum_fraction_times_axis_level_count",
+    "breadth_fraction_provenance": "extends_inherited_7_of_9_and_4_of_5_pre_outcome_validation_rule",
+    "broad_support_requires_primary_and": {
+      "random_nonstationary_mechanism_level_fraction_nonpositive": "at_least_0.75_after_ceiling",
+      "random_K_level_fraction_nonpositive": "at_least_0.75_after_ceiling",
+      "random_B_level_fraction_nonpositive": "at_least_0.75_after_ceiling",
+      "fixed_sentinel_census_pooled_mean_contrast": "nonpositive"
+    },
+    "failed_primary_cannot_be_rescued_by_secondary_analysis": true
+  },
+  "secondary_analyses": {
+    "paired_contrasts": [
+      "canonical_e_ats_minus_strict_ots",
+      "canonical_e_ats_minus_historical_e_ats",
+      "canonical_e_ats_minus_historical_no_ce"
+    ],
+    "stationary_safety": "descriptive",
+    "sentinel_census": "finite_descriptive_no_population_interval",
+    "mechanism_K_B_source_and_geometry_summaries": "descriptive",
+    "multiplicity_adjusted_confirmatory_claims": false
+  },
+  "workload": {
+    "selected_group_count": 23600,
+    "rounds_per_canonical_policy": 676730000,
+    "canonical_pair_rounds": 1353460000,
+    "archived_replay_group_count": 400,
+    "archived_replay_policy_rounds": 34410000,
+    "total_policy_rounds": 1387870000
+  },
+  "numerical_and_identity_checks": [
+    "protocol_and_policy_freeze_self_digests",
+    "pinned_file_sha256",
+    "source_manifest_and_environment_registry_identity",
+    "source_checkpoint_full_file_sha256_before_and_after_evaluation",
+    "mean_and_potential_table_sha256",
+    "realized_reward_potential_table_equality",
+    "independent_full_budget_ramp_reconstruction",
+    "decimal_reference_near_mean_zero_and_saturation_kinks",
+    "reference_arm_local_e_process_crossing_replay",
+    "abort_on_unresolved_e_boundary_guard",
+    "exact_archived_policy_replay_on_400_groups",
+    "result_group_id_metadata_and_metric_consistency",
+    "horizon_derived_ieee754_mean_reduction_consistency_bound",
+    "identity_bound_resumable_checkpoint",
+    "immutable_final_artifacts_with_sha256_sidecars"
+  ],
+  "cli_contract": {
+    "scientific_subcommands": ["run"],
+    "non_scientific_subcommands": ["preflight"],
+    "allowed_run_options": ["workers", "output_dir"],
+    "policy_or_subset_options": false
+  },
+  "claim_ceiling": {
+    "registered_atlas_average_regret_statement_permitted_if_decision_rule_passes": true,
+    "uniform_regret_dominance_claimed": false,
+    "per_environment_benefit_claimed": false,
+    "regret_optimality_claimed": false,
+    "environment_bank_claimed_wholly_fresh": false,
+    "fully_independent_confirmatory_algorithm_test_claimed": false,
+    "bootstrap_finite_sample_exact_coverage_claimed": false,
+    "e_process_null": "independent_per_arm_beta_1_1_bernoulli_prior_predictive",
+    "uniform_fixed_p_validity_claimed": false
+  },
+  "pinned_files": [
+    {
+      "path": "project_publication/e_ats_20_geometry_regret_evaluation.py",
+      "sha256": "b75297449b92abb355dd68a27ba77f17503a8cb7118a306775df717253c2a8f6"
+    },
+    {
+      "path": "project_publication/e_value_ce_alpha_regret_sensitivity.py",
+      "sha256": "f6315b93b562cfcfbd8cbff19023e5cc5c333e1f2d10d8baa32c8ae5ad771059"
+    },
+    {
+      "path": "project_publication/e_value_authorized_mean_gate_v2.py",
+      "sha256": "f244c97e31b7ddbebfa5369d40d80df368082884f9f3d350ff943eccccf2501f"
+    },
+    {
+      "path": "project_publication/e_value_workshop_phase0_v2_runner.py",
+      "sha256": "84e0eaaf0bf9ebde8f77474b0685a66d4f321ffc28dc10a17ddcdbdc3ea2f16e"
+    },
+    {
+      "path": "layer3_regret_atlas_v1/production.py",
+      "sha256": "5141730acc87ee6cc83cc6af904e98baa71abf22d7e6323273d883259b489e4a"
+    },
+    {
+      "path": "layer3_regret_atlas_v1/environments.py",
+      "sha256": "93fd397c65ed565e3145c93d7c31c969015370add0e9444fbfeb2ecabb2a614d"
+    },
+    {
+      "path": "layer3_regret_atlas_v1/numerical_guard.py",
+      "sha256": "77cf79169b3ddc059e0a1ee392662a24f5dff1e84ab1f7594991de83b769731b"
+    },
+    {
+      "path": "layer3_regret_atlas_v1/artifacts.py",
+      "sha256": "e7fb54b052dec1e66deb97cfe0c6773ea16d069a96e8f23608a747d98e377d1f"
+    },
+    {
+      "path": "layer3_regret_atlas_v1/production_artifacts.py",
+      "sha256": "3f39df07bfb36f48ecc7fecc7b328a3e56b4dfc3a2b460fd46a2667200708216"
+    },
+    {
+      "path": "notes/e_ats_full_budget_20_geometry_regret_protocol_2026-08-24.md",
+      "sha256": "fd5a272106f5e2822489f7352c4dfbccb10544eac9190e2714a7cf40275c3db2"
+    }
+  ],
+  "identity_sha256": "6e23b4f91086821b1f35b9812bc41390e48e0fb5a1fdcebb07e6673c5135cffa"
+}

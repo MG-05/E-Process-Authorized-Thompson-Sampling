@@ -1,0 +1,9 @@
+{
+  "artifact": "mixed_abrupt_plus_drift_k4_b625.npy",
+  "file_sha256": "704af9c7a1fbab6f7bd1d3af5d38eb5bf5ce9ef2954d0c572ff968c3e63879af",
+  "mean_table_sha256": "31885cc493d0ac7d04c284cc69b159f7102c3438be71c1562ecb51fb4edce6ff",
+  "shape": [
+    2500,
+    4
+  ]
+}

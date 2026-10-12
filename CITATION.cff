@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying paper."
+title: "When May a Bandit Leave Its Anchor? E-Process-Authorized Thompson Sampling under Non-stationarity"
+type: software
+version: 1.0.0
+authors:
+  - family-names: Gulati
+    given-names: Mayand
+  - family-names: Wang
+    given-names: Kerong
+  - family-names: Au
+    given-names: WeiChen
+repository-code: "https://github.com/MG-05/E-Process-Authorized-Thompson-Sampling"
+license: MIT
+preferred-citation:
+  type: article
+  title: "When May a Bandit Leave Its Anchor? E-Process-Authorized Thompson Sampling under Non-stationarity"
+  year: 2026
+  authors:
+    - family-names: Gulati
+      given-names: Mayand
+    - family-names: Wang
+      given-names: Kerong
+    - family-names: Au
+      given-names: WeiChen

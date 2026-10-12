@@ -1,0 +1,9 @@
+{
+  "artifact": "isolated_challenger_up_k4_b625.npy",
+  "file_sha256": "f848507ad8c5ebe75a153a607d9943d801e438fc9df102963489d55dbb6ea816",
+  "mean_table_sha256": "7055ce32f8d67b8573e2b826952f85f3d7d027b8ac0a12904ae72a32c8faf054",
+  "shape": [
+    2500,
+    4
+  ]
+}
