@@ -5,6 +5,7 @@ import json
 import math
 from pathlib import Path
 import re
+from types import SimpleNamespace
 import numpy as np
 import pytest
 
@@ -14,7 +15,8 @@ from eats.algorithms.baselines import run_dOTS
 from eats.algorithms.parameters import dOTSParams
 from eats.analysis import compute, verify_paper
 from eats.experiments.runner import environment, run_group, select_rows, GATES, check_outcome
-from eats.io import ROOT, load_rows, load_json, verify_integrity, output_directory
+from eats.experiments import runner
+from eats.io import ROOT, array_hash, load_rows, load_json, verify_integrity, output_directory
 
 def test_release_integrity():
     assert verify_integrity()>40
@@ -59,22 +61,59 @@ def test_no_authorization_preserves_anchor_actions_rewards_and_rng_state():
     np.testing.assert_array_equal(e['played_arms'],ots['played_arms'])
     assert r1.bit_generator.state==r2.bit_generator.state
 
+@pytest.mark.reference
 @pytest.mark.parametrize('suite',['registered','replay','calibration','null'])
 def test_frozen_group_reexecution(suite):
     row=select_rows(suite,smoke=True)[0]
     assert run_group((suite,row,list(GATES)))['matches_frozen']
 
+@pytest.mark.reference
 def test_all_seventeen_replay_methods_match_archived_actions():
     row=select_rows('replay',smoke=True)[0]
     policies=[r['row_id'] for r in load_json('baseline_configurations.json')['4']]+['e-ats']
     assert len(run_group(('replay',row,policies))['outcomes'])==17
 
-def test_corrupted_input_and_output_hashes_fail_closed():
+def test_corrupted_input_and_output_hashes_fail_closed(monkeypatch):
     row=select_rows('registered',smoke=True)[0]
+    # Synthetic means isolate integrity behavior from platform math libraries.
+    means=np.full((row['task']['T'],row['task']['K']),.5)
+    monkeypatch.setattr(runner,'bounded_generate',lambda task: (means,{}))
     with pytest.raises(ValueError,match='Reward-tape'):
-        environment({**row,'reward_sha256':'0'*64})
+        environment({**row,'mean_sha256':array_hash(means,'<f8'),'reward_sha256':'0'*64})
     with pytest.raises(ValueError,match='Frozen result mismatch'):
         check_outcome({'actions_sha256':'x'},{'actions_sha256':'y'},'group','policy')
+
+def test_one_bit_mean_drift_is_rejected_with_diagnostics(monkeypatch):
+    row=select_rows('registered',smoke=True)[0]
+    means=np.full((row['task']['T'],row['task']['K']),.5)
+    expected=array_hash(means,'<f8')
+    means[0,0]=np.nextafter(means[0,0],1.)
+    observed=array_hash(means,'<f8')
+    assert observed!=expected
+    monkeypatch.setattr(runner,'bounded_generate',lambda task: (means,{}))
+    with pytest.raises(ValueError,match='Mean-table drift') as error:
+        environment({**row,'mean_sha256':expected})
+    assert expected in str(error.value) and observed in str(error.value)
+    assert 'not been accepted as rounding error' in str(error.value)
+
+def test_resume_does_not_reuse_a_different_platform_checkpoint(monkeypatch,tmp_path):
+    row=select_rows('registered',smoke=True)[0]
+    calls=[]
+    def execute(job):
+        calls.append(job)
+        return {'group_id':row['group_id'],'outcomes':{'e-ats':row['outcomes']['e-ats']},'matches_frozen':True}
+    monkeypatch.setattr(runner,'select_rows',lambda *args,**kwargs: [row])
+    monkeypatch.setattr(runner,'run_group',execute)
+    args=SimpleNamespace(suite='registered',smoke=True,k=None,family=None,limit=None,
+                         policies=['e-ats'],output=str(tmp_path),workers=1)
+    monkeypatch.setattr(runner,'runtime_platform',lambda: {'system':'Darwin','architecture':'arm64'})
+    first=runner.run(args)
+    assert runner.run(args)['checkpoint']==first['checkpoint']
+    assert len(calls)==1
+    monkeypatch.setattr(runner,'runtime_platform',lambda: {'system':'Linux','architecture':'x86_64'})
+    second=runner.run(args)
+    assert second['checkpoint']!=first['checkpoint']
+    assert len(calls)==2
 
 def test_output_cannot_overwrite_inputs():
     with pytest.raises(ValueError): output_directory(ROOT/'data'/'new')

@@ -37,15 +37,20 @@ not a standalone wheel containing the experiment data.
 
 ```sh
 python -m eats verify
-python -m eats reproduce --bootstrap
-python -m pytest
+python -m eats reproduce --bootstrap --no-figures
+python -m pytest -m 'not reference'
 ```
 
 `verify` checks release hashes, suite censuses, and numerical paper claims.
-`reproduce --bootstrap` recomputes tables, all reported confidence intervals
-(50,000 resamples), and the three figures used by the paper. Outputs go to
-`results/paper/`. No saved policy is executed by these two commands.
-Omit `--bootstrap` for a faster descriptive readout, or use `--no-figures`.
+`reproduce --bootstrap --no-figures` recomputes tables and all reported confidence
+intervals (50,000 resamples) from the saved runs. Outputs go to `results/paper/`.
+No saved policy is executed by these two commands. Omit `--bootstrap` for a
+faster descriptive readout.
+
+Exact seeded regeneration and figure regeneration were validated on **macOS
+ARM64** with the pinned runtime. On that platform, run `python -m pytest` for
+all tests and omit `--no-figures` to rebuild the paper's three figures. The
+original figures are also included under `paper/figures/`.
 
 The headline means should be:
 
@@ -62,6 +67,13 @@ different populations. Authorization helps on average in the registered suite
 and hurts on replay. e-ATS has mean rank **9.72 of 17** replay methods.
 
 ## Rerun the policies
+
+These are strict comparisons with the archived runs. Use the macOS ARM64
+reference platform and pinned dependencies. Linux x86-64 has a confirmed
+mean-table hash mismatch in the registered gradual-drift smoke case; exact
+regeneration is not currently supported there. Matching Python and NumPy
+versions alone does not guarantee identical floating-point results across
+platforms. The saved-result commands above do not regenerate those mean tables.
 
 Start with small subsets at the original horizons:
 
@@ -96,6 +108,11 @@ More workers trade RAM for throughput. Results can differ across numerical
 platforms even with pinned versions; hash checks detect that rather than hiding
 it. The two known historical NumPy mean-table differences have included,
 hash-verified fixtures.
+
+CI runs integrity checks, mathematical tests, and saved-result tables/intervals
+on Linux and macOS. Only the macOS ARM64 job runs the exact archived-trajectory
+tests and both complete smoke suites. Passing the Linux job does not certify
+exact seeded regeneration on Linux. [Validation scope](docs/REPRODUCIBILITY.md#platforms-and-ci).
 
 ## Two suites, two roles
 

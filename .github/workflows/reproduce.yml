@@ -2,9 +2,17 @@ name: Paper reproduction checks
 on: [push, pull_request]
 jobs:
   checks:
+    name: ${{ matrix.os }} / ${{ matrix.scope }}
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-14]
+        include:
+          - os: ubuntu-24.04
+            scope: saved results and invariants
+            reference: false
+          - os: macos-14
+            scope: saved results and exact reruns
+            reference: true
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -21,7 +29,25 @@ jobs:
         run: python -c "import pathlib, platform; assert platform.python_version() == pathlib.Path('.python-version').read_text().strip(); print(platform.python_version())"
       - run: python -m pip install -r requirements.txt
       - run: python -m pip install -e '.[test]'
-      - run: python -m eats verify
-      - run: python -m pytest -q
-      - run: python -m eats run registered --smoke --workers 2
-      - run: python -m eats run replay --smoke --workers 2
+      - name: Record numerical runtime
+        run: python -c "import json, platform, numpy; print(platform.platform()); print(platform.machine()); print(numpy.__version__); print(json.dumps(numpy.show_config(mode='dicts'), indent=2))"
+      - name: Verify release and paper claims
+        run: python -m eats verify
+      - name: Test mathematical invariants and integrity checks
+        run: python -m pytest -q -m 'not reference'
+      - name: Recompute saved-result tables and all paper intervals
+        run: python -m eats reproduce --bootstrap --no-figures
+      # Archived mean/action hashes are exact reference checks, not a
+      # promise of bitwise-identical regeneration across OSes and CPUs.
+      - name: Verify reference platform
+        if: matrix.reference
+        run: python -c "import platform; assert (platform.system(), platform.machine()) == ('Darwin', 'arm64')"
+      - name: Test exact archived trajectories
+        if: matrix.reference
+        run: python -m pytest -q -m reference
+      - name: Regenerate registered smoke suite exactly
+        if: matrix.reference
+        run: python -m eats run registered --smoke --workers 2
+      - name: Regenerate replay smoke suite exactly
+        if: matrix.reference
+        run: python -m eats run replay --smoke --workers 2

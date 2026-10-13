@@ -25,6 +25,27 @@ BASELINES = dict(zip(('dts','dots','aff-ts','rexp3','dynamic-ts','sw-ucb','d-ucb
                      'glr-klucb','beta-swts','gamma-swgts','global-cts','d-linucb','ots','ts'),
                     (f'historical_{i:02d}' for i in range(4,20)),strict=True))
 
+def runtime_platform():
+    """Separate checkpoints by OS, architecture, and Python build."""
+    return {'system': platform.system(), 'architecture': platform.machine(),
+            'platform': platform.platform(), 'python_build': list(platform.python_build())}
+
+def mean_table_drift(row, means):
+    task = row['task']
+    return ValueError(
+        f'Mean-table drift: {row["group_id"]}\n'
+        f'Expected shape {(task["T"], task["K"])}; observed {means.shape}.\n'
+        f'Expected SHA-256: {row["mean_sha256"]}\n'
+        f'Observed SHA-256: {array_hash(means, "<f8")}\n'
+        f'Runtime: Python {platform.python_version()}, NumPy {np.__version__}, '
+        f'{platform.platform()} ({platform.machine()}).\n'
+        'Reference validation platform: macOS ARM64 with the pinned runtime. '
+        'Version pins alone do not guarantee bitwise equality across platforms; '
+        'this mismatch has not been accepted as rounding error. '
+        'For saved-result tables and intervals, use '
+        '`python -m eats reproduce --bootstrap --no-figures`. '
+        'See docs/REPRODUCIBILITY.md for the exact-regeneration contract.')
+
 def environment(row):
     task = row['task']
     if task['bank'] == 'fresh_atlas':
@@ -39,13 +60,13 @@ def environment(row):
             records = load_json('replay_runtime_bridge.json')['records']
             match = next((r for r in records if r['task_id'] == task['task_id']), None)
             if match is None:
-                raise ValueError(f'Mean-table drift: {row["group_id"]}')
+                raise mean_table_drift(row, means)
             path = DATA/'fixtures'/match['file']
             if hashlib.sha256(path.read_bytes()).hexdigest() != match['file_sha256']:
                 raise ValueError('Runtime bridge file hash mismatch')
             means = np.load(path, allow_pickle=False)
     if means.shape != (task['T'], task['K']) or array_hash(means, '<f8') != row['mean_sha256']:
-        raise ValueError(f'Mean-table drift: {row["group_id"]}')
+        raise mean_table_drift(row, means)
     mu = means.T
     uniforms = rng(row['potential_seed']).random(mu.shape)
     returns = np.asarray(uniforms < mu, dtype=np.uint8)
@@ -173,6 +194,7 @@ def run(args):
     destination = output_directory(args.output or f'results/{args.suite}')
     config = {'suite':args.suite,'groups':[r.get('group_id',f'null:{r.get("geometry_index")}:{r.get("trajectory_index")}') for r in rows],
               'policies':policies,'python':platform.python_version(),'numpy':np.__version__,
+              'runtime_platform':runtime_platform(),
               'release_manifest_sha256':hashlib.sha256((ROOT/'provenance/release.json').read_bytes()).hexdigest()}
     identity = hashlib.sha256(json.dumps(config,sort_keys=True).encode()).hexdigest()
     path = destination/f'{identity[:16]}.jsonl'

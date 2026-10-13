@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "files": {
-    ".github/workflows/reproduce.yml": "023bf388ad4d017cdfa2661ab1bb40753d86b7a77e9969eca6c80c90b4fdb00c",
+    ".github/workflows/reproduce.yml": "9d7f4704424a010bbde0d0896967b3b523a9956b0ce17fafc9531f49a3ca6337",
     ".gitignore": "be319087bd6e77bf92b47808128e0eaa7e8347f4d9c69a140d10ceada931bc9f",
     ".python-version": "aa0d6581054e6e4ff3f91839deca7a854ad37221b8784d060b42d0f847ff1a3b",
     "CITATION.cff": "242c3a9c63edc0db316a3d45bfcb4e209bb8c524bbd0040f91b146345dccbf58",
     "LICENSE": "8ea7093f5f3471cf6552ef362b7d22e378df5188df02f4bed6a9f376182db23c",
     "Makefile": "fe2c57bac4e34804eef891694ddec46e1510e68cda3fca09ac25858eef7e917b",
-    "README.md": "a9aebe8943a0ed451f7dec76753090c4ccd904a52f36031735f052925c454506",
+    "README.md": "6eba70372a35703a231f196c31418095c4eb0a230e8f51a41fb5b1de6feb21ce",
     "THIRD_PARTY_NOTICES.md": "00c3e37a962438e7a7b65b09fc7911a9b3e63113a0feaab9caf8a4bea8f1561e",
     "data/baseline_configurations.json": "ea233ecab92fa57c813be0e6a8ef08f9fdb948011682ab54ac2064dd852b5e19",
     "data/calibrated_thresholds.json": "bfe6b37f4d4e10aaa614a860736813cc54e58e5adc818e5e5917325362581fc0",
@@ -38,7 +38,7 @@
     "data/replay.jsonl.gz": "2f4df88b3986e28be7b1fe9441af9622f62a4a597780c102c9489c21565a4237",
     "data/replay_runtime_bridge.json": "bc8b853be185a4e23e68fb0f0ee6d311c2da6fdbad582ced3766e54b93fe48a1",
     "docs/ALGORITHMS.md": "82070761d7b8837012637a4aa4070bb18fbe8999adaf2f2b6cc9036021b7a1ec",
-    "docs/REPRODUCIBILITY.md": "27769205c3f7dd1244fdb95aafaf1484e1f85041da598365595db9d30e0ad608",
+    "docs/REPRODUCIBILITY.md": "9ce9d1664b229310e9347ca63242e05e72a602b807f581fb706c4f727aeb9fc5",
     "eats/__init__.py": "8f2e5353a8455655d263c8750735962097d62fb9bb1b90bf777aada2b25f2432",
     "eats/__main__.py": "3e122e9e28354b28f1b2db594cbad20f907d459a69a3204426c0f36390b0352c",
     "eats/algorithms/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -61,7 +61,7 @@
     "eats/experiments/calibration_math.py": "e8bcd9ff09c000bf1119dad056824e3e632485849d3088d9392ac43e86500e79",
     "eats/experiments/null_seeds.py": "4f9c9eba115a2431d07aa1f2cf79bc80d72dd8a33c57acf6ffa6db42b6290191",
     "eats/experiments/null_stream.py": "d56802c263f6190cea6c8e3afb1307d30a5ad47dddb7a80f4e6f001d04fa7d29",
-    "eats/experiments/runner.py": "bd175d7cf46526c98bdd54d918ca1ff7157ddc11fb1467f5dacfc61c1cfae766",
+    "eats/experiments/runner.py": "b3623a955f9b6f3a570990cbcfd081246253b559ecc5c1023801e874b7319ef8",
     "eats/figures.py": "1b03d1d714e2fbf6cee0c10a84e540bc8441056581daf95368110e184b152244",
     "eats/io.py": "d103601aa1a70c07ba98696d71d2d2f413bbfca8b2a6ca185cb3ee3e985b8a11",
     "paper/appendix.tex": "a7b94b5da43bc7670484a60e443b57efad685a0cf9b4d0a2195fe7454b44ca7f",
@@ -83,11 +83,11 @@
     "provenance/protocols/e_ats_table5_gate_protocol.json": "190c6253b4e5312af2ed21ee128e3e04d9f7983191ea6db4f08f8cb4fc29feb9",
     "provenance/protocols/e_ats_time_uniform_glr_gate_protocol.json": "e3c8bf49493a6642ad43b832c3e1b22971870a414bd9622b3070febce8fd5b1f",
     "provenance/validation.json": "f640a2801df2a7240041c2b25163bedff7256f8c89458bf21d6afd74604db254",
-    "pyproject.toml": "bac9957ff5f48e936702a4324b23a623946d1eac9e4c14b9b1c498334fd946cc",
+    "pyproject.toml": "49f9ec0f49eefc4da3ddc5faa2039cb62a86663e8ea940c5e09bf316be26bb5d",
     "requirements.txt": "87e4c32dbb02b5645c3a9f56f8784f1b0947be146b650d397c199098b5c8c59d",
     "tests/test_e_ats.py": "7fdaa0551fe6ff65475bd4638a2b53a560ac6ccd59751d6d4785ce3ffefaa15f",
     "tests/test_glr.py": "2ad83c4feb2f660fd7cdfc83b86129e15fcf7119eb2bb01b84e952a9c7352853",
-    "tests/test_release.py": "228bc51439bcd13a22f269a52da17f8c800f845ae10770564d8d073fdca92f19"
+    "tests/test_release.py": "c39e2cfee57effcb857faa066d0e97ff64830d5133f18b75df1ed38f53eb059d"
   },
   "reference_runtime": {
     "python": "3.12.13",

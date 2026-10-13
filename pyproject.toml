@@ -20,3 +20,4 @@ include = ["eats*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+markers = ["reference: exact archived trajectory checks validated on macOS ARM64 with the pinned runtime"]
