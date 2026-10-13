@@ -8,10 +8,17 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      # setup-python has no macOS build for the pinned security-only release.
+      - uses: astral-sh/setup-uv@v7
         with:
-          python-version: '3.12.13'
-          cache: pip
+          version: '0.11.21'
+      - name: Install the pinned Python runtime
+        run: |
+          uv python install
+          uv venv --managed-python --seed
+          echo "$GITHUB_WORKSPACE/.venv/bin" >> "$GITHUB_PATH"
+      - name: Verify Python version
+        run: python -c "import pathlib, platform; assert platform.python_version() == pathlib.Path('.python-version').read_text().strip(); print(platform.python_version())"
       - run: python -m pip install -r requirements.txt
       - run: python -m pip install -e '.[test]'
       - run: python -m eats verify

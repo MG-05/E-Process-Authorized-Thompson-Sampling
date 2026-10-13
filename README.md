@@ -21,6 +21,13 @@ python -m pip install -r requirements.txt
 python -m pip install -e '.[test]'
 ```
 
+If Python 3.12.13 is not installed, [uv](https://docs.astral.sh/uv/getting-started/installation/)
+can install it on macOS, Linux, or Windows. From this checkout, run
+`uv python install` and `uv venv --managed-python --seed`, then activate the
+virtual environment and run the two pip commands above. Both uv commands read
+`.python-version`. CI uses uv 0.11.21 because GitHub's `setup-python` does not
+provide macOS builds for Python 3.12.13.
+
 On Windows, activate with `.venv\Scripts\activate`. Keep this checkout: the
 experiment commands use its `data/`, `paper/`, and `provenance/` directories.
 The editable install is intentional; this is a repository reproduction bundle,
