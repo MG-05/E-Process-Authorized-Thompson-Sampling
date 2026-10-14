@@ -14,6 +14,7 @@ repository-code: "https://github.com/MG-05/E-Process-Authorized-Thompson-Samplin
 license: MIT
 preferred-citation:
   type: article
+  url: "https://arxiv.org/abs/2610.03646"
   title: "When May a Bandit Leave Its Anchor? E-Process-Authorized Thompson Sampling under Non-stationarity"
   year: 2026
   authors:
