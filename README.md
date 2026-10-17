@@ -10,7 +10,7 @@
 
 <p>
   <strong><a href="https://e-values-workshop.github.io/">NeurIPS 2026 Workshop · E-Values: From Statistics to ML</a></strong><br>
-  Accepted poster
+  Accepted poster &nbsp;·&nbsp; <a href="https://neurips.cc/virtual/2026/loc/paris/workshop/137611">Official NeurIPS workshop page</a>
 </p>
 
 <p>
