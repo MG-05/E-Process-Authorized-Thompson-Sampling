@@ -1,7 +1,7 @@
 \documentclass{article}
 
 \PassOptionsToPackage{numbers,sort&compress}{natbib}
-\usepackage[sglblindworkshop]{neurips_2026}
+\usepackage[preprint]{neurips_2026}
 \workshoptitle{E-Values: From Statistics to ML}
 
 \usepackage[utf8]{inputenc}
@@ -363,7 +363,8 @@ Appendix~\ref{app:glr-comparator} gives details.
 Under the declared model, the probability of departure is at most $\alpha_E$,
 and expected normalized pseudo-regret differs from the anchor’s by at
 most $\alpha_E$.
-The policy forces no exploration and has mean rank 9.72 among 17 replay methods.
+The policy forces no exploration and has mean replay rank 9.72,
+placing 12th of 17 methods by mean rank and 13th by mean regret.
 Future work should develop authorization that is restartable and valid for
 fixed means, together with non-stationary regret guarantees.
 

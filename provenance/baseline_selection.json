@@ -1,0 +1,259 @@
+{
+  "schema_version": 1,
+  "scope": "Historical selection provenance for the 14 tunable replay baselines at two geometries; TS and OTS were fixed configurations.",
+  "verification_scope": "Extracted from saved historical records and matched to all 28 released candidate signatures; tuning was not rerun for this release.",
+  "selection": "Staged grid search, shortlist, then minimum validation mean normalized dynamic pseudo-regret across the nine families at each geometry.",
+  "search_design_id": "vgdts_v3_publication_comparator_retuning_v2",
+  "final_bank_design_id": "vgdts_v3_symmetric_retuning_and_revalidation_v1",
+  "phases": {
+    "stage1": {
+      "environment_seed_first": 1830001,
+      "environment_seed_last": 1830003,
+      "environment_seed_count": 3,
+      "streams_per_family_and_label": 1
+    },
+    "stage2": {
+      "environment_seed_first": 1830004,
+      "environment_seed_last": 1830008,
+      "environment_seed_count": 5,
+      "streams_per_family_and_label": 1
+    },
+    "validation": {
+      "environment_seed_first": 1830101,
+      "environment_seed_last": 1830106,
+      "environment_seed_count": 6,
+      "streams_per_family_and_label": 5
+    },
+    "final": {
+      "environment_seed_first": 1840201,
+      "environment_seed_last": 1840250,
+      "environment_seed_count": 50,
+      "streams_per_family_and_label": 5
+    }
+  },
+  "deterministic_families": [
+    "slow",
+    "fast",
+    "abrupt"
+  ],
+  "deterministic_family_scope": "Environment-seed labels do not change the mean trajectories; separate stochastic runs do not constitute unseen mean trajectories.",
+  "recorded_final_bank_seed_audit": {
+    "passed": true,
+    "fresh_namespace_collision_count": 0,
+    "new_final_literal_seed_collision_with_comparator_v2": [],
+    "new_final_environment_seed_collisions": [],
+    "comparator_v2_selection_seed_parity_passed": true
+  },
+  "source_artifacts": [
+    {
+      "original_repository_path": "report/project_publication/vgdts_v3_publication_comparator_retuning_v2/run_manifest.json",
+      "sha256": "75ea32dc33c26c0f75366747b21f0a45afe1150e09d609acb47441ca2b698111"
+    },
+    {
+      "original_repository_path": "report/project_publication/vgdts_v3_publication_comparator_retuning_v2/selection/validation_selection.json",
+      "sha256": "a9a0260dbd3aad4b731b1c3e5068fb3ba239032670d14125d5f302a34c269b3d"
+    },
+    {
+      "original_repository_path": "report/project_publication/vgdts_v3_symmetric_retuning_and_revalidation_v1/run_manifest.json",
+      "sha256": "18f52eb74a6f0fb5e4388cd346584bbbb74ef690816150d430f6afd097e85d8e"
+    }
+  ],
+  "selected_configurations": [
+    {
+      "K": 4,
+      "row_id": "historical_04",
+      "policy": "dTS",
+      "selected_grid_index": 11,
+      "selected_signature_sha256": "941808c2b929679d3ea369e0bc825e17b4b0e2ab41bc201d198ba88d68557191"
+    },
+    {
+      "K": 4,
+      "row_id": "historical_05",
+      "policy": "dOTS",
+      "selected_grid_index": 11,
+      "selected_signature_sha256": "67ac0f2a59fe071649f60e5ca5834188eeb798f36d2eed2579684a69cbb1b0e1"
+    },
+    {
+      "K": 4,
+      "row_id": "historical_06",
+      "policy": "AFF-TS (1712.03134)",
+      "selected_grid_index": 2,
+      "selected_signature_sha256": "560c702cf0603df61f1c3ab7339d63164d84f8a1e2db44322f0d2bd140d629ee"
+    },
+    {
+      "K": 4,
+      "row_id": "historical_07",
+      "policy": "REXP3",
+      "selected_grid_index": 33,
+      "selected_signature_sha256": "4e197e301a63f32b7ec04ea4c23fc3b06a3392ed3c6db921b5befd581d3190a8"
+    },
+    {
+      "K": 4,
+      "row_id": "historical_08",
+      "policy": "Dynamic TS",
+      "selected_grid_index": 0,
+      "selected_signature_sha256": "954c8a8cff7796cd3e9dfa09bdc8e1f391e963d6b678400635ad3085ae3a13d6"
+    },
+    {
+      "K": 4,
+      "row_id": "historical_09",
+      "policy": "SW-UCB (0805.3415)",
+      "selected_grid_index": 35,
+      "selected_signature_sha256": "a45321cce77e540979cd5d8b6884a40a5dc7189662518c52dfb6212e9375a3ba"
+    },
+    {
+      "K": 4,
+      "row_id": "historical_10",
+      "policy": "D-UCB (0805.3415)",
+      "selected_grid_index": 51,
+      "selected_signature_sha256": "5438841c035482e90444e28183fe49870e26e47039082c2a4c197118d2d1e05d"
+    },
+    {
+      "K": 4,
+      "row_id": "historical_11",
+      "policy": "M-UCB (1802.03692)",
+      "selected_grid_index": 115,
+      "selected_signature_sha256": "7362dc5bfe9c075dad008148e048f154cd34b74b82d46246af61f112fa075aa2"
+    },
+    {
+      "K": 4,
+      "row_id": "historical_12",
+      "policy": "CUSUM-UCB (1711.03539)",
+      "selected_grid_index": 420,
+      "selected_signature_sha256": "55bf571c6498c9f2f516a985ef708303d7f071d604ceccf45ff94173eedf53fc"
+    },
+    {
+      "K": 4,
+      "row_id": "historical_13",
+      "policy": "GLR-klUCB (1902.01575)",
+      "selected_grid_index": 1,
+      "selected_signature_sha256": "65730e137ff88d5a6de32c57436d449ab50df10bf1984678a272b8c95069945a"
+    },
+    {
+      "K": 4,
+      "row_id": "historical_14",
+      "policy": "Beta-SWTS (2409.05181)",
+      "selected_grid_index": 2,
+      "selected_signature_sha256": "b87cd70402e2f0186a113d03b5224e4a8aa3735bc3ecb6474a54536363df1210"
+    },
+    {
+      "K": 4,
+      "row_id": "historical_15",
+      "policy": "gamma-SWGTS (2409.05181)",
+      "selected_grid_index": 23,
+      "selected_signature_sha256": "18f26d10a25ab8a8c87fcbf82a8cc32d7c2741955122d3f342fe6197749b7f66"
+    },
+    {
+      "K": 4,
+      "row_id": "historical_16",
+      "policy": "Global-CTS (1302.3721)",
+      "selected_grid_index": 77,
+      "selected_signature_sha256": "69535f23e70a73d41bf52c7858477b1e6948943f31c97c26db6eb7f11e74eaf8"
+    },
+    {
+      "K": 4,
+      "row_id": "historical_17",
+      "policy": "D-LinUCB one-hot (1909.09146)",
+      "selected_grid_index": 51,
+      "selected_signature_sha256": "f7a54cff4a41b3c35e23c899b9792e1329e34d9e3c495221919f230952020dcc"
+    },
+    {
+      "K": 32,
+      "row_id": "historical_04",
+      "policy": "dTS",
+      "selected_grid_index": 13,
+      "selected_signature_sha256": "ef26db795fae7ed84a0939239076ed368675eb50f094bd2510a1a6a41731b359"
+    },
+    {
+      "K": 32,
+      "row_id": "historical_05",
+      "policy": "dOTS",
+      "selected_grid_index": 13,
+      "selected_signature_sha256": "a65c0d67710d5f7c6aafe484df55770fb446c1882ae8224bcef86feb28910db9"
+    },
+    {
+      "K": 32,
+      "row_id": "historical_06",
+      "policy": "AFF-TS (1712.03134)",
+      "selected_grid_index": 2,
+      "selected_signature_sha256": "560c702cf0603df61f1c3ab7339d63164d84f8a1e2db44322f0d2bd140d629ee"
+    },
+    {
+      "K": 32,
+      "row_id": "historical_07",
+      "policy": "REXP3",
+      "selected_grid_index": 54,
+      "selected_signature_sha256": "d65b0c7132780e882246dddd3ece3829615be25327883fad88290665743778c2"
+    },
+    {
+      "K": 32,
+      "row_id": "historical_08",
+      "policy": "Dynamic TS",
+      "selected_grid_index": 0,
+      "selected_signature_sha256": "954c8a8cff7796cd3e9dfa09bdc8e1f391e963d6b678400635ad3085ae3a13d6"
+    },
+    {
+      "K": 32,
+      "row_id": "historical_09",
+      "policy": "SW-UCB (0805.3415)",
+      "selected_grid_index": 37,
+      "selected_signature_sha256": "f9ad2c42cbc0646cec5152cb5f4ce85d5c331e4a192f4ff0268905fdfc271529"
+    },
+    {
+      "K": 32,
+      "row_id": "historical_10",
+      "policy": "D-UCB (0805.3415)",
+      "selected_grid_index": 48,
+      "selected_signature_sha256": "07a1589d1ab8c6a8b28058546672e829ff1d2a74c089cb72a2c95d04f8e4da00"
+    },
+    {
+      "K": 32,
+      "row_id": "historical_11",
+      "policy": "M-UCB (1802.03692)",
+      "selected_grid_index": 5,
+      "selected_signature_sha256": "06f0ae35cdf96cf623473820557e044b8e6fd742e5b0f423a28f12748f38bf58"
+    },
+    {
+      "K": 32,
+      "row_id": "historical_12",
+      "policy": "CUSUM-UCB (1711.03539)",
+      "selected_grid_index": 420,
+      "selected_signature_sha256": "55bf571c6498c9f2f516a985ef708303d7f071d604ceccf45ff94173eedf53fc"
+    },
+    {
+      "K": 32,
+      "row_id": "historical_13",
+      "policy": "GLR-klUCB (1902.01575)",
+      "selected_grid_index": 1,
+      "selected_signature_sha256": "65730e137ff88d5a6de32c57436d449ab50df10bf1984678a272b8c95069945a"
+    },
+    {
+      "K": 32,
+      "row_id": "historical_14",
+      "policy": "Beta-SWTS (2409.05181)",
+      "selected_grid_index": 7,
+      "selected_signature_sha256": "e795bf5d66537027807bb44f3f90dad5f4383ab101b168bc9e84605fb19b9db9"
+    },
+    {
+      "K": 32,
+      "row_id": "historical_15",
+      "policy": "gamma-SWGTS (2409.05181)",
+      "selected_grid_index": 39,
+      "selected_signature_sha256": "fae6f8a89f074eb41771002664a93f54145924dad62c15dcdf5dca7129679f80"
+    },
+    {
+      "K": 32,
+      "row_id": "historical_16",
+      "policy": "Global-CTS (1302.3721)",
+      "selected_grid_index": 24,
+      "selected_signature_sha256": "9eeff1906a4a6adf2847a0abd371b4f41a22894e9e855d365cb2ae93e7ad1e0f"
+    },
+    {
+      "K": 32,
+      "row_id": "historical_17",
+      "policy": "D-LinUCB one-hot (1909.09146)",
+      "selected_grid_index": 47,
+      "selected_signature_sha256": "63aa7c5e94e89521dd828a6a904636a2b589098e3a97bd8931e46e9b03d3c48f"
+    }
+  ]
+}

@@ -40,7 +40,8 @@ sampling (OTS) anchor exactly.
 This repository accompanies the [paper](https://arxiv.org/abs/2610.03646) and
 contains its algorithms, registered and replay experiments, saved per-run
 results, exact seed descriptors, and verification tools. The manuscript and
-appendix are included in [paper/](paper/main.tex).
+appendix are included in [paper/](paper/main.tex), with
+[documented clarifications relative to arXiv v1](docs/REPRODUCIBILITY.md#relation-to-arxiv-v1).
 
 ## Results
 
@@ -64,7 +65,16 @@ to e-ATS. Authorization's empirical benefit depends on the environment.
 | Practical GLR | 0.0392 | 0.1529 |
 
 Lower is better. The columns represent different populations. Bold identifies
-our method; e-ATS has mean rank **9.72 of 17** on the replay suite.
+our method. Across the 18 replay family–geometry cells, e-ATS has mean rank
+**9.72**, placing **12th of 17 by mean rank and 13th by mean regret**.
+Among these 17 methods, it ranks **first in mixed regime and second in random
+drift** at (K,T)=(32,20000). These descriptive ranks do not establish a benefit
+from authorization: the open ramp has lower regret in that random-drift cell.
+
+SW-UCB has the lowest overall mean regret and second-best mean rank. Its frozen
+window is **τ=T**, so it uses the full observation history in these runs.
+D-UCB still discounts, with memory scale 1/(1−γ)=T.
+[Exact baseline settings and their interpretation →](docs/ALGORITHMS.md#ucb-memory-settings)
 
 ### Registered and replay suites
 
@@ -228,8 +238,12 @@ regenerated copies appear under `results/paper/figures/`.
 The departure guarantee is **Beta(1,1)–Bernoulli prior-predictive**, not uniform
 over fixed means. The exact-real theorem has no all-path binary64 equivalence
 proof. Experiments do not establish regret optimality or universal superiority.
-Baselines are local implementations with previously chosen, geometry-specific
-settings; tuning effort was not equalized.
+The 14 tunable baselines used geometry-specific configurations selected by
+staged grid search and validation on disjoint seeds of the same nine families;
+TS and OTS used fixed configurations, and e-ATS used one frozen configuration
+across all 18 cells. Tuning effort was not equalized. The three deterministic
+families reuse fixed mean trajectories despite their separate stochastic runs.
+[Selection and replay scope →](docs/REPRODUCIBILITY.md#baseline-selection-and-replay-scope)
 
 ## Citation
 

@@ -1,10 +1,30 @@
 # Reproduction contract
 
-The scope is the exact `E_Values_Workshop_2026/main.tex` requested for this
-release and its included `appendix.tex`. The manuscript is copied unchanged.
+This repository reproduces the results reported in
+[arXiv:2610.03646v1](https://arxiv.org/abs/2610.03646v1), including its appendix.
 The repository is a paper-specific extraction, not the entire development
 history. Older e-authorized threshold policies, unused ablations, tuning
 searches, real datasets, and unused figures are excluded.
+
+## Relation to arXiv v1
+
+The bundled manuscript is based on the
+[arXiv v1 source](https://arxiv.org/src/2610.03646v1), with these documented
+public-release corrections:
+
+- `main.tex` uses the arXiv `[preprint]` option, removing the submission notice
+  and line numbers from the earlier workshop-source extraction.
+- `main.tex` and `appendix.tex` clarify the overall rank positions. The appendix
+  also identifies the baseline tuning procedure, the full-horizon SW-UCB window,
+  D-UCB's memory scale, and the limits of the strongest-cell comparisons.
+- `trimspaces.sty` is the unmodified CTAN v1.1 file. Its upstream attribution and
+  complete source distribution are bundled under `paper/vendor/trimspaces/`;
+  see [third-party notices](../THIRD_PARTY_NOTICES.md).
+
+These are build, attribution, and explanatory corrections. Algorithms, frozen
+parameters, evaluation data, numerical table entries, and figures are unchanged.
+The bundled source is not claimed to be byte-identical to arXiv v1; the arXiv
+record remains the version of record for that submission.
 
 ## Paper-to-code map
 
@@ -60,6 +80,43 @@ all 20 cutoffs from the saved statistics. The null experiment independently
 draws arm means from Beta(1,1), then follows OTS and monitors the e-process.
 The reported endpoint is any threshold crossing, which agrees with e-ATS's
 first-authorization event under the coupled preauthorization path.
+
+## Baseline selection and replay scope
+
+The 14 tunable baselines used geometry-specific configurations selected by
+staged grid search and validation on disjoint seeds of the same nine families.
+TS and OTS used fixed configurations; e-ATS used one frozen configuration across
+all 18 cells. Candidates were scored by mean normalized dynamic pseudo-regret
+across the nine families at each geometry. The search retained a shortlist,
+then selected its best validation candidate; it did not exhaustively validate
+every grid point.
+
+| Phase | Environment-seed labels | Reward/policy streams per label and family |
+|---|---|---:|
+| Search stage 1 | 1830001–1830003 | 1 |
+| Search stage 2 | 1830004–1830008 | 1 |
+| Validation | 1830101–1830106 | 5 |
+| Historical final bank used for this replay | 1840201–1840250 | 5 |
+
+The final bank reused the earlier validation-selected baseline configurations.
+All 28 released tunable configurations (14 methods at two geometries) match
+their original selected grid indices and candidate-signature hashes. The
+recorded final-bank seed audit passed with no reported final environment-seed
+collisions against the checked development history.
+[Selection provenance](../provenance/baseline_selection.json) records those
+identities, split ranges, and source-artifact hashes; it is an extraction of the
+historical records, not a new execution of the tuning search.
+
+Slow sine, fast sine, and abrupt cycle ignore the environment-seed label, so
+their mean trajectories are the same during selection and replay. Separate
+seeds provide separate stochastic runs, not unseen mean trajectories. The six
+other families vary with the environment seed. No settings were selected using
+the replay outcomes, but the replay is a secondary historical comparison:
+baseline outcomes had been seen before its protocol freeze, and equal tuning
+budgets or an untouched confirmatory superiority test are not claimed.
+
+The [UCB settings](ALGORITHMS.md#ucb-memory-settings) also distinguish the
+full-history SW-UCB configuration from D-UCB's horizon-scale discounting.
 
 ## Integrity and numerical scope
 

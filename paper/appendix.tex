@@ -1678,14 +1678,31 @@ dTS and dOTS \citep{raj2017taming}, Dynamic TS \citep{gupta2011dynamic}, AFF-TS
 \citep{russac2019weighted}, and Beta-SWTS and $\gamma$-SWGTS
 \citep{fiandri2024swts}.
 
-We implemented each baseline ourselves, following its source algorithm and
-recommended settings as faithfully as possible.
-These are careful implementations rather than runs of the original
-authors' code.
-No method was tuned on the replay results, and \method{} used one fixed
+We implemented each baseline locally from its source algorithm.
+The 14 tunable baselines used geometry-specific configurations selected by
+staged grid search and validation on disjoint seeds of the same nine families;
+TS and \anchor{} used fixed configurations, and \method{} used one frozen
 configuration across all 18 family--geometry combinations.
-Since the methods were developed at different times, we do not claim that
-each received the same amount of tuning.
+Selection minimized mean normalized dynamic pseudo-regret across the nine
+families at each geometry, using search seeds 1830001--1830008 and validation
+seeds 1830101--1830106. The historical final bank used for replay has seeds
+1840201--1840250; its recorded seed audit found no overlap with the checked
+development history. For slow sine, fast sine, and abrupt cycle, the mean
+trajectories are deterministic, so disjoint seeds provide separate stochastic
+runs rather than unseen mean trajectories.
+No settings were selected using the replay outcomes. This is a secondary
+historical comparison: baseline outcomes had been seen before the replay
+protocol freeze, and equal tuning budgets are not claimed.
+
+\paragraph{What memory do the UCB settings retain?}
+The selected SW-UCB window is $\tau=T$ at both geometries, so no observation
+leaves the window during a run. It is full-history UCB in these experiments,
+with exploration coefficient $\xi=2$ at $(K,T)=(4,2500)$ and $\xi=1$ at
+$(32,20000)$. D-UCB uses $\gamma=0.9996$ and $0.99995$, respectively, giving
+the conventional memory scale $1/(1-\gamma)=T$; it still discounts older
+observations. Both D-UCB configurations use $\xi=0.5$ and bonus scale 2.
+SW-UCB's lowest overall mean regret and second-best mean rank therefore
+do not demonstrate a benefit from windowing.
 
 Within each of the 18 family--geometry combinations, the displayed methods are
 ranked by mean regret, with lower regret receiving a better rank.
@@ -1711,7 +1728,7 @@ better, and ranks are recomputed among the 17 displayed methods.}
 Method & Regret & Rank & Regret & Rank & Regret & Rank \\
 \midrule
 GLR-klUCB        & 0.1070 & 3.56  & 0.1027 & 2.56  & 0.1048 & 3.06 \\
-SW-UCB           & 0.0991 & 4.56  & 0.1006 & 3.00  & 0.0999 & 3.78 \\
+SW-UCB ($\tau=T$) & 0.0991 & 4.56  & 0.1006 & 3.00  & 0.0999 & 3.78 \\
 M-UCB            & 0.0969 & 4.11  & 0.1140 & 5.22  & 0.1055 & 4.67 \\
 D-UCB            & 0.0965 & 3.89  & 0.1259 & 7.56  & 0.1112 & 5.72 \\
 Global-CTS       & 0.1142 & 5.78  & 0.1194 & 5.89  & 0.1168 & 5.83 \\
@@ -1732,13 +1749,13 @@ REXP3            & 0.2250 & 15.56 & 0.3117 & 16.89 & 0.2684 & 16.22 \\
 \end{table}
 
 Across all 18 combinations, \method{} had mean regret $0.1530$ and mean rank
-9.72 of 17.
+9.72, placing 12th of 17 methods by mean rank and 13th by mean regret.
 At $K=4$ its mean regret was $0.1782$ and its mean rank was 12.56, while at
 $K=32$ they were $0.1277$ and 6.89.
 It improved on \anchor{} in 17 of 18 combinations, reducing overall mean regret
 from $0.2157$ to $0.1530$.
-This is a meaningful improvement over the protected anchor, but the overall
-ranking remains in the middle of the comparison rather than at the top.
+This improves on the protected anchor, while most displayed methods have
+lower overall mean regret and better overall mean rank.
 
 \begin{figure}[H]
   \centering
@@ -1766,7 +1783,8 @@ In our experiments, the geometries differ in arm count, total horizon, and gener
 The rank change cannot be attributed to any one of those differences.
 The gate transfer also shows that the open ramp outperformed \method{} on this same replay population.
 The first- and second-place cells do not establish that the
-e-process gate caused those rankings.
+e-process gate caused those rankings; the open ramp has lower regret in
+the $(K,T)=(32,20000)$ random-drift cell.
 
 Overall, authorization changes regret, but whether it helps depends on the environments
 being studied.

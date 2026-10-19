@@ -46,7 +46,7 @@ frozen parameters with class defaults when trying to reproduce the paper.
 | `aff-ts` | AFF-TS | historical_06 | run_aff_ts | lu2017adaptive |
 | `rexp3` | REXP3 | historical_07 | run_REXP3 | besbes2014rexp3 |
 | `dynamic-ts` | Dynamic TS | historical_08 | run_DTS | gupta2011dynamic |
-| `sw-ucb` | SW-UCB | historical_09 | run_sw_ucb | garivier2008ucb |
+| `sw-ucb` | SW-UCB (τ=T; full history in these runs) | historical_09 | run_sw_ucb | garivier2008ucb |
 | `d-ucb` | D-UCB | historical_10 | run_d_ucb | garivier2008ucb |
 | `m-ucb` | M-UCB | historical_11 | run_m_ucb | cao2018mucb |
 | `cusum-ucb` | CUSUM-UCB | historical_12 | run_cusum_ucb | liu2017cusum |
@@ -58,7 +58,31 @@ frozen parameters with class defaults when trying to reproduce the paper.
 | `ots` | OTS | historical_18 | run_dOTS (gamma=1) | may2012optimistic |
 | `ts` | TS | historical_19 | run_TS | thompson1933 |
 
-Citation entries are in `paper/references.bib`. Settings were selected in earlier
-development; this repository does not rerun tuning or claim equal tuning budgets.
+Citation entries are in `paper/references.bib`. The 14 tunable baselines used
+geometry-specific configurations selected by staged grid search and validation
+on disjoint seeds of the same nine families. TS and OTS used fixed configurations;
+e-ATS used one frozen configuration across all 18 cells. This repository does
+not rerun tuning or claim equal tuning budgets. The
+[selection and replay contract](REPRODUCIBILITY.md#baseline-selection-and-replay-scope)
+records the splits and the deterministic-family qualification.
 The replay leaderboard excludes four retired internal rows from the historical
 21-row artifact and recomputes ranks among e-ATS and these 16 baselines.
+
+### UCB memory settings
+
+| Geometry (K,T) | SW-UCB window τ | SW-UCB exploration ξ | D-UCB discount γ | D-UCB memory scale 1/(1−γ) |
+|---|---:|---:|---:|---:|
+| (4,2500) | 2500 | 2.0 | 0.9996 | 2500 |
+| (32,20000) | 20000 | 1.0 | 0.99995 | 20000 |
+
+SW-UCB removes an observation only when the stored history exceeds τ. Since
+τ=T, this never happens during either evaluation horizon: the executed policy
+is full-history UCB with the exploration coefficient shown above. Its lowest
+overall mean regret and second-best mean rank therefore do not demonstrate a
+benefit from windowing. The frozen row and CLI names retain the source algorithm's
+name for reproducibility.
+
+D-UCB multiplies accumulated counts and successes by γ each round. Its
+conventional geometric memory scale equals T (up to floating-point rounding),
+but it still downweights older observations. It is not identical to full-history
+UCB. Both geometries use `xi=0.5` and `bonus_scale=2.0` for D-UCB.
