@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "freeze_date": "2026-08-24",
+  "status": "frozen_canonical_candidate_awaiting_prospective_benchmark",
+  "canonical_variant": {
+    "label": "e-ATS full-budget normalized ramp",
+    "implementation_id": "e_ats_full_budget_normalized_ramp_v1",
+    "entry_point": "src.adts.e_value_vgdts.run_e_ats_full_budget_ramp"
+  },
+  "exact_direct_ablation": {
+    "label": "e-ATS full-budget normalized ramp without C^E",
+    "implementation_id": "e_ats_full_budget_normalized_ramp_no_ce_v1",
+    "entry_point": "src.adts.e_value_vgdts.run_e_ats_full_budget_ramp_no_ce",
+    "only_removed_mechanism": "e_process_authorization"
+  },
+  "policy_source": {
+    "path": "src/adts/e_value_vgdts.py",
+    "sha256": "e9135ed14d4be009d8df541ed978e2fc0e869d15073dd66c382da62d48293d76"
+  },
+  "freeze_verifier": {
+    "path": "project_publication/e_ats_full_budget_ramp_freeze.py",
+    "sha256": "1a23d23416047219260210c2e3bb7709d028bafeb4d5d5a9533b1c5f529e8da9"
+  },
+  "policy_dependencies": [
+    {
+      "path": "src/adts/vgdts_v22_paper.py",
+      "sha256": "6ad08c742ddf7f4a271f954ac39f9e47a1920e7ea8af91af8faeb1c77c55262a"
+    },
+    {
+      "path": "src/adts/vgdts_v3.py",
+      "sha256": "911bc619433320c3bde89c695dc263d69b02840b1b6b13f074c88a44beb06540"
+    }
+  ],
+  "runtime_environment": {
+    "python": "3.12.13",
+    "numpy": "2.5.2",
+    "pyproject_path": "pyproject.toml",
+    "pyproject_sha256": "845ac2c47900d9a375a79297b78dbc16161244b73fb4fe8cf5a634a142164e9e"
+  },
+  "public_policy_parameter_surface": [],
+  "runtime_inputs": [
+    "mu",
+    "rng",
+    "returns",
+    "diagnostics"
+  ],
+  "behavior_contract": {
+    "implementation_id": "e_ats_full_budget_normalized_ramp_v1",
+    "no_ce_ablation_implementation_id": "e_ats_full_budget_normalized_ramp_no_ce_v1",
+    "prior_alpha": 1.0,
+    "prior_beta": 1.0,
+    "authorization_alpha": 0.05,
+    "armwise_e_threshold": "n_arms_over_authorization_alpha",
+    "restart_eta": 0.25,
+    "restart_first_candidate_pull": 2,
+    "restart_candidate_rule": "max_previous_plus_1_ceil_1_plus_eta_times_previous",
+    "restart_component_weight": "1_over_j_times_j_plus_1",
+    "restart_future_capital": "1_over_active_component_count_plus_1",
+    "authorization_coupling": "absorbing_historical_latch",
+    "mean_normalization_budget": 0.05,
+    "mean_spending_schedule": "beta_over_k_times_6_over_pi2_n2",
+    "mean_update": "lambda_m_plus_1_minus_lambda_times_reward_minus_long_prediction",
+    "mean_range_update": "lambda_squared_q_plus_1_minus_lambda_squared",
+    "mean_boundary": "sqrt_0.5_q_log_2_over_delta",
+    "relevance_transform": "min_1_abs_mean_evidence_over_boundary",
+    "boundary_scale": 1.0,
+    "mean_numerical_epsilon": 1e-12,
+    "detector_decay": "clip_1_minus_inverse_sqrt_horizon_0_cap",
+    "detector_decay_cap": 0.999,
+    "short_discount": 0.995,
+    "short_discount_clock": "every_global_round",
+    "long_discount": 1.0,
+    "dual_memory_mix_power": 0.3,
+    "local_takeover_scale": 0.8,
+    "global_takeover_scale": 0.0,
+    "reliability_mass": "max_2_prior_mass_2_kref_prior_mass_times_sqrt_arm_local_budget_ratio",
+    "reliability_reference_horizon": 5000,
+    "reliability_reference_n_arms": 4,
+    "short_reliability": "short_effective_mass_over_short_effective_mass_plus_reliability_mass",
+    "short_weight": "gate_power_plus_local_scale_times_1_minus_gate_power_times_gate_times_reliability",
+    "sampling": "convex",
+    "score": "optimistic_max_sample_and_posterior_mean",
+    "tie_breaking": "numpy_argmax_lowest_index",
+    "gate_timing": "reward_at_t_updates_gate_for_action_t_plus_1"
+  },
+  "provenance": [
+    {
+      "path": "notes/e_ats_full_budget_ramp_freeze_2026-08-24.md",
+      "sha256": "162f7a779216b0848f16a6fc56feb5aac8fbfdd7f58c99ea450a6f03f6990b68"
+    },
+    {
+      "path": "notes/e_value_ce_normalized_ramp_magic_number_audit_2026-08-23.md",
+      "sha256": "6961a6bfa6ddda4780bd4cddb16bcb949bfe14cf068b27ea8eeaae722b5dfef2"
+    },
+    {
+      "path": "notes/e_value_ce_full_mean_budget_sensitivity_protocol_2026-08-24.md",
+      "sha256": "eeb82d6e0eacac409e9def3d9e2c8798e8f0c1cbf66a3e32d0d6538b76fabfa9"
+    },
+    {
+      "path": "notes/e_value_ce_full_mean_budget_sensitivity_results_2026-08-24.md",
+      "sha256": "46f8e23165a838cbf471737a011b9f4d1beb199d8e06c12669cfc1a44f2fd47b"
+    }
+  ],
+  "prefreeze_empirical_status": {
+    "prospectively_validated_budget_fraction": 0.5,
+    "canonical_full_budget_fraction": 1.0,
+    "full_budget_evaluation_status": "post_hoc_same_bank_sensitivity_only",
+    "full_minus_half_nonstationary_mean_normalized_regret": 0.0000950163,
+    "reason_for_full_budget_freeze": "remove_obsolete_split_and_exhaust_declared_mean_budget_not_regret_selection"
+  },
+  "claim_ceiling": {
+    "e_process_null": "independent_per_arm_beta_1_1_bernoulli_prior_predictive",
+    "uniform_fixed_p_validity_claimed": false,
+    "uniform_regret_dominance_claimed": false,
+    "regret_optimality_claimed": false,
+    "old_min_alpha_epsilon_claim_retained": false,
+    "current_e_value_must_remain_above_threshold": false
+  },
+  "release_checks": [
+    "source_and_dependency_sha256",
+    "manifest_self_digest",
+    "runtime_contract_equality",
+    "closed_public_policy_parameter_surface",
+    "restart_reference_equivalence",
+    "full_budget_formula_identity",
+    "deterministic_replay_identity",
+    "development_definition_unit_equivalence",
+    "direct_ablation_single_mechanism_difference"
+  ],
+  "experiment_status": {
+    "scientific_experiment_run_during_freeze": false,
+    "future_benchmark_protocol_frozen": false,
+    "future_benchmark_run": false
+  },
+  "change_policy": {
+    "allowed_under_current_implementation_id": [
+      "documentation with no behavior change",
+      "diagnostics proved not to change policy behavior",
+      "tests proved not to change policy behavior"
+    ],
+    "requires_new_freeze_identity_but_not_new_implementation_id": [
+      "pinned provenance documentation change",
+      "verifier change",
+      "runtime pin change",
+      "diagnostic-only policy-source change proved behavior-neutral"
+    ],
+    "requires_new_implementation_id_and_freeze": [
+      "equation or numerical value change",
+      "update-order or random-draw-order change",
+      "e-process or latch change",
+      "posterior-state or score change",
+      "tie-breaking change",
+      "public policy-parameter surface change",
+      "direct-ablation semantic change"
+    ]
+  },
+  "identity_sha256": "2fdfc43a17dbc409b3379466d75a52bf0c521606c9a9811f468d03d56815b9db"
+}

@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "scope": "Historical origin of the frozen e-ATS controller constants; this is provenance, not a new tuning result.",
+  "original_repository": {
+    "name": "Adaptive-Discounted-Thompson-Sampling",
+    "visibility": "private",
+    "path_semantics": "original_repository_path values identify private historical sources; they are not public links. public_copy values are paths relative to this release root."
+  },
+  "verification_scope": "Copied saved selection records without alteration; checked winners against recorded validation scores and grid coordinates, and restored freeze notes from the recorded commit with SHA-256 verification. The tuning experiments were not rerun.",
+  "predecessor": "VG-dTS primary-288",
+  "search_design_id": "vgdts_v3_symmetric_retuning_and_revalidation_v1",
+  "selection_rule": "Staged grid search and shortlist, then minimum validation mean normalized dynamic pseudo-regret over the nine families at each geometry; ties broken by lowest grid index. The primary-288 pipeline remained canonical regardless of final performance.",
+  "coordinate_order": [
+    "gamma_min",
+    "dual_memory_mix_power",
+    "local_takeover_scale"
+  ],
+  "primary_grid": {
+    "gamma_min": [
+      0.55,
+      0.8,
+      0.9,
+      0.95,
+      0.97,
+      0.99,
+      0.9925,
+      0.994,
+      0.995
+    ],
+    "dual_memory_mix_power": [
+      0.3,
+      0.45,
+      0.6,
+      0.8
+    ],
+    "local_takeover_scale": [
+      0.0,
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.8
+    ],
+    "candidate_count": 288,
+    "iteration_order": "Cartesian product in coordinate_order, local_takeover_scale varies fastest; zero-based grid indices."
+  },
+  "phase_seeds": {
+    "final": {
+      "first": 1840201,
+      "last": 1840250,
+      "count": 50,
+      "streams_per_family_and_label": 5
+    },
+    "stage1": {
+      "first": 1830001,
+      "last": 1830003,
+      "count": 3,
+      "streams_per_family_and_label": 1
+    },
+    "stage2": {
+      "first": 1830004,
+      "last": 1830008,
+      "count": 5,
+      "streams_per_family_and_label": 1
+    },
+    "validation": {
+      "first": 1830101,
+      "last": 1830106,
+      "count": 6,
+      "streams_per_family_and_label": 5
+    }
+  },
+  "baseline_selection_relationship": "The predecessor reused the baseline pipeline tuning/validation environment seeds and derived reward/policy seeds. Final replay seeds were disjoint; the recorded final-bank seed audit passed.",
+  "selected_configurations": [
+    {
+      "K": 4,
+      "T": 2500,
+      "selected_grid_index": 199,
+      "coordinate": [
+        0.9925,
+        0.3,
+        0.8
+      ],
+      "validation_mean_normalized_regret": 0.19180314120261643,
+      "runner_up_grid_index": 167,
+      "runner_up_coordinate": [
+        0.99,
+        0.3,
+        0.8
+      ],
+      "runner_up_validation_mean_normalized_regret": 0.19190017477443003,
+      "selected_grid_faces": [
+        {
+          "parameter": "dual_memory_mix_power",
+          "face": "lower",
+          "value": 0.3
+        },
+        {
+          "parameter": "local_takeover_scale",
+          "face": "upper",
+          "value": 0.8
+        }
+      ]
+    },
+    {
+      "K": 32,
+      "T": 20000,
+      "selected_grid_index": 263,
+      "coordinate": [
+        0.995,
+        0.3,
+        0.8
+      ],
+      "validation_mean_normalized_regret": 0.16534465211165217,
+      "runner_up_grid_index": 258,
+      "runner_up_coordinate": [
+        0.995,
+        0.3,
+        0.2
+      ],
+      "runner_up_validation_mean_normalized_regret": 0.1656744748770125,
+      "selected_grid_faces": [
+        {
+          "parameter": "gamma_min",
+          "face": "upper",
+          "value": 0.995
+        },
+        {
+          "parameter": "dual_memory_mix_power",
+          "face": "lower",
+          "value": 0.3
+        },
+        {
+          "parameter": "local_takeover_scale",
+          "face": "upper",
+          "value": 0.8
+        }
+      ]
+    }
+  ],
+  "e_ats_transfer": {
+    "coordinate": [
+      0.995,
+      0.3,
+      0.8
+    ],
+    "source_geometry": {
+      "K": 32,
+      "T": 20000
+    },
+    "applied_to": "Every e-ATS geometry in the registered and replay suites. gamma_min and gamma_max are both fixed to 0.995 in e-ATS.",
+    "interpretation": "Frozen does not mean untuned. All three transferred coordinates are grid-boundary selections; no unconstrained or interior optimum is established. K=4 inherits gamma=0.995 although the predecessor selected gamma_min=0.9925 there. This transfer is another difference relevant to interpreting the K=4/K=32 rank gap; its causal contribution was not isolated."
+  },
+  "authorization": {
+    "alpha_E": 0.05,
+    "threshold": "K / alpha_E",
+    "origin": "alpha_E is a declared error budget, not regret-tuned; equal arm allocation and the e-process guarantee determine the threshold under the independent per-arm Beta(1,1)-Bernoulli prior-predictive null."
+  },
+  "other_origin_categories": {
+    "empirical_development": "Restart spacing eta=0.25 was selected from {0.25,0.5,1} in a detector-construction study, not a bandit-regret search. The normalized ramp was selected over a soft-ratio transform on development groups; the absorbing latch was retained after a current-level alternative failed its development rule.",
+    "inherited_calibrations": "Mean budget beta_M=0.05, detector sqrt(T) timescale, and reliability reference geometry/scaling are inherited fixed calibrations. beta_M=alpha_E is historical coincidence, not a proof requirement. Earlier OFAT sensitivities prohibited reselection.",
+    "budget_accounting": "The full-budget multiplier c=1 exhausts the declared mean-normalization budget; it was not selected for winning a regret comparison. At the August freeze its evaluation was post hoc on the earlier validation bank; subsequent registered-suite evidence is separate.",
+    "modeling_and_structure": "Bernoulli rewards and Beta(1,1) priors are modeling choices. Convex score mixing, optimistic scoring, zero confidence bonus, zero global takeover, the restart weight rule, and the n^-2 spending schedule are structural choices.",
+    "derived_values": "The 6/pi^2 factor normalizes n^-2 spending; future capital 1/(J+1) follows the restart weights; the first restart pull 2 and reliability floor 4 follow the stated structural/prior conventions.",
+    "numerical_safeguards": "The detector cap 0.999 and discrepancy tolerance 1e-12 are numerical safeguards, not tuned statistical levels.",
+    "full_ledger": "provenance/freeze_notes/e_value_ce_normalized_ramp_magic_number_audit_2026-08-23.md"
+  },
+  "source_artifacts": [
+    {
+      "original_repository_path": "report/project_publication/vgdts_v3_publication_comparator_retuning_v2/selection/validation_selection.json",
+      "public_copy": "provenance/validation_selection.json",
+      "sha256": "a9a0260dbd3aad4b731b1c3e5068fb3ba239032670d14125d5f302a34c269b3d"
+    },
+    {
+      "original_repository_path": "report/project_publication/vgdts_v3_symmetric_retuning_and_revalidation_v1/selection/synthetic_validation.json",
+      "public_copy": "provenance/synthetic_validation.json",
+      "sha256": "489a88cf512ce046fd75b8f152b72a40967c79801dcedd86c40746592873a615"
+    },
+    {
+      "original_repository_path": "project_publication/e_ats_full_budget_ramp_freeze_manifest.json",
+      "public_copy": "provenance/e_ats_full_budget_ramp_freeze_manifest.json",
+      "sha256": "faace898de809a8a872794b19cbda2668a29a962347dab06b9ef090efb458495"
+    },
+    {
+      "original_repository_path": "project_publication/vgdts_v3_symmetric_candidates.py",
+      "sha256": "bd90efa71a5fe686ef1b4e75a2783c827457b5f377a928ec44e2f8a78c64c6e7",
+      "public_copy": null
+    },
+    {
+      "original_repository_path": "project_publication/vgdts_v3_symmetric_retuning.py",
+      "sha256": "2900f3f93f91e61a5c830da1831e63653ab94f34a02e9a5f404052430eec8f8f",
+      "public_copy": null
+    },
+    {
+      "original_repository_path": "report/project_publication/vgdts_v3_symmetric_retuning_and_revalidation_v1/run_manifest.json",
+      "sha256": "18f52eb74a6f0fb5e4388cd346584bbbb74ef690816150d430f6afd097e85d8e",
+      "public_copy": null
+    }
+  ],
+  "recovered_freeze_notes": {
+    "source_commit": "6997d27ad09ef1eb14e2d695b4c6dea179e32e0f",
+    "manifest": "provenance/e_ats_full_budget_ramp_freeze_manifest.json",
+    "context": "Unmodified archival notes describe knowledge and experimental status at the August 2026 freeze. Their private paths, historical instructions, and pre-benchmark status are preserved as evidence, not current release instructions or a claim that later registered experiments did not occur.",
+    "files": [
+      {
+        "path": "provenance/freeze_notes/e_ats_full_budget_ramp_freeze_2026-08-24.md",
+        "original_repository_path": "notes/e_ats_full_budget_ramp_freeze_2026-08-24.md",
+        "sha256": "162f7a779216b0848f16a6fc56feb5aac8fbfdd7f58c99ea450a6f03f6990b68"
+      },
+      {
+        "path": "provenance/freeze_notes/e_value_ce_normalized_ramp_magic_number_audit_2026-08-23.md",
+        "original_repository_path": "notes/e_value_ce_normalized_ramp_magic_number_audit_2026-08-23.md",
+        "sha256": "6961a6bfa6ddda4780bd4cddb16bcb949bfe14cf068b27ea8eeaae722b5dfef2"
+      },
+      {
+        "path": "provenance/freeze_notes/e_value_ce_full_mean_budget_sensitivity_protocol_2026-08-24.md",
+        "original_repository_path": "notes/e_value_ce_full_mean_budget_sensitivity_protocol_2026-08-24.md",
+        "sha256": "eeb82d6e0eacac409e9def3d9e2c8798e8f0c1cbf66a3e32d0d6538b76fabfa9"
+      },
+      {
+        "path": "provenance/freeze_notes/e_value_ce_full_mean_budget_sensitivity_results_2026-08-24.md",
+        "original_repository_path": "notes/e_value_ce_full_mean_budget_sensitivity_results_2026-08-24.md",
+        "sha256": "46f8e23165a838cbf471737a011b9f4d1beb199d8e06c12669cfc1a44f2fd47b"
+      }
+    ]
+  }
+}

@@ -9,11 +9,12 @@ authors:
   - family-names: Wang
     given-names: Kerong
   - family-names: Au
-    given-names: WeiChen
+    given-names: Wei-Chen
 repository-code: "https://github.com/MG-05/E-Process-Authorized-Thompson-Sampling"
 license: MIT
 preferred-citation:
   type: article
+  doi: "10.48550/arXiv.2610.03646"
   url: "https://arxiv.org/abs/2610.03646"
   title: "When May a Bandit Leave Its Anchor? E-Process-Authorized Thompson Sampling under Non-stationarity"
   year: 2026
@@ -23,4 +24,4 @@ preferred-citation:
     - family-names: Wang
       given-names: Kerong
     - family-names: Au
-      given-names: WeiChen
+      given-names: Wei-Chen

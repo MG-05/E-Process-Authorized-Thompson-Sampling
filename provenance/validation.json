@@ -108,5 +108,7 @@
   "limitations": [
     "The complete multi-billion-round experiment was not rerun during release preparation.",
     "Reexecuted paths matched exactly on the recorded runtime; no all-path binary64 proof or cross-platform trace identity is claimed."
-  ]
+  ],
+  "record_type": "historical_release_snapshot",
+  "scope_note": "This immutable-run account describes validation performed on 2026-10-11. Test count, then-configured CI platforms, CI execution status, and install observations are historical, not assertions about the current release. Later local checks are recorded separately in validation_2026-10-19.json."
 }

@@ -29,7 +29,42 @@ machine-readable contract.
 The files `common.py` and `scaling.py` preserve shared numerical helpers from
 the development implementation. Their historical symbol names do not expose
 retired policies. The public `from eats import run_e_ats, run_open_ramp` API
-has no controller-tuning surface.
+has no controller-tuning surface. That API restriction does not imply that its
+constants were never tuned during development.
+
+### Origin of controller settings
+
+e-ATS inherits controller constants tuned for its predecessor VG-dTS by the
+same staged validation on the nine replay families, with seeds disjoint from
+replay. The primary 288-point search selected:
+
+| Selection geometry | Short discount γ | Mixing power ν | Local takeover ζ | Grid index |
+|---|---:|---:|---:|---:|
+| K=4, T=2500 | 0.9925 | 0.30 | 0.80 | 199 |
+| K=32, T=20000 | 0.995 | 0.30 | 0.80 | 263 |
+
+e-ATS uses the K=32 vector **(0.995,0.30,0.80) at every geometry**, rather than
+the geometry-specific predecessor winners. All three K=32 coordinates lie on
+the search-grid boundary; K=4's selected γ is interior. Selection minimized
+validation mean normalized dynamic pseudo-regret, with ties broken by lowest
+grid index. The records establish the transfer, not its optimality or a causal
+explanation for the difference between K=4 and K=32 replay ranks.
+
+The authorization threshold **K/alpha_E is not regret-tuned**: it follows the
+declared error budget alpha_E=0.05 and equal allocation across arms under the
+prior-predictive model. Other construction choices did involve development
+comparisons: split spacing eta=0.25 was selected from {0.25,0.5,1}; the normalized
+clipped ramp was selected over a soft ratio; and the absorbing latch was retained
+after comparison with a current-level gate. The relevance scale 0.05 and the
+reliability formula were inherited calibrations. Structural, algebraically
+derived, empirical, and numerical constants are distinguished in the recovered
+[constant-origin audit](../provenance/freeze_notes/e_value_ce_normalized_ramp_magic_number_audit_2026-08-23.md).
+
+[Controller selection provenance](../provenance/controller_selection.json), the
+[original selection record](../provenance/synthetic_validation.json), and the
+[freeze manifest](../provenance/e_ats_full_budget_ramp_freeze_manifest.json)
+preserve the evidence. These historical records refer to the private development
+repository; their original paths are not public links.
 
 ## Literature replay baselines
 
@@ -61,7 +96,8 @@ frozen parameters with class defaults when trying to reproduce the paper.
 Citation entries are in `paper/references.bib`. The 14 tunable baselines used
 geometry-specific configurations selected by staged grid search and validation
 on disjoint seeds of the same nine families. TS and OTS used fixed configurations;
-e-ATS used one frozen configuration across all 18 cells. This repository does
+e-ATS used the inherited K=32 controller settings described above, frozen across
+all 18 cells. This repository does
 not rerun tuning or claim equal tuning budgets. The
 [selection and replay contract](REPRODUCIBILITY.md#baseline-selection-and-replay-scope)
 records the splits and the deterministic-family qualification.

@@ -197,5 +197,10 @@
       "size_bytes": 67449218,
       "sha256": "2b2f7c1d27429a86d96e53e53a7110d69164493e6ea84edddbaed3dda7609e47"
     }
-  ]
+  ],
+  "source_repository": {
+    "name": "Adaptive-Discounted-Thompson-Sampling",
+    "visibility": "private",
+    "path_semantics": "Paths and source commits identify the private development repository and are not public links. Public reproduction uses the bundled release inputs; raw selection records and recovered freeze notes are in provenance/."
+  }
 }

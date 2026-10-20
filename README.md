@@ -4,7 +4,7 @@
 <h3>E-Process-Authorized Thompson Sampling under Non-stationarity</h3>
 
 <p>
-  <strong>Mayand Gulati<sup>1</sup> &nbsp;·&nbsp; Kerong Wang<sup>1</sup> &nbsp;·&nbsp; WeiChen Au<sup>2</sup></strong><br>
+  <strong>Mayand Gulati<sup>1</sup> &nbsp;·&nbsp; Kerong Wang<sup>1</sup> &nbsp;·&nbsp; Wei-Chen Au<sup>2</sup></strong><br>
   <sup>1</sup>UC Santa Barbara &nbsp;&nbsp; <sup>2</sup>Purdue University
 </p>
 
@@ -32,8 +32,10 @@
 ## Overview
 
 **e-ATS** uses an anytime-valid e-process to decide when a bandit may begin
-forgetting. Each arm maintains full-history and discounted Beta states. After
-authorization, a reversible relevance score controls the discounted state's
+forgetting. Each arm maintains full-history and discounted Beta states. The
+e-process is anytime-valid under a **Beta(1,1)–Bernoulli prior-predictive
+stationary model**. After authorization, a reversible relevance score controls
+the discounted state's
 influence; before authorization, the policy follows its optimistic Thompson
 sampling (OTS) anchor exactly.
 
@@ -68,8 +70,9 @@ Lower is better. The columns represent different populations. Bold identifies
 our method. Across the 18 replay family–geometry cells, e-ATS has mean rank
 **9.72**, placing **12th of 17 by mean rank and 13th by mean regret**.
 Among these 17 methods, it ranks **first in mixed regime and second in random
-drift** at (K,T)=(32,20000). These descriptive ranks do not establish a benefit
-from authorization: the open ramp has lower regret in that random-drift cell.
+drift** at (K,T)=(32,20000). In that mixed cell, e-ATS also beats the open ramp
+(**0.0996 vs 0.1084**); in the random-drift cell, the open ramp has lower regret.
+The 17-method ranks alone do not identify authorization's contribution.
 
 SW-UCB has the lowest overall mean regret and second-best mean rank. Its frozen
 window is **τ=T**, so it uses the full observation history in these runs.
@@ -149,7 +152,8 @@ Omit `--bootstrap` for a faster descriptive readout.
 
 **Reference platform: macOS ARM64.** Exact seeded regeneration and figure
 regeneration were validated there with the pinned runtime. Run
-`python -m pytest` for all tests and omit `--no-figures` to rebuild the three
+`make test` for portable tests and `make test-reference` for exact reference
+checks (`python -m pytest` runs both). Omit `--no-figures` to rebuild the three
 paper figures. The original images are included in [paper/figures/](paper/figures/).
 
 Linux x86-64 has a confirmed mean-table hash mismatch in a registered smoke
@@ -240,9 +244,15 @@ over fixed means. The exact-real theorem has no all-path binary64 equivalence
 proof. Experiments do not establish regret optimality or universal superiority.
 The 14 tunable baselines used geometry-specific configurations selected by
 staged grid search and validation on disjoint seeds of the same nine families;
-TS and OTS used fixed configurations, and e-ATS used one frozen configuration
-across all 18 cells. Tuning effort was not equalized. The three deterministic
-families reuse fixed mean trajectories despite their separate stochastic runs.
+TS and OTS used fixed configurations. e-ATS inherits controller constants tuned
+for its predecessor VG-dTS by the same staged validation on these families
+(seeds disjoint from replay): **(γ,ν,ζ)=(0.995,0.30,0.80)**, using the K=32
+selection at every geometry. Its authorization threshold **K/α_E is not tuned**;
+it follows the declared prior-predictive error budget. Frozen for evaluation
+does not mean untuned in development. Other empirical construction choices are
+recorded in the [controller-setting history](docs/ALGORITHMS.md#origin-of-controller-settings).
+Tuning effort was not equalized. For slow, fast and abrupt, baselines were tuned
+on the same mean trajectories used in replay; only reward and policy randomness differed.
 [Selection and replay scope →](docs/REPRODUCIBILITY.md#baseline-selection-and-replay-scope)
 
 ## Citation
@@ -253,7 +263,7 @@ If you use this code or its results, please cite the
 ```bibtex
 @misc{gulati2026eats,
   title         = {When May a Bandit Leave Its Anchor? {E}-Process-Authorized {Thompson} Sampling under Non-stationarity},
-  author        = {Mayand Gulati and Kerong Wang and WeiChen Au},
+  author        = {Mayand Gulati and Kerong Wang and Wei-Chen Au},
   year          = {2026},
   eprint        = {2610.03646},
   archivePrefix = {arXiv},

@@ -9,17 +9,24 @@ searches, real datasets, and unused figures are excluded.
 ## Relation to arXiv v1
 
 The bundled manuscript is based on the
-[arXiv v1 source](https://arxiv.org/src/2610.03646v1), with these documented
-public-release corrections:
+[arXiv v1 source](https://arxiv.org/src/2610.03646v1). The arXiv record has not
+been replaced by these local repository corrections.
 
-- `main.tex` uses the arXiv `[preprint]` option, removing the submission notice
-  and line numbers from the earlier workshop-source extraction.
+The earlier repository extraction used the submission option. It now uses
+`[preprint]`, matching arXiv v1 and removing the submission notice and line
+numbers. This repairs the extraction; it is not a difference from arXiv v1.
+
+The intentional differences from the arXiv v1 source are:
+
 - `main.tex` and `appendix.tex` clarify the overall rank positions. The appendix
-  also identifies the baseline tuning procedure, the full-horizon SW-UCB window,
-  D-UCB's memory scale, and the limits of the strongest-cell comparisons.
+  also identifies baseline tuning, e-ATS's inherited tuned constants and other
+  development choices, the full-horizon SW-UCB window, D-UCB's memory scale,
+  and the limits of the strongest-cell and geometry comparisons.
+- The manuscript's author spelling is corrected to Wei-Chen Au.
 - `trimspaces.sty` is the unmodified CTAN v1.1 file. Its upstream attribution and
   complete source distribution are bundled under `paper/vendor/trimspaces/`;
-  see [third-party notices](../THIRD_PARTY_NOTICES.md).
+  the complete upstream `environ` archive is also bundled. See
+  [third-party notices](../THIRD_PARTY_NOTICES.md).
 
 These are build, attribution, and explanatory corrections. Algorithms, frozen
 parameters, evaluation data, numerical table entries, and figures are unchanged.
@@ -85,10 +92,10 @@ first-authorization event under the coupled preauthorization path.
 
 The 14 tunable baselines used geometry-specific configurations selected by
 staged grid search and validation on disjoint seeds of the same nine families.
-TS and OTS used fixed configurations; e-ATS used one frozen configuration across
-all 18 cells. Candidates were scored by mean normalized dynamic pseudo-regret
+TS and OTS used fixed configurations. Candidates were scored by mean normalized dynamic pseudo-regret
 across the nine families at each geometry. The search retained a shortlist,
-then selected its best validation candidate; it did not exhaustively validate
+then selected its best validation candidate, with ties broken by lowest grid
+index; it did not exhaustively validate
 every grid point.
 
 | Phase | Environment-seed labels | Reward/policy streams per label and family |
@@ -105,11 +112,28 @@ recorded final-bank seed audit passed with no reported final environment-seed
 collisions against the checked development history.
 [Selection provenance](../provenance/baseline_selection.json) records those
 identities, split ranges, and source-artifact hashes; it is an extraction of the
-historical records, not a new execution of the tuning search.
+historical records, not a new execution of the tuning search. The complete
+[baseline validation selection](../provenance/validation_selection.json) is
+bundled byte-for-byte, so the selected indices and scores can be inspected
+without access to the private development repository.
 
-Slow sine, fast sine, and abrupt cycle ignore the environment-seed label, so
-their mean trajectories are the same during selection and replay. Separate
-seeds provide separate stochastic runs, not unseen mean trajectories. The six
+e-ATS inherits controller constants tuned for its predecessor VG-dTS by the
+same staged validation on these families (seeds disjoint from replay):
+(γ,ν,ζ)=(0.995,0.30,0.80), using the K=32 selection at every geometry. The K=4
+predecessor winner used γ=0.9925 with the same ν and ζ. All three K=32 values
+lie at the search-grid boundary. Frozen for evaluation therefore does not mean
+untuned in development. Its authorization threshold K/alpha_E is not
+regret-tuned; it follows the declared prior-predictive error budget.
+[Controller provenance](../provenance/controller_selection.json) links the
+byte-identical [predecessor selection record](../provenance/synthetic_validation.json)
+and four freeze notes recovered from private-source commit `6997d27`, whose
+hashes match the [freeze manifest](../provenance/e_ats_full_budget_ramp_freeze_manifest.json).
+The notes also disclose empirical choices of detector spacing, ramp form, and
+latch behavior; see [the setting history](ALGORITHMS.md#origin-of-controller-settings).
+
+For slow, fast and abrupt, baselines were tuned on the same mean trajectories
+used in replay; only reward and policy randomness differed. This also applies
+to the predecessor's controller tuning. The six
 other families vary with the environment seed. No settings were selected using
 the replay outcomes, but the replay is a secondary historical comparison:
 baseline outcomes had been seen before its protocol freeze, and equal tuning
@@ -121,7 +145,11 @@ full-history SW-UCB configuration from D-UCB's horizon-scale discounting.
 ## Integrity and numerical scope
 
 `provenance/export.json` identifies the source commit and working-tree input
-hashes. Every exported SQLite record's original digest was verified. Only
+hashes in the **private development repository**. Its paths, and the original
+paths in selection records and freeze notes, are historical identifiers rather
+than publicly accessible links. Public selection records and recovered notes
+are bundled under `provenance/`; the larger original run manifests remain private.
+Every exported SQLite record's original digest was verified. Only
 paper-relevant fields and policy outcomes were retained; no private database
 is required. `provenance/code.json` identifies the original source file, line,
 and SHA-256 of each extracted function/class/constant. Tests compare those
@@ -164,6 +192,8 @@ The `reference` pytest marker identifies tests that require exact archived
 traces. An ordinary `python -m pytest` still runs them; they are not silently
 skipped based on the host. CI selects and labels each scope explicitly.
 Neither smoke suite is a complete scientific rerun.
+`make test` runs the portable tests; `make test-reference` checks Darwin ARM64
+before running the reference tests. Use both targets on the reference platform.
 
 A Linux x86-64 CI run using Python 3.12.13 and NumPy 2.5.2 reported a mean-table
 hash mismatch for `D:gradual_drift:k4:b250:random_environment:005:tape0002`.
@@ -197,6 +227,10 @@ directories. A run using `--smoke`, `--k`, `--family` or `--limit` is explicitly
 marked partial. For scientific reporting use the complete saved-data analysis
 or complete relevant suite, not a smoke subset.
 
-The release validation record in `provenance/validation.json` distinguishes
-complete saved-result checks from the subset of policies reexecuted while
-preparing the release.
+`provenance/validation.json` is explicitly a historical snapshot of the
+2026-10-11 release preparation. Its test count, CI configuration and execution
+status, and installation checks describe that date, not the current repository.
+It distinguishes complete saved-result checks from the subset of policies
+reexecuted then. Later local checks are recorded separately in
+`provenance/validation_2026-10-19.json`; neither record substitutes for a current
+GitHub Actions run on the commit being released.

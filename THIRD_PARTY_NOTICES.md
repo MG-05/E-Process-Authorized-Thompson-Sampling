@@ -9,6 +9,12 @@ The bundled `paper/neurips_2026.sty` and `paper/environ.sty` are copied from the
 paper's source without modification; their existing headers are preserved.
 `environ` is by Will Robertson and states the LaTeX Project Public License in
 the file. These style files are outside the repository's MIT grant.
+The complete, unmodified [CTAN environ v0.3 archive](paper/vendor/environ/environ.tds.zip)
+is bundled alongside its [upstream README](paper/vendor/environ/README).
+It includes `environ.dtx`, `environ.ins`, and `environ.pdf`, as named in the
+style header, and was obtained from
+<https://mirrors.ctan.org/install/macros/latex/contrib/environ.tds.zip>.
+The bundled `environ.sty` is byte-identical to that archive's copy.
 
 `paper/trimspaces.sty` is an unmodified copy of `tex/latex/trimspaces/trimspaces.sty`
 from the [CTAN trimspaces v1.1 distribution](https://ctan.org/pkg/trimspaces).

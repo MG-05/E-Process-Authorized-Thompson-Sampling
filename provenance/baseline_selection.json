@@ -2,7 +2,7 @@
   "schema_version": 1,
   "scope": "Historical selection provenance for the 14 tunable replay baselines at two geometries; TS and OTS were fixed configurations.",
   "verification_scope": "Extracted from saved historical records and matched to all 28 released candidate signatures; tuning was not rerun for this release.",
-  "selection": "Staged grid search, shortlist, then minimum validation mean normalized dynamic pseudo-regret across the nine families at each geometry.",
+  "selection": "Staged grid search, shortlist, then minimum validation mean normalized dynamic pseudo-regret across the nine families at each geometry. Ties are broken by lowest grid index.",
   "search_design_id": "vgdts_v3_publication_comparator_retuning_v2",
   "final_bank_design_id": "vgdts_v3_symmetric_retuning_and_revalidation_v1",
   "phases": {
@@ -36,7 +36,7 @@
     "fast",
     "abrupt"
   ],
-  "deterministic_family_scope": "Environment-seed labels do not change the mean trajectories; separate stochastic runs do not constitute unseen mean trajectories.",
+  "deterministic_family_scope": "For slow, fast and abrupt, baselines were tuned on the same mean trajectories used in replay; only reward and policy randomness differed.",
   "recorded_final_bank_seed_audit": {
     "passed": true,
     "fresh_namespace_collision_count": 0,
@@ -47,15 +47,18 @@
   "source_artifacts": [
     {
       "original_repository_path": "report/project_publication/vgdts_v3_publication_comparator_retuning_v2/run_manifest.json",
-      "sha256": "75ea32dc33c26c0f75366747b21f0a45afe1150e09d609acb47441ca2b698111"
+      "sha256": "75ea32dc33c26c0f75366747b21f0a45afe1150e09d609acb47441ca2b698111",
+      "availability": "Private original run manifest; not needed to execute the released experiments."
     },
     {
       "original_repository_path": "report/project_publication/vgdts_v3_publication_comparator_retuning_v2/selection/validation_selection.json",
-      "sha256": "a9a0260dbd3aad4b731b1c3e5068fb3ba239032670d14125d5f302a34c269b3d"
+      "sha256": "a9a0260dbd3aad4b731b1c3e5068fb3ba239032670d14125d5f302a34c269b3d",
+      "public_copy": "provenance/validation_selection.json"
     },
     {
       "original_repository_path": "report/project_publication/vgdts_v3_symmetric_retuning_and_revalidation_v1/run_manifest.json",
-      "sha256": "18f52eb74a6f0fb5e4388cd346584bbbb74ef690816150d430f6afd097e85d8e"
+      "sha256": "18f52eb74a6f0fb5e4388cd346584bbbb74ef690816150d430f6afd097e85d8e",
+      "availability": "Private original run manifest; not needed to execute the released experiments."
     }
   ],
   "selected_configurations": [
@@ -255,5 +258,10 @@
       "selected_grid_index": 47,
       "selected_signature_sha256": "63aa7c5e94e89521dd828a6a904636a2b589098e3a97bd8931e46e9b03d3c48f"
     }
-  ]
+  ],
+  "original_repository": {
+    "name": "Adaptive-Discounted-Thompson-Sampling",
+    "visibility": "private",
+    "path_semantics": "original_repository_path values identify private historical sources, not public links; public_copy values are release-relative paths."
+  }
 }

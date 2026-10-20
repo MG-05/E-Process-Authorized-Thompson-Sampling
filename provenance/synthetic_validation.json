@@ -1,0 +1,180 @@
+{
+  "k32": {
+    "nested_96": {
+      "boundary_status": {
+        "boundary_selected": true,
+        "faces": [
+          {
+            "face": "lower",
+            "note": "This dimension was not widened relative to the historical grid.",
+            "parameter": "dual_memory_mix_power",
+            "this_protocol_expanded_that_face": false,
+            "value": 0.3
+          }
+        ],
+        "interpretation": "Report as boundary-limited; this result does not authorize grid expansion or replacement."
+      },
+      "coordinate": [
+        0.99,
+        0.3,
+        0.3
+      ],
+      "selected_grid_index": 163,
+      "validation_scores": {
+        "1": 0.22088180498924834,
+        "129": 0.17240108821118913,
+        "130": 0.17294074647355945,
+        "131": 0.17241851639189057,
+        "132": 0.1719302950415468,
+        "161": 0.16843143527230145,
+        "162": 0.16777135606622007,
+        "163": 0.1656622155425977,
+        "164": 0.1675265134921179,
+        "169": 0.1682324448927505,
+        "170": 0.16878195942758614,
+        "171": 0.16810483454292538,
+        "172": 0.16646572140204133,
+        "177": 0.17204173818689616,
+        "179": 0.17182152288800445
+      }
+    },
+    "primary_288": {
+      "boundary_status": {
+        "boundary_selected": true,
+        "faces": [
+          {
+            "face": "upper",
+            "parameter": "gamma_min",
+            "this_protocol_expanded_that_face": true,
+            "value": 0.995
+          },
+          {
+            "face": "lower",
+            "note": "This dimension was not widened relative to the historical grid.",
+            "parameter": "dual_memory_mix_power",
+            "this_protocol_expanded_that_face": false,
+            "value": 0.3
+          },
+          {
+            "face": "upper",
+            "parameter": "local_takeover_scale",
+            "this_protocol_expanded_that_face": true,
+            "value": 0.8
+          }
+        ],
+        "interpretation": "Report as boundary-limited; this result does not authorize grid expansion or replacement."
+      },
+      "coordinate": [
+        0.995,
+        0.3,
+        0.8
+      ],
+      "selected_grid_index": 263,
+      "validation_scores": {
+        "0": 0.22041205337408937,
+        "162": 0.16777135606622007,
+        "167": 0.16772649214695623,
+        "169": 0.1682324448927505,
+        "193": 0.16798474893189314,
+        "194": 0.1671902256936884,
+        "196": 0.16695766166067183,
+        "198": 0.16715230185891242,
+        "214": 0.16907238211416997,
+        "226": 0.16651857233871756,
+        "231": 0.16571422535802266,
+        "257": 0.16813585583880802,
+        "258": 0.1656744748770125,
+        "263": 0.16534465211165217,
+        "268": 0.16727445222591314,
+        "277": 0.16829761783838015
+      }
+    },
+    "primary_is_canonical_regardless_of_final_outcome": true
+  },
+  "k4": {
+    "nested_96": {
+      "boundary_status": {
+        "boundary_selected": true,
+        "faces": [
+          {
+            "face": "lower",
+            "note": "This dimension was not widened relative to the historical grid.",
+            "parameter": "dual_memory_mix_power",
+            "this_protocol_expanded_that_face": false,
+            "value": 0.3
+          }
+        ],
+        "interpretation": "Report as boundary-limited; this result does not authorize grid expansion or replacement."
+      },
+      "coordinate": [
+        0.99,
+        0.3,
+        0.1
+      ],
+      "selected_grid_index": 161,
+      "validation_scores": {
+        "1": 0.2032247805498631,
+        "100": 0.1947980050864889,
+        "106": 0.1960450659685905,
+        "107": 0.19652345039655145,
+        "108": 0.19651950911431906,
+        "129": 0.19502827530520872,
+        "130": 0.19390371654796695,
+        "131": 0.1928692728094752,
+        "132": 0.19403782285846133,
+        "139": 0.19613195711510734,
+        "140": 0.19626723597519583,
+        "161": 0.19240255980949603,
+        "65": 0.19745906682246436,
+        "67": 0.19647810735731774,
+        "68": 0.19625094380989663
+      }
+    },
+    "primary_288": {
+      "boundary_status": {
+        "boundary_selected": true,
+        "faces": [
+          {
+            "face": "lower",
+            "note": "This dimension was not widened relative to the historical grid.",
+            "parameter": "dual_memory_mix_power",
+            "this_protocol_expanded_that_face": false,
+            "value": 0.3
+          },
+          {
+            "face": "upper",
+            "parameter": "local_takeover_scale",
+            "this_protocol_expanded_that_face": true,
+            "value": 0.8
+          }
+        ],
+        "interpretation": "Report as boundary-limited; this result does not authorize grid expansion or replacement."
+      },
+      "coordinate": [
+        0.9925,
+        0.3,
+        0.8
+      ],
+      "selected_grid_index": 199,
+      "validation_scores": {
+        "0": 0.20350707710065666,
+        "100": 0.1947980050864889,
+        "166": 0.1924814175692346,
+        "167": 0.19190017477443003,
+        "174": 0.19523254402444146,
+        "192": 0.1937975348548876,
+        "193": 0.19448109662259908,
+        "197": 0.1935926063693773,
+        "198": 0.19382368150566934,
+        "199": 0.19180314120261643,
+        "225": 0.19306593640595593,
+        "229": 0.19385860046782458,
+        "230": 0.19339437971722134,
+        "231": 0.1920908085474582,
+        "257": 0.1938636481864199,
+        "71": 0.1965498035370791
+      }
+    },
+    "primary_is_canonical_regardless_of_final_outcome": true
+  }
+}

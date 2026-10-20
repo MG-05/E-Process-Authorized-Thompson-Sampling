@@ -212,6 +212,22 @@ Appendix~\ref{app:experiments} describes the freeze and the separation between d
 The primary evaluation therefore assesses one fixed policy specification rather than selecting the best configuration from the evaluation results.
 These constants are not claimed to be optimal.
 
+\paragraph{How were the controller settings chosen?}
+\method{} inherits $(\gamma,\nu,\zeta)=(0.995,0.30,0.80)$ from its predecessor
+VG-dTS, tuned by staged search and validation on the same nine families later
+used for replay, with validation seeds 1830101--1830106 disjoint from replay.
+This is the $K=32$ selection from a 288-point grid; the $K=4$ winner was
+$(0.9925,0.30,0.80)$. \method{} uses the $K=32$ vector at every geometry.
+All three coordinates of that vector lie at the search-grid boundary.
+Thus, frozen for evaluation does not mean untuned in development.
+The authorization threshold $K/\alphaE$ is not regret-tuned: it follows the
+declared error budget $\alphaE=0.05$ and equal allocation across arms.
+Other development choices included selecting split spacing $\eta=0.25$ from
+$\{0.25,0.5,1\}$, the clipped normalized ramp over a soft ratio, and retention
+of the absorbing latch after comparison with a current-level gate. The public
+repository includes the original selection records and the constant-origin
+audit that distinguishes empirical, inherited, structural, and derived choices.
+
 The experiments use the known horizon $T$ to set $\lambda_D$ and $\rho$.
 Experiments with an unknown horizon were not evaluated.
 Using a nominal horizon to set $\lambda_D$ and $\rho$ does not change the controlled-departure guarantee because neither
@@ -1681,15 +1697,16 @@ dTS and dOTS \citep{raj2017taming}, Dynamic TS \citep{gupta2011dynamic}, AFF-TS
 We implemented each baseline locally from its source algorithm.
 The 14 tunable baselines used geometry-specific configurations selected by
 staged grid search and validation on disjoint seeds of the same nine families;
-TS and \anchor{} used fixed configurations, and \method{} used one frozen
-configuration across all 18 family--geometry combinations.
+TS and \anchor{} used fixed configurations. \method{} used its predecessor's
+inherited $K=32$ controller settings, frozen across all 18 combinations as
+described in Appendix~\ref{app:algorithm}.
 Selection minimized mean normalized dynamic pseudo-regret across the nine
-families at each geometry, using search seeds 1830001--1830008 and validation
+families at each geometry, with ties broken by lowest grid index, using search seeds 1830001--1830008 and validation
 seeds 1830101--1830106. The historical final bank used for replay has seeds
 1840201--1840250; its recorded seed audit found no overlap with the checked
-development history. For slow sine, fast sine, and abrupt cycle, the mean
-trajectories are deterministic, so disjoint seeds provide separate stochastic
-runs rather than unseen mean trajectories.
+development history. For slow sine, fast sine, and abrupt cycle, baselines and
+the predecessor controller were tuned on the same mean trajectories used in
+replay; only reward and policy randomness differed.
 No settings were selected using the replay outcomes. This is a secondary
 historical comparison: baseline outcomes had been seen before the replay
 protocol freeze, and equal tuning budgets are not claimed.
@@ -1780,11 +1797,14 @@ These are the strongest combinations for \method{} and suggest that selective
 adaptation may be useful when different arms evolve in different ways.
 
 In our experiments, the geometries differ in arm count, total horizon, and generator scaling.
-The rank change cannot be attributed to any one of those differences.
+The controller settings were also selected for the predecessor at $K=32$ and
+transferred to $K=4$, rather than using the predecessor's $K=4$ discount winner.
+The rank change cannot be attributed to any one of these differences.
 The gate transfer also shows that the open ramp outperformed \method{} on this same replay population.
 The first- and second-place cells do not establish that the
 e-process gate caused those rankings; the open ramp has lower regret in
-the $(K,T)=(32,20000)$ random-drift cell.
+the $(K,T)=(32,20000)$ random-drift cell. In the mixed cell at that geometry,
+\method{} has lower regret than the open ramp ($0.0996$ versus $0.1084$).
 
 Overall, authorization changes regret, but whether it helps depends on the environments
 being studied.

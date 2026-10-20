@@ -6,11 +6,21 @@ build-backend = "setuptools.build_meta"
 name = "e-process-authorized-thompson-sampling"
 version = "1.0.0"
 description = "Paper reproduction code for E-Process-Authorized Thompson Sampling"
+authors = [
+    {name = "Mayand Gulati"},
+    {name = "Kerong Wang"},
+    {name = "Wei-Chen Au"},
+]
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 license = "MIT"
 license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
 dependencies = ["numpy==2.5.2", "matplotlib==3.11.1"]
+
+[project.urls]
+Repository = "https://github.com/MG-05/E-Process-Authorized-Thompson-Sampling"
+Paper = "https://arxiv.org/abs/2610.03646"
+Issues = "https://github.com/MG-05/E-Process-Authorized-Thompson-Sampling/issues"
 
 [project.optional-dependencies]
 test = ["pytest==9.0.3"]

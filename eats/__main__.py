@@ -13,7 +13,7 @@ def positive(value):
     return number
 
 def main():
-    parser=argparse.ArgumentParser(description='Reproduce the e-ATS paper: saved-result analysis or exact seeded simulation.')
+    parser=argparse.ArgumentParser(prog='python -m eats',description='Reproduce the e-ATS paper: saved-result analysis or exact seeded simulation.')
     sub=parser.add_subparsers(dest='command',required=True)
     for name,help_text in [('verify','Check integrity, all suite censuses, and paper claims'),('reproduce','Recompute tables and figures from the frozen per-run results')]:
         p=sub.add_parser(name,help=help_text)

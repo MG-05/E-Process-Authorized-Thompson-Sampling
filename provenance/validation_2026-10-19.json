@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "record_type": "dated_local_validation_snapshot",
+  "date": "2026-10-19",
+  "scope": "Local checks of the repository corrections on the recorded runtime; not a fresh full experiment, tuning rerun, dependency-download test, or GitHub Actions attestation.",
+  "runtime": {
+    "python": "3.12.13",
+    "numpy": "2.5.2",
+    "matplotlib": "3.11.1",
+    "system": "Darwin",
+    "architecture": "arm64"
+  },
+  "unit_and_integration_tests": {
+    "passed": 27,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "command": "python -m pytest -q -p no:cacheprovider"
+  },
+  "saved_result_verification": {
+    "command": "python -m eats verify",
+    "status": "passed",
+    "bootstrap_recomputed": false
+  },
+  "evidence": {
+    "raw_selection_records_byte_identical": true,
+    "recovered_freeze_notes_count": 4,
+    "freeze_note_hashes_match_manifest": true,
+    "baseline_selected_signatures_checked": 28,
+    "controller_selection_winners_checked": 2,
+    "historical_validation_facts_preserved": true
+  },
+  "packaging_and_metadata": {
+    "toml_and_yaml_parse": "passed",
+    "paper_doi_placed_in_preferred_citation": true,
+    "author_spelling_consistent": true,
+    "ci_permissions_contents_read": true,
+    "cli_help_uses_python_m_eats": true,
+    "portable_and_reference_make_targets_separate": true,
+    "environ_and_trimspaces_match_upstream_archives": true
+  },
+  "latex": {
+    "command": "make paper",
+    "compiled": true,
+    "pages": 26,
+    "undefined_citations_or_references": false,
+    "overfull_boxes": false,
+    "shell_escape": false
+  },
+  "scientific_implementation_parameters_data_and_figures": "unchanged; hashes checked against the previous release",
+  "remote_ci_and_install_status": {
+    "independently_queried_this_audit": false,
+    "user_report": "User reports verifying current CI and fresh-install checks; no run URL or independent remote log inspection is recorded in this local snapshot."
+  },
+  "limits": [
+    "The complete scientific experiments and tuning searches were not rerun.",
+    "Exact cross-platform regeneration remains unsupported outside the documented reference scope.",
+    "This dated snapshot does not attest to a later commit or GitHub Actions run."
+  ]
+}
