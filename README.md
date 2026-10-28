@@ -31,32 +31,28 @@
 
 ## Overview
 
-**e-ATS** uses an anytime-valid e-process to decide when a bandit may begin
-forgetting. Each arm maintains full-history and discounted Beta states. The
-e-process is anytime-valid under a **Beta(1,1)–Bernoulli prior-predictive
-stationary model**. After authorization, a reversible relevance score controls
-the discounted state's
-influence; before authorization, the policy follows its optimistic Thompson
-sampling (OTS) anchor exactly.
+**e-ATS** asks when a bandit should start forgetting. It follows optimistic
+Thompson sampling (OTS) until an arm's e-process authorizes adaptation, then
+uses a relevance score to mix full-history and discounted estimates. Under an
+independent per-arm Beta(1,1)–Bernoulli prior-predictive stationary model, the probability of ever
+departing from OTS is at most the chosen error budget, α_E.
 
-This repository accompanies the [paper](https://arxiv.org/abs/2610.03646) and
-contains its algorithms, registered and replay experiments, saved per-run
-results, exact seed descriptors, and verification tools. The manuscript and
-appendix are included in [paper/](paper/main.tex), with
-[documented clarifications relative to arXiv v1](docs/REPRODUCIBILITY.md#relation-to-arxiv-v1).
+This repository contains the code, saved results, and manuscript for our
+[paper](https://arxiv.org/abs/2610.03646). This is designed so you can recompute its tables and
+confidence intervals from the saved runs or execute the experiments.
 
 ## Results
 
 <p align="center">
-  <a href="paper/figures/authorization_and_rank_summary.png"><img src="paper/figures/authorization_and_rank_summary.png" width="1000" alt="Authorization effect by arm count in the registered and replay suites, alongside e-ATS ranks among 17 methods in nine replay families."></a>
+  <a href="paper/figures/authorization_and_rank_summary.png"><img src="paper/figures/authorization_and_rank_summary.png" width="1000" alt="Effect of authorization in the registered and replay suites, and e-ATS ranks among 17 methods across nine replay families."></a>
 </p>
 
 *Left: open-ramp regret minus e-ATS regret; positive values favor e-ATS.
-Right: e-ATS ranks among 17 methods in each replay family; lower is better.*
+Right: e-ATS ranks among 17 methods; lower is better.*
 
-Removing authorization increased mean normalized dynamic pseudo-regret by
-**38.4% on the registered suite** and reduced it by **7.5% on replay**, relative
-to e-ATS. Authorization's empirical benefit depends on the environment.
+Removing authorization increased mean regret by **38.4% on the registered
+suite** but reduced it by **7.5% on replay**, relative to e-ATS. So, from our 
+results authorization helps in some environments and costs performance in others.
 
 | Policy | Registered nonstationary | Replay |
 |---|---:|---:|
@@ -66,55 +62,65 @@ to e-ATS. Authorization's empirical benefit depends on the environment.
 | Certified GLR | 0.0418 | 0.1750 |
 | Practical GLR | 0.0392 | 0.1529 |
 
-Lower is better. The columns represent different populations. Bold identifies
-our method. Across the 18 replay family–geometry cells, e-ATS has mean rank
-**9.72**, placing **12th of 17 by mean rank and 13th by mean regret**.
-Among these 17 methods, it ranks **first in mixed regime and second in random
-drift** at (K,T)=(32,20000). In that mixed cell, e-ATS also beats the open ramp
-(**0.0996 vs 0.1084**); in the random-drift cell, the open ramp has lower regret.
-The 17-method ranks alone do not identify authorization's contribution.
+Values are mean normalized dynamic pseudo-regret (lower is better). The two
+suites use different environments, so compare policies within each column.
 
-SW-UCB has the lowest overall mean regret and second-best mean rank. Its frozen
-window is **τ=T**, so it uses the full observation history in these runs.
-D-UCB still discounts, with memory scale 1/(1−γ)=T.
-[Exact baseline settings and their interpretation →](docs/ALGORITHMS.md#ucb-memory-settings)
+Across the 18 replay cells, e-ATS has mean rank **9.72: 12th of 17 by mean
+rank, and 13th by mean regret**.
+
+SW-UCB has the lowest overall mean regret. Its selected window is τ=T, so it
+uses the full history in these experiments; D-UCB's discount also gives a
+memory scale of T. See [baseline settings](docs/ALGORITHMS.md#ucb-memory-settings).
+
+### Strongest replay results
+
+Notably, at **K=32, T=20,000**, e-ATS ranks **first in mixed regime** and **second in
+random drift** among the 17 methods:
+
+| Environment | e-ATS rank | e-ATS regret | Best baseline: SW-UCB | Open ramp |
+|---|---:|---:|---:|---:|
+| Mixed regime | **1st / 17** | **0.0996** | 0.1032 | 0.1084 |
+| Random drift | **2nd / 17** | **0.0842** | 0.0802 | 0.0750 |
+
+Mixed regime combines stable, drifting, bursty, and switching arms and Random
+drift uses oscillating arm means with changing amplitudes and trends.
+e-ATS beats both SW-UCB and the open ramp in mixed regime. In random drift,
+SW-UCB is the only literature baseline ahead of e-ATS, while the open ramp
+also achieves lower regret.
+
+Each value averages 50 mean trajectories with five paired runs each. Ranks
+compare e-ATS with the 16 literature baselines; the open-ramp ablation is
+shown separately and is not included in those ranks.
 
 ### Registered and replay suites
 
-| Suite | Role | Geometry | Evaluation groups |
-|---|---|---|---:|
-| **Registered** | Measure the contribution of authorization | K ∈ {4,8,16,32,64}; B=T/K ∈ {250,625,1250,2500} | 16,380 random nonstationary; 1,820 random stationary; 5,400 fixed stress |
-| **Replay** | Compare with 16 literature baselines and examine transfer | (K,T)=(4,2500), (32,20000) | 4,500 on 606 distinct mean tables |
+| Suite | Purpose | Size |
+|---|---|---|
+| **Registered** | Isolate the effect of authorization across 20 arm-count/horizon combinations | 16,380 random nonstationary, 1,820 stationary, and 5,400 stress groups |
+| **Replay** | Compare with 16 baselines on nine established environment families at K=4 and K=32 | 4,500 groups on 606 distinct mean trajectories |
 
-Stress groups are excluded from the registered primary mean and interval.
-Replay has no stationary regret population. Calibration and prior-predictive
-null crossing are separate experiments. [Full experiment and result map →](docs/REPRODUCIBILITY.md)
-
-<details>
-<summary><strong>Registered suite · Environment atlas</strong></summary>
-
-![Nine registered nonstationary mechanisms, with four arm means and the instantaneous oracle mean.](paper/figures/primary_environment_atlas.png)
-
-One frozen visualization environment per nonstationary mechanism at K=4,
-B=625, T=2,500. Colors identify arms; the dashed line is the instantaneous
-oracle mean. These visualization fixtures are distinct from evaluation groups.
-
-</details>
+The registered primary result uses the random nonstationary groups. 
+Note that stress and stationary results are reported separately.
 
 <details>
-<summary><strong>Replay suite · Environment atlas</strong></summary>
+<summary><strong>Environment examples</strong></summary>
 
-![Nine literature-derived replay families, including sinusoidal, switching, drift, and local-shock environments.](paper/figures/historical_environment_atlas.png)
+**Registered suite** — nine mechanisms at K=4, T=2,500. Colors show arm means;
+the dashed line shows the best available mean. These examples are separate
+from the evaluation groups.
 
-One frozen example per replay family at K=4, T=2,500, using visualization seed
-1,840,201. The fast-sine panel displays rounds 0–1,250; other panels show the
-full horizon. These examples illustrate constructions, not empirical frequency.
+![Registered environment examples.](paper/figures/primary_environment_atlas.png)
+
+**Replay suite** — nine families at K=4, T=2,500, seed 1,840,201. The fast-sine
+panel shows the first 1,250 rounds.
+
+![Replay environment examples.](paper/figures/historical_environment_atlas.png)
 
 </details>
 
 ## Installation
 
-Use **Python 3.12.13** and the pinned dependencies. From this checkout:
+Use **Python 3.12.13**. From the repository root:
 
 ```sh
 python3.12 -m venv .venv
@@ -123,58 +129,46 @@ python -m pip install -r requirements.txt
 python -m pip install -e '.[test]'
 ```
 
-If Python 3.12.13 is unavailable, install it with
-[uv](https://docs.astral.sh/uv/getting-started/installation/): run
-`uv python install` and `uv venv --managed-python --seed`, then activate the
-environment and run the two pip commands above. Both uv commands read
-`.python-version`. CI uses uv 0.11.21 because GitHub's `setup-python` has no
-macOS build for Python 3.12.13.
-
-On Windows, activate with `.venv\Scripts\activate`. Keep the checkout: the
-commands use its `data/`, `paper/`, and `provenance/` directories. The editable
-install is intentional; experiment data are not packaged in a standalone wheel.
+On Windows, activate with `.venv\Scripts\activate`. If you need the pinned
+Python version, [uv](https://docs.astral.sh/uv/getting-started/installation/)
+can install it: run `uv python install` and `uv venv --managed-python --seed`,
+then activate the environment and run the pip commands above. Keep the checkout;
+the package reads its bundled data and figures.
 
 ## Reproduction
 
-### Recompute the paper from saved runs
+### Recompute the reported results
 
 ```sh
 python -m eats verify
 python -m eats reproduce --bootstrap --no-figures
-python -m pytest -m 'not reference'
+make test
 ```
 
-These commands check release integrity and paper claims, recompute the tables
-and all reported confidence intervals with **50,000 bootstrap resamples**, and
-run mathematical and integrity tests. Results appear in `results/paper/`.
-The analysis reads saved outcomes; it does not execute policies again.
-Omit `--bootstrap` for a faster descriptive readout.
+This checks the release, recomputes tables and confidence intervals from the
+saved runs using 50,000 bootstrap resamples, and runs the portable tests.
+Outputs go to `results/paper/`. Omit `--bootstrap` for a faster summary.
+Without `make`, use `python -m pytest -m 'not reference'`.
 
-**Reference platform: macOS ARM64.** Exact seeded regeneration and figure
-regeneration were validated there with the pinned runtime. Run
-`make test` for portable tests and `make test-reference` for exact reference
-checks (`python -m pytest` runs both). Omit `--no-figures` to rebuild the three
-paper figures. The original images are included in [paper/figures/](paper/figures/).
+Saved-result analysis is covered by Linux and macOS CI. **Exact experiment and
+figure regeneration is supported on macOS ARM64 with the pinned runtime.**
+Linux reruns currently encounter mean-table mismatches. On the reference
+platform, omit `--no-figures` to rebuild the figures and use
+`make test-reference` for the archived-trajectory tests.
 
-Linux x86-64 has a confirmed mean-table hash mismatch in a registered smoke
-case; exact regeneration is currently unsupported there. Version pins alone
-do not guarantee bitwise equality across platforms. Linux CI checks saved-result
-tables/intervals and mathematical invariants; macOS CI additionally checks
-exact archived trajectories and both smoke suites.
-[Platform limits and validation scope →](docs/REPRODUCIBILITY.md#platforms-and-ci)
+### Run the experiments
 
-### Execute the registered and replay suites
-
-On the reference platform, start with small subsets at the original horizons:
+On the reference platform, start with a small subset of each suite:
 
 ```sh
 python -m eats run registered --smoke --workers 4
 python -m eats run replay --smoke --workers 4
 ```
 
-Registered smoke covers all ten mechanisms at K=4, B=250. Replay smoke covers
-all nine families at K=4, with all 17 paper methods and three gate comparators.
-Neither is a complete scientific rerun.
+The registered smoke run covers all ten mechanisms; replay covers all nine
+families. Both use the original horizons and check the results against the
+archive. Repeat a command to resume an interrupted run. Outputs are saved in
+`results/<suite>/`; use `python -m eats run --help` for subset and output options.
 
 <details>
 <summary><strong>Full experiment commands</strong></summary>
@@ -187,78 +181,49 @@ python -m eats run registered --full --policies calibrated-glr --workers 4
 python -m eats run null --full --workers 4
 ```
 
-Full registered evaluation has 23,600 paired groups, horizons up to 160,000,
-and several billion policy rounds. These are substantial CPU jobs; more workers
-trade RAM for throughput.
+These are substantial CPU jobs. The full registered suite alone has 23,600
+groups, horizons up to 160,000, and several billion policy rounds.
 
 </details>
 
-Each rerun regenerates means and rewards, executes policies, and checks action
-hashes and regret against the archive. A mismatch stops the run. Repeat the
-same command to resume under `results/<suite>/`. Use `--output`, `--k`,
-`--family`, `--limit`, or `--policies` for explicit subsets; see
-`python -m eats run --help`. The two known historical NumPy mean-table
-differences have declared, hash-verified fixtures.
+See the [reproduction guide](docs/REPRODUCIBILITY.md) for the paper-to-code map,
+statistical procedures, and platform details.
 
 ## Code and algorithms
 
 ```text
-eats/algorithms/     e-ATS, open ramp, GLR variants, 16 baseline implementations
+eats/algorithms/     e-ATS, gate comparisons, and literature baselines
 eats/environments/   registered and replay generators
-eats/experiments/    exact seeded reruns, null and calibration support
-data/               compressed per-run results, configurations, small fixtures
-paper/              manuscript sources and its three figures
-provenance/         extraction hashes and original prospective protocols
-tests/              mathematical, coupling, trace, and release checks
+eats/experiments/    experiment runners
+data/               saved runs, configurations, and small fixtures
+paper/              manuscript and figures
+provenance/         selection records, protocols, and source hashes
+tests/              algorithm and reproduction checks
 ```
 
-The canonical e-ATS policy has no tuning arguments. See
-[algorithm definitions and baseline settings](docs/ALGORITHMS.md).
-Numerical function bodies were extracted unchanged; original implementation
-IDs and helper names are retained for traceability.
+The [algorithm guide](docs/ALGORITHMS.md) lists implementations and settings.
+To build the manuscript, install TeX Live with `algorithm` and `algorithmic`,
+then run `make paper`. The bundled source includes
+[clarifications to arXiv v1](docs/REPRODUCIBILITY.md#relation-to-arxiv-v1).
 
-<details>
-<summary><strong>Minimal algorithm example</strong></summary>
+## How settings were chosen
 
-```python
-import numpy as np
-from eats import run_e_ats
+The 14 tunable baselines were selected per geometry by staged grid search
+and validation on the same nine replay families, using seeds disjoint from
+replay. TS and OTS used fixed settings. e-ATS inherited its predecessor's
+K=32 selection, **(γ,ν,ζ)=(0.995,0.30,0.80)**, at every geometry. Its
+authorization threshold **K/α_E was not tuned**. Tuning budgets were not equal.
 
-mu = np.full((4, 1000), 0.5)  # arms × rounds
-returns = (np.random.default_rng(1).random(mu.shape) < mu).astype(np.uint8)
-diagnostics = {}
-rewards = run_e_ats(mu, np.random.default_rng(2), returns, diagnostics)
-actions = diagnostics['played_arms']
-```
-
-</details>
-
-To compile the manuscript, install TeX Live with `algorithm` and `algorithmic`,
-then run `make paper`. The included figures are sufficient to compile;
-regenerated copies appear under `results/paper/figures/`.
-
-## Scope of the claims
-
-The departure guarantee is **Beta(1,1)–Bernoulli prior-predictive**, not uniform
-over fixed means. The exact-real theorem has no all-path binary64 equivalence
-proof. Experiments do not establish regret optimality or universal superiority.
-The 14 tunable baselines used geometry-specific configurations selected by
-staged grid search and validation on disjoint seeds of the same nine families;
-TS and OTS used fixed configurations. e-ATS inherits controller constants tuned
-for its predecessor VG-dTS by the same staged validation on these families
-(seeds disjoint from replay): **(γ,ν,ζ)=(0.995,0.30,0.80)**, using the K=32
-selection at every geometry. Its authorization threshold **K/α_E is not tuned**;
-it follows the declared prior-predictive error budget. Frozen for evaluation
-does not mean untuned in development. Other empirical construction choices are
-recorded in the [controller-setting history](docs/ALGORITHMS.md#origin-of-controller-settings).
-Tuning effort was not equalized. For slow, fast and abrupt, baselines were tuned
-on the same mean trajectories used in replay; only reward and policy randomness differed.
-[Selection and replay scope →](docs/REPRODUCIBILITY.md#baseline-selection-and-replay-scope)
+For the slow, fast, and abrupt families, tuning and replay used the same mean
+trajectories; only reward and policy randomness differed. Replay is a
+historical comparison, not a new confirmatory benchmark. The
+[selection history](docs/REPRODUCIBILITY.md#baseline-selection-and-replay-scope)
+and [controller settings](docs/ALGORITHMS.md#origin-of-controller-settings)
+give the details and original records.
 
 ## Citation
 
-If you use this code or its results, please cite the
-[paper](https://arxiv.org/abs/2610.03646):
+If you use this code or its results, please cite the paper:
 
 ```bibtex
 @misc{gulati2026eats,
@@ -272,10 +237,9 @@ If you use this code or its results, please cite the
 }
 ```
 
-Machine-readable citation metadata are available in [CITATION.cff](CITATION.cff).
+Citation metadata are also available in [CITATION.cff](CITATION.cff).
 
 ## License
 
-Code and repository documentation use the [MIT license](LICENSE). The
-manuscript and bundled styles retain their existing rights; see
-[third-party notices](THIRD_PARTY_NOTICES.md).
+Code and documentation are [MIT licensed](LICENSE). The manuscript and bundled
+LaTeX packages retain their existing rights; see [third-party notices](THIRD_PARTY_NOTICES.md).

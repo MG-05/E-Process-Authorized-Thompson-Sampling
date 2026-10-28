@@ -26,11 +26,8 @@ Ties select the smallest arm index. See Algorithm 1 and the exact update
 equations in `paper/appendix.tex`; `frozen_e_ats_contract()` provides the full
 machine-readable contract.
 
-The files `common.py` and `scaling.py` preserve shared numerical helpers from
-the development implementation. Their historical symbol names do not expose
-retired policies. The public `from eats import run_e_ats, run_open_ramp` API
-has no controller-tuning surface. That API restriction does not imply that its
-constants were never tuned during development.
+Use `from eats import run_e_ats, run_open_ramp` for the public API. Both use
+the paper's fixed settings; their development history is described below.
 
 ### Origin of controller settings
 
@@ -43,28 +40,25 @@ replay. The primary 288-point search selected:
 | K=4, T=2500 | 0.9925 | 0.30 | 0.80 | 199 |
 | K=32, T=20000 | 0.995 | 0.30 | 0.80 | 263 |
 
-e-ATS uses the K=32 vector **(0.995,0.30,0.80) at every geometry**, rather than
-the geometry-specific predecessor winners. All three K=32 coordinates lie on
-the search-grid boundary; K=4's selected γ is interior. Selection minimized
-validation mean normalized dynamic pseudo-regret, with ties broken by lowest
-grid index. The records establish the transfer, not its optimality or a causal
-explanation for the difference between K=4 and K=32 replay ranks.
+e-ATS uses the K=32 settings **(0.995,0.30,0.80) at every geometry**. All three
+values lie at the search-grid boundary; K=4's selected γ is interior. Selection
+minimized validation mean normalized dynamic pseudo-regret, with ties broken
+by lowest grid index. The K=32-to-K=4 transfer is one difference to consider
+when comparing performance across geometries; its effect was not isolated.
 
-The authorization threshold **K/alpha_E is not regret-tuned**: it follows the
-declared error budget alpha_E=0.05 and equal allocation across arms under the
-prior-predictive model. Other construction choices did involve development
-comparisons: split spacing eta=0.25 was selected from {0.25,0.5,1}; the normalized
-clipped ramp was selected over a soft ratio; and the absorbing latch was retained
-after comparison with a current-level gate. The relevance scale 0.05 and the
-reliability formula were inherited calibrations. Structural, algebraically
-derived, empirical, and numerical constants are distinguished in the recovered
-[constant-origin audit](../provenance/freeze_notes/e_value_ce_normalized_ramp_magic_number_audit_2026-08-23.md).
+The threshold **K/alpha_E was not regret-tuned**. It follows alpha_E=0.05 and
+equal allocation across arms under the independent Beta(1,1)–Bernoulli
+prior-predictive model. Development comparisons selected split spacing
+eta=0.25 from {0.25,0.5,1} and the clipped ramp over a soft ratio; the absorbing
+latch was retained after comparison with a current-level gate. The relevance scale 0.05 and reliability
+formula were inherited calibrations. The original
+[constant-origin audit](../provenance/freeze_notes/e_value_ce_normalized_ramp_magic_number_audit_2026-08-23.md)
+records the source of each choice.
 
 [Controller selection provenance](../provenance/controller_selection.json), the
 [original selection record](../provenance/synthetic_validation.json), and the
 [freeze manifest](../provenance/e_ats_full_budget_ramp_freeze_manifest.json)
-preserve the evidence. These historical records refer to the private development
-repository; their original paths are not public links.
+preserve the original evidence from the private development repository.
 
 ## Literature replay baselines
 
@@ -93,16 +87,12 @@ frozen parameters with class defaults when trying to reproduce the paper.
 | `ots` | OTS | historical_18 | run_dOTS (gamma=1) | may2012optimistic |
 | `ts` | TS | historical_19 | run_TS | thompson1933 |
 
-Citation entries are in `paper/references.bib`. The 14 tunable baselines used
-geometry-specific configurations selected by staged grid search and validation
-on disjoint seeds of the same nine families. TS and OTS used fixed configurations;
-e-ATS used the inherited K=32 controller settings described above, frozen across
-all 18 cells. This repository does
-not rerun tuning or claim equal tuning budgets. The
-[selection and replay contract](REPRODUCIBILITY.md#baseline-selection-and-replay-scope)
-records the splits and the deterministic-family qualification.
-The replay leaderboard excludes four retired internal rows from the historical
-21-row artifact and recomputes ranks among e-ATS and these 16 baselines.
+Citation entries are in `paper/references.bib`. The 14 tunable baselines were
+selected per geometry by staged search and validation on disjoint seeds of
+the same nine families; TS and OTS used fixed settings. Tuning budgets were
+not equal. See the [selection history](REPRODUCIBILITY.md#baseline-selection-and-replay-scope)
+for seed splits and mean-trajectory reuse. Ranks are recomputed among e-ATS
+and these 16 baselines; four retired internal methods are excluded.
 
 ### UCB memory settings
 
@@ -111,14 +101,11 @@ The replay leaderboard excludes four retired internal rows from the historical
 | (4,2500) | 2500 | 2.0 | 0.9996 | 2500 |
 | (32,20000) | 20000 | 1.0 | 0.99995 | 20000 |
 
-SW-UCB removes an observation only when the stored history exceeds τ. Since
-τ=T, this never happens during either evaluation horizon: the executed policy
-is full-history UCB with the exploration coefficient shown above. Its lowest
-overall mean regret and second-best mean rank therefore do not demonstrate a
-benefit from windowing. The frozen row and CLI names retain the source algorithm's
-name for reproducibility.
+With τ=T, SW-UCB never drops an observation during these runs: it acts as
+full-history UCB with the exploration coefficient shown above. Its lowest
+overall mean regret and second-best mean rank do not demonstrate a benefit
+from forgetting. The CLI retains the source algorithm's name.
 
-D-UCB multiplies accumulated counts and successes by γ each round. Its
-conventional geometric memory scale equals T (up to floating-point rounding),
-but it still downweights older observations. It is not identical to full-history
-UCB. Both geometries use `xi=0.5` and `bonus_scale=2.0` for D-UCB.
+D-UCB discounts counts and successes each round. Its memory scale is T, but
+older observations still receive less weight. Both geometries use `xi=0.5`
+and `bonus_scale=2.0`.
